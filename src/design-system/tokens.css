@@ -1,0 +1,65 @@
+/*
+ * MAPIAP design tokens.
+ *
+ * The official navy and cyan values are intentionally not declared here yet.
+ * They must be extracted from validated brand assets before becoming
+ * production brand tokens.
+ */
+
+:root {
+  /* Neutral primitives */
+  --mapiap-neutral-0: #ffffff;
+  --mapiap-neutral-50: #fafafa;
+  --mapiap-neutral-100: #f5f5f5;
+  --mapiap-neutral-200: #e5e5e5;
+  --mapiap-neutral-600: #525252;
+  --mapiap-neutral-950: #171717;
+
+  /* Semantic colors */
+  --mapiap-color-background: var(--mapiap-neutral-0);
+  --mapiap-color-surface: var(--mapiap-neutral-0);
+  --mapiap-color-surface-muted: var(--mapiap-neutral-100);
+  --mapiap-color-foreground: var(--mapiap-neutral-950);
+  --mapiap-color-muted-foreground: var(--mapiap-neutral-600);
+  --mapiap-color-border: var(--mapiap-neutral-200);
+  --mapiap-color-focus-ring: var(--mapiap-neutral-950);
+
+  /* Layout */
+  --mapiap-container-page: 80rem;
+  --mapiap-container-content: 64rem;
+  --mapiap-container-reading: 48rem;
+
+  /* Section rhythm */
+  --mapiap-section-space-sm: 4rem;
+  --mapiap-section-space-md: 5rem;
+  --mapiap-section-space-lg: 6rem;
+
+  /* Shape */
+  --mapiap-radius-sm: 0.25rem;
+  --mapiap-radius-md: 0.5rem;
+  --mapiap-radius-lg: 0.75rem;
+
+  /* Motion */
+  --mapiap-duration-fast: 150ms;
+  --mapiap-duration-normal: 250ms;
+  --mapiap-duration-slow: 400ms;
+  --mapiap-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --mapiap-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@theme inline {
+  --color-background: var(--mapiap-color-background);
+  --color-surface: var(--mapiap-color-surface);
+  --color-surface-muted: var(--mapiap-color-surface-muted);
+  --color-foreground: var(--mapiap-color-foreground);
+  --color-muted-foreground: var(--mapiap-color-muted-foreground);
+  --color-border: var(--mapiap-color-border);
+  --color-focus-ring: var(--mapiap-color-focus-ring);
+
+  --radius-sm: var(--mapiap-radius-sm);
+  --radius-md: var(--mapiap-radius-md);
+  --radius-lg: var(--mapiap-radius-lg);
+
+  --ease-standard: var(--mapiap-ease-standard);
+  --ease-emphasized: var(--mapiap-ease-emphasized);
+}
