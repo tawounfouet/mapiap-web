@@ -96,6 +96,8 @@ The broader architecture is introduced progressively by implementation lot. Empt
 - Playwright
 
 > TypeScript is temporarily pinned to 6.0.3 because the current Next.js ESLint toolchain does not yet support the TypeScript 7 API.
+>
+> ESLint is temporarily pinned to 9.39.5 because the React ESLint plugin used by Next.js is not yet compatible with ESLint 10.
 
 ## Bootstrap completion gate
 
