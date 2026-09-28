@@ -4,7 +4,7 @@ test("mobile homepage remains usable without horizontal overflow", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto("/");
+  await page.goto("/", { waitUntil: "networkidle" });
 
   await expect(
     page.getByRole("heading", {
@@ -21,7 +21,14 @@ test("mobile homepage remains usable without horizontal overflow", async ({
 
   const trigger = page.getByRole("button", { name: "Ouvrir le menu" });
 
+  await expect(trigger).toBeVisible();
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+
   await trigger.click();
+
+  await expect(
+    page.getByRole("button", { name: "Fermer le menu" }),
+  ).toHaveAttribute("aria-expanded", "true");
 
   const mobileNavigation = page.getByRole("navigation", {
     name: "Navigation mobile",
