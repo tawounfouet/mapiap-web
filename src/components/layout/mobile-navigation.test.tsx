@@ -10,7 +10,7 @@ const items = [
 ] as const;
 
 describe("MobileNavigation", () => {
-  it("opens and closes the mobile menu", async () => {
+  it("opens the menu, focuses the first link and returns focus on Escape", async () => {
     const user = userEvent.setup();
 
     render(<MobileNavigation items={items} />);
@@ -18,15 +18,12 @@ describe("MobileNavigation", () => {
     const trigger = screen.getByRole("button", { name: "Ouvrir le menu" });
 
     expect(trigger).toHaveAttribute("aria-expanded", "false");
-    expect(
-      screen.queryByRole("navigation", { name: "Navigation mobile" }),
-    ).not.toBeInTheDocument();
 
     await user.click(trigger);
 
-    expect(
-      screen.getByRole("button", { name: "Fermer le menu" }),
-    ).toHaveAttribute("aria-expanded", "true");
+    const firstLink = screen.getByRole("link", { name: "Cabinet" });
+
+    expect(firstLink).toHaveFocus();
     expect(
       screen.getByRole("navigation", { name: "Navigation mobile" }),
     ).toBeInTheDocument();
@@ -36,5 +33,8 @@ describe("MobileNavigation", () => {
     expect(
       screen.queryByRole("navigation", { name: "Navigation mobile" }),
     ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Ouvrir le menu" }),
+    ).toHaveFocus();
   });
 });

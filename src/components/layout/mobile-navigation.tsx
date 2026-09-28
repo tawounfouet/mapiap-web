@@ -11,6 +11,9 @@ export interface MobileNavigationProps {
   items: readonly NavigationItem[];
 }
 
+const triggerId = "mobile-navigation-trigger";
+const navigationId = "mobile-navigation";
+
 export function MobileNavigation({ items }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
 
@@ -19,9 +22,16 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
       return;
     }
 
+    const firstLink = document.querySelector<HTMLAnchorElement>(
+      `#${navigationId} a`,
+    );
+
+    firstLink?.focus();
+
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
+        document.getElementById(triggerId)?.focus();
       }
     }
 
@@ -35,12 +45,14 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
   return (
     <div className="md:hidden">
       <Button
-        aria-controls="mobile-navigation"
+        aria-controls={navigationId}
         aria-expanded={open}
+        aria-haspopup="true"
         aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-        className="px-2"
+        className="px-3"
+        id={triggerId}
         onClick={() => setOpen((value) => !value)}
-        size="sm"
+        size="md"
         variant="tertiary"
       >
         {open ? <X aria-hidden size={20} /> : <Menu aria-hidden size={20} />}
@@ -50,7 +62,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
         <nav
           aria-label="Navigation mobile"
           className="border-border bg-background absolute inset-x-0 top-full border-y px-5 py-5 shadow-sm"
-          id="mobile-navigation"
+          id={navigationId}
         >
           <ul className="space-y-1">
             {items.map((item) => (
