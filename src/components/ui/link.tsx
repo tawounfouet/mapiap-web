@@ -16,11 +16,7 @@ const variants: Record<LinkVariant, string> = {
     "inline-flex items-center font-medium underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground",
 };
 
-export function Link({
-  className,
-  variant = "default",
-  ...props
-}: LinkProps) {
+export function Link({ className, variant = "default", ...props }: LinkProps) {
   return (
     <NextLink className={cn(variants[variant], className)} {...props} />
   );
