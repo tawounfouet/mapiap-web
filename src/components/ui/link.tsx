@@ -17,7 +17,5 @@ const variants: Record<LinkVariant, string> = {
 };
 
 export function Link({ className, variant = "default", ...props }: LinkProps) {
-  return (
-    <NextLink className={cn(variants[variant], className)} {...props} />
-  );
+  return <NextLink className={cn(variants[variant], className)} {...props} />;
 }
