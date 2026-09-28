@@ -90,10 +90,12 @@ The broader architecture is introduced progressively by implementation lot. Empt
 
 - Next.js 16
 - React 19
-- TypeScript 7
+- TypeScript 6.0.3
 - Tailwind CSS 4
 - Vitest 5
 - Playwright
+
+> TypeScript is temporarily pinned to 6.0.3 because the current Next.js ESLint toolchain does not yet support the TypeScript 7 API.
 
 ## Bootstrap completion gate
 
