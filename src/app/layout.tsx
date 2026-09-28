@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "MAPIAP Audit & Conseils",
+  description: "Site officiel de MAPIAP Audit & Conseils.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: ReactNode;
+}>) {
+  return (
+    <html lang="fr">
+      <body>{children}</body>
+    </html>
+  );
+}
