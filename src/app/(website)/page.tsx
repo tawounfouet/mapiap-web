@@ -1,23 +1,19 @@
-import { Section } from "@/components/layout/section";
-import { Container } from "@/components/ui/container";
-import { Heading } from "@/components/ui/heading";
-import { Text } from "@/components/ui/text";
+import { ContactCtaSection } from "@/components/sections/contact-cta-section";
+import { ExpertiseSection } from "@/components/sections/expertise-section";
+import { FounderSection } from "@/components/sections/founder-section";
+import { HeroSection } from "@/components/sections/hero-section";
+import { IntroductionSection } from "@/components/sections/introduction-section";
+import { expertiseSummaries } from "@/content/expertises";
+import { homeContent } from "@/content/home";
 
 export default function HomePage() {
   return (
-    <Section spacing="lg">
-      <Container size="content">
-        <Text
-          className="mb-3 font-medium tracking-wide uppercase"
-          size="sm"
-          tone="muted"
-        >
-          Frontend foundation
-        </Text>
-        <Heading as="h1" size="xl">
-          MAPIAP Audit & Conseils
-        </Heading>
-      </Container>
-    </Section>
+    <>
+      <HeroSection content={homeContent.hero} />
+      <IntroductionSection content={homeContent.introduction} />
+      <ExpertiseSection items={expertiseSummaries} />
+      <FounderSection content={homeContent.founder} />
+      <ContactCtaSection content={homeContent.contactCta} />
+    </>
   );
 }
