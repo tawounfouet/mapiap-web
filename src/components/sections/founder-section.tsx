@@ -17,7 +17,7 @@ export function FounderSection({ content }: FounderSectionProps) {
         <div className="mb-10 max-w-2xl">
           {content.eyebrow ? (
             <Text
-              className="mb-4 font-medium uppercase tracking-[0.18em]"
+              className="mb-4 font-medium tracking-[0.18em] uppercase"
               size="sm"
               tone="muted"
             >

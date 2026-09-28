@@ -10,12 +10,15 @@ export interface HeroSectionProps {
 
 export function HeroSection({ content }: HeroSectionProps) {
   return (
-    <section className="bg-background py-20 sm:py-24 lg:py-28" aria-labelledby="home-hero-title">
+    <section
+      className="bg-background py-20 sm:py-24 lg:py-28"
+      aria-labelledby="home-hero-title"
+    >
       <Container>
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:items-center">
           <div>
             <Text
-              className="mb-5 font-medium uppercase tracking-[0.18em]"
+              className="mb-5 font-medium tracking-[0.18em] uppercase"
               size="sm"
               tone="muted"
             >
@@ -50,19 +53,21 @@ export function HeroSection({ content }: HeroSectionProps) {
             aria-label="Signature de marque MAPIAP"
           >
             <div className="divide-border divide-y">
-              {["EXPERTISE", "INNOVATION", "PERFORMANCE"].map((value, index) => (
-                <div
-                  className="flex items-center justify-between gap-6 py-6 first:pt-0 last:pb-0"
-                  key={value}
-                >
-                  <span className="text-muted-foreground text-sm tabular-nums">
-                    0{index + 1}
-                  </span>
-                  <span className="text-right text-xl font-semibold tracking-[0.08em] sm:text-2xl">
-                    {value}
-                  </span>
-                </div>
-              ))}
+              {["EXPERTISE", "INNOVATION", "PERFORMANCE"].map(
+                (value, index) => (
+                  <div
+                    className="flex items-center justify-between gap-6 py-6 first:pt-0 last:pb-0"
+                    key={value}
+                  >
+                    <span className="text-muted-foreground text-sm tabular-nums">
+                      0{index + 1}
+                    </span>
+                    <span className="text-right text-xl font-semibold tracking-[0.08em] sm:text-2xl">
+                      {value}
+                    </span>
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </div>

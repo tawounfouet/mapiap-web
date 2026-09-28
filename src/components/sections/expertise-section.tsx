@@ -17,7 +17,7 @@ export function ExpertiseSection({ items }: ExpertiseSectionProps) {
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <Text
-              className="mb-4 font-medium uppercase tracking-[0.18em]"
+              className="mb-4 font-medium tracking-[0.18em] uppercase"
               size="sm"
               tone="muted"
             >

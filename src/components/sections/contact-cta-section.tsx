@@ -17,7 +17,7 @@ export function ContactCtaSection({ content }: ContactCtaSectionProps) {
           <div className="max-w-2xl">
             {content.eyebrow ? (
               <Text
-                className="mb-4 font-medium uppercase tracking-[0.18em]"
+                className="mb-4 font-medium tracking-[0.18em] uppercase"
                 size="sm"
                 tone="muted"
               >

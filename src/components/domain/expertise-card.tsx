@@ -13,7 +13,11 @@ export interface ExpertiseCardProps {
 export function ExpertiseCard({ expertise }: ExpertiseCardProps) {
   return (
     <Card className="flex h-full flex-col">
-      <Text className="mb-5 font-medium uppercase tracking-wide" size="sm" tone="muted">
+      <Text
+        className="mb-5 font-medium tracking-wide uppercase"
+        size="sm"
+        tone="muted"
+      >
         Contenu à valider
       </Text>
 
