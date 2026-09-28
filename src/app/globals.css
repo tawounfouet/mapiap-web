@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@import "../design-system/tokens.css";
+@import "../design-system/typography.css";
+@import "../design-system/motion.css";
+
+html {
+  background: var(--mapiap-color-background);
+  color: var(--mapiap-color-foreground);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--mapiap-color-background);
+  color: var(--mapiap-color-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--mapiap-color-focus-ring);
+  outline-offset: 3px;
+}
