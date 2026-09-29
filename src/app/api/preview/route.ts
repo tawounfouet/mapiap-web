@@ -1,8 +1,11 @@
 import { draftMode } from "next/headers";
-import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 
 import { getArticleRepository } from "@/features/articles/repository/get-article-repository";
+import {
+  createPreviewSessionToken,
+  PREVIEW_SESSION_COOKIE,
+} from "@/lib/security/preview-session";
 import { serverSecretMatches } from "@/lib/security/server-secret";
 
 export const runtime = "nodejs";
@@ -41,8 +44,6 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  let previewSlug: string;
-
   try {
     const repository = getArticleRepository();
     const article = await repository.findPreviewBySlug(slug);
@@ -56,7 +57,26 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    previewSlug = article.slug;
+    const draft = await draftMode();
+    draft.enable();
+
+    const response = NextResponse.redirect(
+      new URL(`/preview/actualites/${article.slug}`, request.url),
+    );
+
+    response.cookies.set(
+      PREVIEW_SESSION_COOKIE,
+      createPreviewSessionToken(expectedSecret),
+      {
+        httpOnly: true,
+        maxAge: 60 * 60,
+        path: "/",
+        sameSite: "lax",
+        secure: request.nextUrl.protocol === "https:",
+      },
+    );
+
+    return response;
   } catch {
     return NextResponse.json(
       {
@@ -65,9 +85,4 @@ export async function GET(request: NextRequest) {
       { status: 503 },
     );
   }
-
-  const draft = await draftMode();
-  draft.enable();
-
-  redirect(`/preview/actualites/${previewSlug}`);
 }
