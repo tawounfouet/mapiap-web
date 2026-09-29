@@ -27,6 +27,12 @@ export default defineConfig({
   ],
   webServer: {
     command: process.env.CI ? "pnpm start" : "pnpm dev",
+    env: {
+      CMS_PREVIEW_SECRET:
+        process.env.CMS_PREVIEW_SECRET ?? "e2e-preview-secret",
+      CMS_REVALIDATE_SECRET:
+        process.env.CMS_REVALIDATE_SECRET ?? "e2e-revalidate-secret",
+    },
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
   },

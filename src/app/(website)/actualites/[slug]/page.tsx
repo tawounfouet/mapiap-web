@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
+import { PreviewBanner } from "@/components/layout/preview-banner";
 import { ArticleBodySection } from "@/components/sections/article-body-section";
 import { ArticleDetailHeroSection } from "@/components/sections/article-detail-hero-section";
 import { ContactCtaSection } from "@/components/sections/contact-cta-section";
@@ -26,12 +28,20 @@ export async function generateStaticParams() {
   }));
 }
 
+async function resolveArticle(slug: string, preview: boolean) {
+  const repository = getArticleRepository();
+
+  return preview
+    ? repository.findPreviewBySlug(slug)
+    : repository.findPublishedBySlug(slug);
+}
+
 export async function generateMetadata({
   params,
 }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const repository = getArticleRepository();
-  const article = await repository.findPublishedBySlug(slug);
+  const draft = await draftMode();
+  const article = await resolveArticle(slug, draft.isEnabled);
 
   if (!article) {
     notFound();
@@ -43,19 +53,20 @@ export async function generateMetadata({
     alternates: {
       canonical: getCanonicalUrl(getArticleHref(slug)),
     },
-    robots: isProvisionalSlug(slug)
-      ? {
-          index: false,
-          follow: false,
-        }
-      : undefined,
+    robots:
+      draft.isEnabled || isProvisionalSlug(slug)
+        ? {
+            index: false,
+            follow: false,
+          }
+        : undefined,
   };
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const repository = getArticleRepository();
-  const article = await repository.findPublishedBySlug(slug);
+  const draft = await draftMode();
+  const article = await resolveArticle(slug, draft.isEnabled);
 
   if (!article) {
     notFound();
@@ -63,6 +74,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
+      {draft.isEnabled ? <PreviewBanner /> : null}
       <ArticleDetailHeroSection article={article} />
       <ArticleBodySection article={article} />
       <ContactCtaSection

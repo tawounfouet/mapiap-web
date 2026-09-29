@@ -9,4 +9,8 @@ export class LocalArticleRepository implements ArticleRepository {
   async findPublishedBySlug(slug: string) {
     return articles.find((article) => article.slug === slug);
   }
+
+  async findPreviewBySlug(slug: string) {
+    return articles.find((article) => article.slug === slug);
+  }
 }

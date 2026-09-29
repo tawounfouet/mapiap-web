@@ -4,7 +4,9 @@ import { getCmsContentConfig, getContentSource } from "./content";
 
 const originalSource = process.env.CONTENT_SOURCE;
 const originalEndpoint = process.env.CMS_CONTENT_API_URL;
+const originalPreviewEndpoint = process.env.CMS_CONTENT_PREVIEW_API_URL;
 const originalToken = process.env.CMS_CONTENT_API_TOKEN;
+const originalPreviewToken = process.env.CMS_CONTENT_PREVIEW_API_TOKEN;
 
 afterEach(() => {
   if (originalSource === undefined) {
@@ -19,10 +21,22 @@ afterEach(() => {
     process.env.CMS_CONTENT_API_URL = originalEndpoint;
   }
 
+  if (originalPreviewEndpoint === undefined) {
+    delete process.env.CMS_CONTENT_PREVIEW_API_URL;
+  } else {
+    process.env.CMS_CONTENT_PREVIEW_API_URL = originalPreviewEndpoint;
+  }
+
   if (originalToken === undefined) {
     delete process.env.CMS_CONTENT_API_TOKEN;
   } else {
     process.env.CMS_CONTENT_API_TOKEN = originalToken;
+  }
+
+  if (originalPreviewToken === undefined) {
+    delete process.env.CMS_CONTENT_PREVIEW_API_TOKEN;
+  } else {
+    process.env.CMS_CONTENT_PREVIEW_API_TOKEN = originalPreviewToken;
   }
 });
 
@@ -48,14 +62,20 @@ describe("content configuration", () => {
     );
   });
 
-  it("returns the configured CMS endpoint and optional token", () => {
-    process.env.CMS_CONTENT_API_URL =
-      "https://cms.example.test/content/articles";
-    process.env.CMS_CONTENT_API_TOKEN = "secret-token";
+  it("returns published and preview CMS configuration", () => {
+    process.env.CMS_CONTENT_API_URL = "https://cms.example.test/articles";
+    process.env.CMS_CONTENT_PREVIEW_API_URL =
+      "https://cms.example.test/articles/preview";
+    process.env.CMS_CONTENT_API_TOKEN = "published-token";
+    process.env.CMS_CONTENT_PREVIEW_API_TOKEN = "preview-token";
 
     expect(getCmsContentConfig()).toEqual({
-      endpoint: new URL("https://cms.example.test/content/articles"),
-      token: "secret-token",
+      endpoint: new URL("https://cms.example.test/articles"),
+      previewEndpoint: new URL(
+        "https://cms.example.test/articles/preview",
+      ),
+      token: "published-token",
+      previewToken: "preview-token",
     });
   });
 });

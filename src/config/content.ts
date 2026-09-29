@@ -2,7 +2,34 @@ export type ContentSource = "local" | "cms";
 
 export interface CmsContentConfig {
   endpoint: URL;
+  previewEndpoint?: URL;
   token?: string;
+  previewToken?: string;
+}
+
+function parseOptionalHttpUrl(
+  value: string | undefined,
+  variableName: string,
+): URL | undefined {
+  const normalized = value?.trim();
+
+  if (!normalized) {
+    return undefined;
+  }
+
+  let parsed: URL;
+
+  try {
+    parsed = new URL(normalized);
+  } catch {
+    throw new Error(`${variableName} must be a valid absolute URL.`);
+  }
+
+  if (parsed.protocol !== "https:" && parsed.protocol !== "http:") {
+    throw new Error(`${variableName} must use http or https.`);
+  }
+
+  return parsed;
 }
 
 export function getContentSource(): ContentSource {
@@ -18,30 +45,28 @@ export function getContentSource(): ContentSource {
 }
 
 export function getCmsContentConfig(): CmsContentConfig {
-  const endpointValue = process.env.CMS_CONTENT_API_URL?.trim();
+  const endpoint = parseOptionalHttpUrl(
+    process.env.CMS_CONTENT_API_URL,
+    "CMS_CONTENT_API_URL",
+  );
 
-  if (!endpointValue) {
+  if (!endpoint) {
     throw new Error(
       "CMS_CONTENT_API_URL is required when CONTENT_SOURCE is set to cms.",
     );
   }
 
-  let endpoint: URL;
-
-  try {
-    endpoint = new URL(endpointValue);
-  } catch {
-    throw new Error("CMS_CONTENT_API_URL must be a valid absolute URL.");
-  }
-
-  if (endpoint.protocol !== "https:" && endpoint.protocol !== "http:") {
-    throw new Error("CMS_CONTENT_API_URL must use http or https.");
-  }
-
+  const previewEndpoint = parseOptionalHttpUrl(
+    process.env.CMS_CONTENT_PREVIEW_API_URL,
+    "CMS_CONTENT_PREVIEW_API_URL",
+  );
   const token = process.env.CMS_CONTENT_API_TOKEN?.trim();
+  const previewToken = process.env.CMS_CONTENT_PREVIEW_API_TOKEN?.trim();
 
   return {
     endpoint,
+    previewEndpoint,
     token: token || undefined,
+    previewToken: previewToken || undefined,
   };
 }

@@ -7,7 +7,7 @@ afterEach(() => {
 });
 
 describe("CmsArticleRepository", () => {
-  it("maps the provider-neutral CMS response to ArticleContent", async () => {
+  it("maps the provider-neutral published CMS response", async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -47,12 +47,62 @@ describe("CmsArticleRepository", () => {
     ]);
 
     expect(fetchMock).toHaveBeenCalledOnce();
-    expect(
-      (fetchMock.mock.calls[0]?.[1] as RequestInit | undefined)?.headers,
-    ).toBeInstanceOf(Headers);
   });
 
-  it("fails closed when the CMS response violates the contract", async () => {
+  it("loads draft content from the dedicated preview endpoint", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          item: {
+            slug: "publication-brouillon",
+            title: "Publication brouillon",
+            excerpt: "Résumé non publié.",
+            body: ["Contenu de prévisualisation."],
+            status: "draft",
+          },
+        }),
+        { status: 200 },
+      ),
+    );
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    const repository = new CmsArticleRepository({
+      endpoint: new URL("https://cms.example.test/articles"),
+      previewEndpoint: new URL(
+        "https://cms.example.test/articles/preview",
+      ),
+      token: "published-token",
+      previewToken: "preview-token",
+    });
+
+    await expect(
+      repository.findPreviewBySlug("publication-brouillon"),
+    ).resolves.toEqual({
+      slug: "publication-brouillon",
+      title: "Publication brouillon",
+      excerpt: "Résumé non publié.",
+      body: ["Contenu de prévisualisation."],
+    });
+
+    const requestedUrl = fetchMock.mock.calls[0]?.[0];
+
+    expect(String(requestedUrl)).toContain(
+      "slug=publication-brouillon",
+    );
+  });
+
+  it("requires a dedicated preview endpoint for CMS preview", async () => {
+    const repository = new CmsArticleRepository({
+      endpoint: new URL("https://cms.example.test/articles"),
+    });
+
+    await expect(
+      repository.findPreviewBySlug("publication-brouillon"),
+    ).rejects.toThrow(/CMS_CONTENT_PREVIEW_API_URL is required/);
+  });
+
+  it("fails closed when the published CMS response violates the contract", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue(

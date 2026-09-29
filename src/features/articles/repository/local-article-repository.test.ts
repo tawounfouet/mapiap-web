@@ -11,8 +11,16 @@ describe("LocalArticleRepository", () => {
     expect(articles).toHaveLength(2);
   });
 
-  it("finds a local article by slug", async () => {
+  it("finds a local published article by slug", async () => {
     const article = await repository.findPublishedBySlug(
+      "article-01-a-valider",
+    );
+
+    expect(article?.title).toBe("Article 01");
+  });
+
+  it("finds a local preview article by slug", async () => {
+    const article = await repository.findPreviewBySlug(
       "article-01-a-valider",
     );
 
