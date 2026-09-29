@@ -15,7 +15,7 @@ test("preview endpoint rejects an invalid secret", async ({ request }) => {
   expect(response.status()).toBe(401);
 });
 
-test("preview endpoint sets Draft Mode cookie and redirects to the dedicated preview route", async ({
+test("preview endpoint sets the signed session cookie and targets the fixed preview route", async ({
   request,
 }) => {
   const response = await request.get(
@@ -27,22 +27,22 @@ test("preview endpoint sets Draft Mode cookie and redirects to the dedicated pre
 
   expect(response.status()).toBe(307);
   expect(response.headers()["location"]).toContain(
-    "/preview/actualites/article-01-a-valider",
+    "/preview/actualites?slug=article-01-a-valider",
   );
-  expect(response.headers()["set-cookie"]).toContain("__prerender_bypass");
+  expect(response.headers()["set-cookie"]).toContain(
+    "mapiap_preview_session",
+  );
 });
 
-test("preview mode enables a visible editorial preview session", async ({
-  browserName,
+test("signed preview session renders editorial preview content", async ({
   page,
 }) => {
-  test.skip(
-    Boolean(process.env.CI) && browserName === "webkit",
-    "WebKit rejects the production Draft Mode cookie on the HTTP CI origin; production preview runs over HTTPS.",
-  );
-
   await page.goto(
     `/api/preview?secret=${previewSecret}&slug=article-01-a-valider`,
+  );
+
+  await expect(page).toHaveURL(
+    /\/preview\/actualites\?slug=article-01-a-valider$/,
   );
 
   await expect(
