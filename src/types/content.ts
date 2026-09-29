@@ -21,6 +21,23 @@ export interface ExpertisesIndexContent {
   contactCta: HomeContactCtaContent;
 }
 
+export interface ArticleSummary {
+  slug: string;
+  title: string;
+  excerpt: string;
+}
+
+export interface ArticleContent extends ArticleSummary {
+  body: readonly string[];
+}
+
+export interface ActualitesIndexContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  contactCta: HomeContactCtaContent;
+}
+
 export interface PersonSummary {
   firstName: string;
   lastName: string;
