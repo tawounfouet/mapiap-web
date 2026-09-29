@@ -17,16 +17,7 @@ interface ArticlePageProps {
   }>;
 }
 
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const repository = getArticleRepository();
-  const articles = await repository.listPublished();
-
-  return articles.map(({ slug }) => ({
-    slug,
-  }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
