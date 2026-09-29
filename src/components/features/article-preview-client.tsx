@@ -2,12 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { PreviewBanner } from "@/components/layout/preview-banner";
-import { ArticleBodySection } from "@/components/sections/article-body-section";
-import { ArticleDetailHeroSection } from "@/components/sections/article-detail-hero-section";
-import { Container } from "@/components/ui/container";
-import { Heading } from "@/components/ui/heading";
-import { Text } from "@/components/ui/text";
 import type { ArticleContent } from "@/types/content";
 
 type PreviewState =
@@ -89,37 +83,66 @@ export function ArticlePreviewClient() {
 
   if (state.status === "loading") {
     return (
-      <section className="py-20 sm:py-24">
-        <Container size="reading">
-          <Text role="status" tone="muted">
-            Chargement de l’aperçu éditorial…
-          </Text>
-        </Container>
+      <section className="mx-auto w-full max-w-4xl px-5 py-20 sm:px-6 sm:py-24">
+        <p className="text-muted-foreground" role="status">
+          Chargement de l’aperçu éditorial…
+        </p>
       </section>
     );
   }
 
   if (state.status === "error") {
     return (
-      <section className="py-20 sm:py-24">
-        <Container size="reading">
-          <Heading as="h1" size="lg">
-            Aperçu indisponible
-          </Heading>
-          <Text className="mt-5" tone="muted">
-            Cette session d’aperçu est invalide, expirée ou le contenu demandé
-            n’est plus disponible.
-          </Text>
-        </Container>
+      <section className="mx-auto w-full max-w-4xl px-5 py-20 sm:px-6 sm:py-24">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Aperçu indisponible
+        </h1>
+        <p className="text-muted-foreground mt-5">
+          Cette session d’aperçu est invalide, expirée ou le contenu demandé
+          n’est plus disponible.
+        </p>
       </section>
     );
   }
 
   return (
     <>
-      <PreviewBanner />
-      <ArticleDetailHeroSection article={state.article} />
-      <ArticleBodySection article={state.article} />
+      <aside
+        aria-label="Mode aperçu éditorial"
+        className="border-border bg-surface-muted border-b"
+      >
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-5 py-3 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>Aperçu éditorial actif — ce contenu peut ne pas être publié.</p>
+          <a className="font-medium underline" href="/api/preview/disable">
+            Quitter l’aperçu
+          </a>
+        </div>
+      </aside>
+
+      <article>
+        <header className="mx-auto w-full max-w-4xl px-5 py-20 sm:px-6 sm:py-24">
+          <p className="text-muted-foreground mb-5 text-sm font-medium tracking-[0.18em] uppercase">
+            Publication en aperçu
+          </p>
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+            {state.article.title}
+          </h1>
+          <p className="text-muted-foreground mt-7 text-lg">
+            {state.article.excerpt}
+          </p>
+        </header>
+
+        <section className="bg-surface-muted">
+          <div className="mx-auto w-full max-w-3xl space-y-5 px-5 py-16 sm:px-6 sm:py-20">
+            <h2 className="text-2xl font-semibold tracking-tight">Contenu</h2>
+            {state.article.body.map((paragraph) => (
+              <p className="text-muted-foreground text-lg" key={paragraph}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
+      </article>
     </>
   );
 }
