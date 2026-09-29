@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cookies, draftMode } from "next/headers";
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
 import { PreviewBanner } from "@/components/layout/preview-banner";
@@ -22,14 +22,13 @@ interface ArticlePreviewPageProps {
 export const dynamic = "force-dynamic";
 
 async function previewSessionIsEnabled() {
-  const [draft, cookieStore] = await Promise.all([draftMode(), cookies()]);
+  const cookieStore = await cookies();
   const secret = process.env.CMS_PREVIEW_SECRET?.trim();
-  const signedSession = previewSessionIsValid(
+
+  return previewSessionIsValid(
     cookieStore.get(PREVIEW_SESSION_COOKIE)?.value,
     secret,
   );
-
-  return draft.isEnabled || signedSession;
 }
 
 async function resolvePreviewArticle(slug: string) {
