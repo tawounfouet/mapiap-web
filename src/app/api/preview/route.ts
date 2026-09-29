@@ -1,4 +1,5 @@
 import { draftMode } from "next/headers";
+import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
 import { getEditorialPreviewSecret } from "@/config/editorial";
@@ -60,6 +61,8 @@ export async function GET(request: Request) {
     );
   }
 
+  let articleSlug: string;
+
   try {
     const repository = getArticleRepository();
     const article = await repository.findPreviewBySlug(slug);
@@ -79,15 +82,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const draft = await draftMode();
-    draft.enable();
-
-    const response = NextResponse.redirect(
-      new URL(getArticleHref(slug), request.url),
-    );
-    response.headers.set("cache-control", "no-store");
-
-    return response;
+    articleSlug = article.slug;
   } catch {
     return NextResponse.json(
       {
@@ -102,4 +97,9 @@ export async function GET(request: Request) {
       },
     );
   }
+
+  const draft = await draftMode();
+  draft.enable();
+
+  redirect(getArticleHref(articleSlug));
 }
