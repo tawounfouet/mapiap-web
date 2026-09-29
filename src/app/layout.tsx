@@ -1,11 +1,39 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { siteConfig } from "@/config/site";
+import { getSiteUrl } from "@/lib/seo/site-url";
+
 import "./globals.css";
 
+const siteUrl = getSiteUrl();
+const defaultDescription = "Site officiel de MAPIAP Audit & Conseils.";
+
 export const metadata: Metadata = {
-  title: "MAPIAP Audit & Conseils",
-  description: "Site officiel de MAPIAP Audit & Conseils.",
+  metadataBase: siteUrl,
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: defaultDescription,
+  applicationName: siteConfig.name,
+  robots: siteUrl
+    ? {
+        index: true,
+        follow: true,
+      }
+    : {
+        index: false,
+        follow: false,
+      },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: defaultDescription,
+    url: siteUrl,
+  },
 };
 
 export default function RootLayout({

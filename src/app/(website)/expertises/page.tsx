@@ -7,10 +7,14 @@ import {
   expertiseSummaries,
   expertisesIndexContent,
 } from "@/content/expertises";
+import { getCanonicalUrl } from "@/lib/seo/site-url";
 
 export const metadata: Metadata = {
-  title: "Expertises | MAPIAP Audit & Conseils",
+  title: "Expertises",
   description: "Découvrez les domaines d’expertise de MAPIAP Audit & Conseils.",
+  alternates: {
+    canonical: getCanonicalUrl("/expertises"),
+  },
 };
 
 export default function ExpertisesPage() {

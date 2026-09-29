@@ -8,7 +8,10 @@ import {
   actualitesIndexContent,
   articles,
   getArticleBySlug,
+  getArticleHref,
 } from "@/content/actualites";
+import { isProvisionalSlug } from "@/lib/seo/provisional";
+import { getCanonicalUrl } from "@/lib/seo/site-url";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -35,8 +38,17 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${article.title} | MAPIAP Audit & Conseils`,
+    title: article.title,
     description: article.excerpt,
+    alternates: {
+      canonical: getCanonicalUrl(getArticleHref(slug)),
+    },
+    robots: isProvisionalSlug(slug)
+      ? {
+          index: false,
+          follow: false,
+        }
+      : undefined,
   };
 }
 

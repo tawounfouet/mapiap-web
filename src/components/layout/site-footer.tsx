@@ -2,6 +2,7 @@ import { SiteNavigation } from "@/components/layout/site-navigation";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/components/ui/link";
 import { Text } from "@/components/ui/text";
+import { legalNavigation } from "@/content/navigation";
 import type { NavigationItem } from "@/types/navigation";
 
 export interface SiteFooterProps {
@@ -34,6 +35,19 @@ export function SiteFooter({ items }: SiteFooterProps) {
               ariaLabel="Navigation de pied de page"
               items={items}
             />
+
+            <nav aria-label="Navigation légale">
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                {legalNavigation.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} variant="navigation">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
             <Text size="sm" tone="muted">
               © {currentYear} MAPIAP Audit & Conseils.
             </Text>

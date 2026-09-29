@@ -8,7 +8,10 @@ import {
   expertises,
   expertisesIndexContent,
   getExpertiseBySlug,
+  getExpertiseHref,
 } from "@/content/expertises";
+import { isProvisionalSlug } from "@/lib/seo/provisional";
+import { getCanonicalUrl } from "@/lib/seo/site-url";
 
 interface ExpertisePageProps {
   params: Promise<{
@@ -35,8 +38,17 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${expertise.title} | MAPIAP Audit & Conseils`,
+    title: expertise.title,
     description: expertise.shortDescription,
+    alternates: {
+      canonical: getCanonicalUrl(getExpertiseHref(slug)),
+    },
+    robots: isProvisionalSlug(slug)
+      ? {
+          index: false,
+          follow: false,
+        }
+      : undefined,
   };
 }
 

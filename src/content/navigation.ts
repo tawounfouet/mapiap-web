@@ -18,3 +18,14 @@ export const mainNavigation = [
     href: "/contact",
   },
 ] as const satisfies readonly NavigationItem[];
+
+export const legalNavigation = [
+  {
+    label: "Mentions légales",
+    href: "/mentions-legales",
+  },
+  {
+    label: "Politique de confidentialité",
+    href: "/politique-de-confidentialite",
+  },
+] as const satisfies readonly NavigationItem[];
