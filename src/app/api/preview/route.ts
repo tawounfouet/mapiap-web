@@ -1,7 +1,6 @@
 import { draftMode } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-import { getArticleHref } from "@/content/actualites";
 import { getArticleRepository } from "@/features/articles/repository/get-article-repository";
 import { serverSecretMatches } from "@/lib/security/server-secret";
 
@@ -58,7 +57,7 @@ export async function GET(request: NextRequest) {
     draft.enable();
 
     return NextResponse.redirect(
-      new URL(getArticleHref(article.slug), request.url),
+      new URL(`/preview/actualites/${article.slug}`, request.url),
     );
   } catch {
     return NextResponse.json(
