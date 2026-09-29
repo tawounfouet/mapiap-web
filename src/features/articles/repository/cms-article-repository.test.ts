@@ -69,9 +69,7 @@ describe("CmsArticleRepository", () => {
 
     const repository = new CmsArticleRepository({
       endpoint: new URL("https://cms.example.test/articles"),
-      previewEndpoint: new URL(
-        "https://cms.example.test/articles/preview",
-      ),
+      previewEndpoint: new URL("https://cms.example.test/articles/preview"),
       token: "published-token",
       previewToken: "preview-token",
     });
@@ -87,9 +85,7 @@ describe("CmsArticleRepository", () => {
 
     const requestedUrl = fetchMock.mock.calls[0]?.[0];
 
-    expect(String(requestedUrl)).toContain(
-      "slug=publication-brouillon",
-    );
+    expect(String(requestedUrl)).toContain("slug=publication-brouillon");
   });
 
   it("requires a dedicated preview endpoint for CMS preview", async () => {

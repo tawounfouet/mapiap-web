@@ -71,9 +71,7 @@ describe("content configuration", () => {
 
     expect(getCmsContentConfig()).toEqual({
       endpoint: new URL("https://cms.example.test/articles"),
-      previewEndpoint: new URL(
-        "https://cms.example.test/articles/preview",
-      ),
+      previewEndpoint: new URL("https://cms.example.test/articles/preview"),
       token: "published-token",
       previewToken: "preview-token",
     });

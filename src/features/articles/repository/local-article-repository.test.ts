@@ -20,9 +20,7 @@ describe("LocalArticleRepository", () => {
   });
 
   it("finds a local preview article by slug", async () => {
-    const article = await repository.findPreviewBySlug(
-      "article-01-a-valider",
-    );
+    const article = await repository.findPreviewBySlug("article-01-a-valider");
 
     expect(article?.title).toBe("Article 01");
   });

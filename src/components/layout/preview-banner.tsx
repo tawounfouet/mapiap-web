@@ -7,15 +7,9 @@ export function PreviewBanner() {
       className="border-border bg-surface-muted border-b"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-5 py-3 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <p>
-          Aperçu éditorial actif — ce contenu peut ne pas être publié.
-        </p>
+        <p>Aperçu éditorial actif — ce contenu peut ne pas être publié.</p>
 
-        <Link
-          href="/api/preview/disable"
-          prefetch={false}
-          variant="standalone"
-        >
+        <Link href="/api/preview/disable" prefetch={false} variant="standalone">
           Quitter l’aperçu
         </Link>
       </div>

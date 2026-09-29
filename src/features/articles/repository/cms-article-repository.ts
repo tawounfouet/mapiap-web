@@ -108,9 +108,7 @@ export class CmsArticleRepository implements ArticleRepository {
 
     const response = await fetch(previewUrl, {
       cache: "no-store",
-      headers: createHeaders(
-        this.config.previewToken ?? this.config.token,
-      ),
+      headers: createHeaders(this.config.previewToken ?? this.config.token),
     });
 
     if (!response.ok) {
@@ -128,8 +126,6 @@ export class CmsArticleRepository implements ArticleRepository {
       );
     }
 
-    return parsed.data.item
-      ? toArticleContent(parsed.data.item)
-      : undefined;
+    return parsed.data.item ? toArticleContent(parsed.data.item) : undefined;
   }
 }

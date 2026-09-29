@@ -28,9 +28,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const receivedSecret = request.headers.get(
-    "x-mapiap-revalidate-secret",
-  );
+  const receivedSecret = request.headers.get("x-mapiap-revalidate-secret");
 
   if (!serverSecretMatches(receivedSecret, expectedSecret)) {
     return NextResponse.json(

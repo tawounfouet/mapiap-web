@@ -1,7 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const previewSecret =
-  process.env.CMS_PREVIEW_SECRET ?? "e2e-preview-secret";
+const previewSecret = process.env.CMS_PREVIEW_SECRET ?? "e2e-preview-secret";
 const revalidateSecret =
   process.env.CMS_REVALIDATE_SECRET ?? "e2e-revalidate-secret";
 
@@ -41,9 +40,7 @@ test("preview mode enables a visible editorial preview session", async ({
   await expect(page).toHaveURL(/\/actualites$/);
 });
 
-test("revalidation endpoint rejects an invalid secret", async ({
-  request,
-}) => {
+test("revalidation endpoint rejects an invalid secret", async ({ request }) => {
   const response = await request.post("/api/revalidate", {
     data: {
       scope: "articles",
