@@ -16,6 +16,11 @@ export interface PersonSummary {
   shortBio?: string;
 }
 
+export interface BrandPillar {
+  title: string;
+  description: string;
+}
+
 export interface HomeHeroContent {
   eyebrow: string;
   title: string;
@@ -49,5 +54,37 @@ export interface HomeContent {
   hero: HomeHeroContent;
   introduction: HomeIntroductionContent;
   founder: HomeFounderContent;
+  contactCta: HomeContactCtaContent;
+}
+
+export interface CabinetHeroContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+export interface CabinetIntroductionContent {
+  eyebrow?: string;
+  title: string;
+  body: readonly string[];
+}
+
+export interface CabinetPillarsContent {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  items: readonly BrandPillar[];
+}
+
+export interface CabinetFounderContent {
+  eyebrow?: string;
+  person: PersonSummary;
+}
+
+export interface CabinetContent {
+  hero: CabinetHeroContent;
+  introduction: CabinetIntroductionContent;
+  pillars: CabinetPillarsContent;
+  founder: CabinetFounderContent;
   contactCta: HomeContactCtaContent;
 }

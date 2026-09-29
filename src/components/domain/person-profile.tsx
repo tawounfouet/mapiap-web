@@ -4,9 +4,13 @@ import type { PersonSummary } from "@/types/content";
 
 export interface PersonProfileProps {
   person: PersonSummary;
+  headingAs?: "h2" | "h3" | "h4";
 }
 
-export function PersonProfile({ person }: PersonProfileProps) {
+export function PersonProfile({
+  person,
+  headingAs = "h3",
+}: PersonProfileProps) {
   const initials = `${person.firstName.charAt(0)}${person.lastName.charAt(0)}`;
 
   return (
@@ -22,7 +26,7 @@ export function PersonProfile({ person }: PersonProfileProps) {
       </div>
 
       <div>
-        <Heading as="h3" size="md">
+        <Heading as={headingAs} size="md">
           {person.firstName} {person.lastName}
         </Heading>
         <Text className="mt-2 font-medium" size="sm" tone="muted">

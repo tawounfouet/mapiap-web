@@ -38,7 +38,7 @@ test("homepage MVP exposes the primary narrative and navigation", async ({
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Cabinet",
+      name: "MAPIAP Audit & Conseils",
     }),
   ).toBeVisible();
 });

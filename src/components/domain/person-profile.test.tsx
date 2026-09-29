@@ -21,4 +21,21 @@ describe("PersonProfile", () => {
     ).toBeInTheDocument();
     expect(screen.getByText("Titre à valider")).toBeInTheDocument();
   });
+
+  it("supports a different semantic heading level", () => {
+    render(
+      <PersonProfile
+        headingAs="h2"
+        person={{
+          firstName: "Yves",
+          lastName: "TCHAMO",
+          role: "Titre à valider",
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Yves TCHAMO" }),
+    ).toBeInTheDocument();
+  });
 });

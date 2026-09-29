@@ -7,11 +7,15 @@ import type { HomeContactCtaContent } from "@/types/content";
 
 export interface ContactCtaSectionProps {
   content: HomeContactCtaContent;
+  headingId?: string;
 }
 
-export function ContactCtaSection({ content }: ContactCtaSectionProps) {
+export function ContactCtaSection({
+  content,
+  headingId = "home-contact-title",
+}: ContactCtaSectionProps) {
   return (
-    <Section aria-labelledby="home-contact-title">
+    <Section aria-labelledby={headingId}>
       <Container>
         <div className="border-border bg-surface-muted rounded-lg border px-6 py-10 sm:px-10 sm:py-12 lg:flex lg:items-end lg:justify-between lg:gap-12">
           <div className="max-w-2xl">
@@ -24,7 +28,7 @@ export function ContactCtaSection({ content }: ContactCtaSectionProps) {
                 {content.eyebrow}
               </Text>
             ) : null}
-            <Heading as="h2" id="home-contact-title" size="lg">
+            <Heading as="h2" id={headingId} size="lg">
               {content.title}
             </Heading>
             {content.description ? (
