@@ -29,9 +29,7 @@ test("preview endpoint sets the signed session cookie and targets the fixed prev
   expect(response.headers()["location"]).toContain(
     "/preview/actualites?slug=article-01-a-valider",
   );
-  expect(response.headers()["set-cookie"]).toContain(
-    "mapiap_preview_session",
-  );
+  expect(response.headers()["set-cookie"]).toContain("mapiap_preview_session");
 });
 
 test("signed preview session renders editorial preview content", async ({
