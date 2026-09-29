@@ -71,12 +71,7 @@ export function ContactForm() {
   const privacyError = firstError(state, "privacyAccepted");
 
   return (
-    <form
-      action={formAction}
-      className="space-y-6"
-      noValidate
-      ref={formRef}
-    >
+    <form action={formAction} className="space-y-6" noValidate ref={formRef}>
       <div className="sr-only" aria-hidden="true">
         <label htmlFor="website">Site internet</label>
         <input

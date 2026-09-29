@@ -81,8 +81,7 @@ export async function submitContactForm(
     return {
       status: "invalid",
       message: "Vérifiez les champs signalés puis réessayez.",
-      fieldErrors: result.error.flatten()
-        .fieldErrors as ContactFieldErrors,
+      fieldErrors: result.error.flatten().fieldErrors as ContactFieldErrors,
     };
   }
 

@@ -29,9 +29,9 @@ test("valid contact request never reports false delivery success", async ({
   await page.getByLabel("Nom complet").fill("Jean Dupont");
   await page.getByLabel("Email").fill("jean@example.com");
   await page.getByLabel("Organisation").fill("Entreprise Test");
-  await page.getByLabel("Votre demande").fill(
-    "Je souhaite échanger au sujet d’un besoin professionnel précis.",
-  );
+  await page
+    .getByLabel("Votre demande")
+    .fill("Je souhaite échanger au sujet d’un besoin professionnel précis.");
   await page
     .getByLabel(
       "J’accepte que les informations saisies soient utilisées uniquement pour répondre à ma demande.",

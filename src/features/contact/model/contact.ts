@@ -48,11 +48,7 @@ export type ContactFieldErrors = Partial<
 >;
 
 export type ContactFormStatus =
-  | "idle"
-  | "invalid"
-  | "unavailable"
-  | "error"
-  | "success";
+  "idle" | "invalid" | "unavailable" | "error" | "success";
 
 export interface ContactFormState {
   status: ContactFormStatus;
