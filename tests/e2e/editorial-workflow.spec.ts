@@ -35,13 +35,31 @@ test("preview endpoint sets the signed session cookie and targets the fixed prev
 test("signed preview session renders editorial preview content", async ({
   page,
 }) => {
-  await page.goto(
+  const response = await page.goto(
     `/api/preview?secret=${previewSecret}&slug=article-01-a-valider`,
   );
 
+  expect(response?.status()).toBe(200);
   await expect(page).toHaveURL(
     /\/preview\/actualites\?slug=article-01-a-valider$/,
   );
+
+  const cookies = await page.context().cookies();
+  expect(
+    cookies.some((cookie) => cookie.name === "mapiap_preview_session"),
+  ).toBe(true);
+
+  const articleResponse = await page.request.get(
+    "/api/preview/article?slug=article-01-a-valider",
+  );
+
+  expect(articleResponse.status()).toBe(200);
+  await expect(articleResponse.json()).resolves.toMatchObject({
+    item: {
+      slug: "article-01-a-valider",
+      title: "Article 01",
+    },
+  });
 
   await expect(
     page.getByText(
