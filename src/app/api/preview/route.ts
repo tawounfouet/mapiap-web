@@ -56,9 +56,10 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const response = NextResponse.redirect(
-      new URL(`/preview/actualites/${article.slug}`, request.url),
-    );
+    const previewUrl = new URL("/preview/actualites", request.url);
+    previewUrl.searchParams.set("slug", article.slug);
+
+    const response = NextResponse.redirect(previewUrl);
 
     response.cookies.set(
       PREVIEW_SESSION_COOKIE,
