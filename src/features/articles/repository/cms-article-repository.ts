@@ -13,7 +13,7 @@ const cmsArticleSchema = z.object({
   title: z.string().trim().min(1).max(200),
   excerpt: z.string().trim().min(1).max(600),
   body: z.array(z.string().trim().min(1)).min(1),
-  status: z.literal("published"),
+  status: z.enum(["draft", "published"]),
 });
 
 export const cmsArticlesResponseSchema = z.object({
@@ -34,7 +34,9 @@ function toArticleContent(
 export class CmsArticleRepository implements ArticleRepository {
   constructor(private readonly config: CmsContentConfig) {}
 
-  private async fetchPublishedArticles(): Promise<readonly ArticleContent[]> {
+  private async fetchArticles(
+    preview: boolean,
+  ): Promise<readonly z.infer<typeof cmsArticleSchema>[]> {
     const headers = new Headers({
       accept: "application/json",
     });
@@ -43,13 +45,27 @@ export class CmsArticleRepository implements ArticleRepository {
       headers.set("authorization", `Bearer ${this.config.token}`);
     }
 
-    const response = await fetch(this.config.endpoint, {
-      headers,
-      next: {
-        revalidate: 300,
-        tags: ["cms:articles"],
-      },
-    });
+    const endpoint = new URL(this.config.endpoint);
+
+    if (preview) {
+      endpoint.searchParams.set("preview", "1");
+    }
+
+    const response = await fetch(
+      endpoint,
+      preview
+        ? {
+            headers,
+            cache: "no-store",
+          }
+        : {
+            headers,
+            next: {
+              revalidate: 300,
+              tags: ["cms:articles"],
+            },
+          },
+    );
 
     if (!response.ok) {
       throw new Error(
@@ -66,16 +82,28 @@ export class CmsArticleRepository implements ArticleRepository {
       );
     }
 
-    return parsed.data.items.map(toArticleContent);
+    return parsed.data.items;
   }
 
   async listPublished() {
-    return this.fetchPublishedArticles();
+    const articles = await this.fetchArticles(false);
+
+    return articles
+      .filter(({ status }) => status === "published")
+      .map(toArticleContent);
   }
 
   async findPublishedBySlug(slug: string) {
-    const articles = await this.fetchPublishedArticles();
+    const articles = await this.listPublished();
 
     return articles.find((article) => article.slug === slug);
+  }
+
+  async findPreviewBySlug(slug: string) {
+    const articles = await this.fetchArticles(true);
+
+    return articles
+      .map(toArticleContent)
+      .find((article) => article.slug === slug);
   }
 }

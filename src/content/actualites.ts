@@ -34,6 +34,24 @@ export const articles = [
   },
 ] as const satisfies readonly ArticleContent[];
 
+/**
+ * Local preview-only fixture.
+ *
+ * This article must never appear in public listings. It exists to qualify the
+ * Draft Mode workflow before a real CMS provides unpublished editorial data.
+ */
+export const draftArticles = [
+  {
+    slug: "article-brouillon-a-valider",
+    title: "Brouillon éditorial",
+    excerpt:
+      "À valider — brouillon visible uniquement pendant une session d’aperçu.",
+    body: [
+      "À valider — contenu de brouillon utilisé pour qualifier le workflow éditorial.",
+    ],
+  },
+] as const satisfies readonly ArticleContent[];
+
 export const actualitesIndexContent = {
   eyebrow: "Actualités",
   title: "Actualités & publications",

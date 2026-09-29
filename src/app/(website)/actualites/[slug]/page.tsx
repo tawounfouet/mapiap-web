@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
+import { PreviewBanner } from "@/components/layout/preview-banner";
 import { ArticleBodySection } from "@/components/sections/article-body-section";
 import { ArticleDetailHeroSection } from "@/components/sections/article-detail-hero-section";
 import { ContactCtaSection } from "@/components/sections/contact-cta-section";
@@ -15,23 +17,17 @@ interface ArticlePageProps {
   }>;
 }
 
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  const repository = getArticleRepository();
-  const articles = await repository.listPublished();
-
-  return articles.map(({ slug }) => ({
-    slug,
-  }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
 }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
+  const { isEnabled: previewEnabled } = await draftMode();
   const repository = getArticleRepository();
-  const article = await repository.findPublishedBySlug(slug);
+  const article = previewEnabled
+    ? await repository.findPreviewBySlug(slug)
+    : await repository.findPublishedBySlug(slug);
 
   if (!article) {
     notFound();
@@ -40,22 +36,28 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.excerpt,
-    alternates: {
-      canonical: getCanonicalUrl(getArticleHref(slug)),
-    },
-    robots: isProvisionalSlug(slug)
-      ? {
-          index: false,
-          follow: false,
-        }
-      : undefined,
+    alternates: previewEnabled
+      ? undefined
+      : {
+          canonical: getCanonicalUrl(getArticleHref(slug)),
+        },
+    robots:
+      previewEnabled || isProvisionalSlug(slug)
+        ? {
+            index: false,
+            follow: false,
+          }
+        : undefined,
   };
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
+  const { isEnabled: previewEnabled } = await draftMode();
   const repository = getArticleRepository();
-  const article = await repository.findPublishedBySlug(slug);
+  const article = previewEnabled
+    ? await repository.findPreviewBySlug(slug)
+    : await repository.findPublishedBySlug(slug);
 
   if (!article) {
     notFound();
@@ -63,6 +65,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
+      {previewEnabled ? <PreviewBanner /> : null}
       <ArticleDetailHeroSection article={article} />
       <ArticleBodySection article={article} />
       <ContactCtaSection

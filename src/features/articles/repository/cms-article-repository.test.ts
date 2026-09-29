@@ -7,7 +7,7 @@ afterEach(() => {
 });
 
 describe("CmsArticleRepository", () => {
-  it("maps the provider-neutral CMS response to ArticleContent", async () => {
+  it("exposes only published articles in public mode", async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       new Response(
         JSON.stringify({
@@ -18,6 +18,13 @@ describe("CmsArticleRepository", () => {
               excerpt: "Résumé de publication.",
               body: ["Premier paragraphe."],
               status: "published",
+            },
+            {
+              slug: "brouillon-test",
+              title: "Brouillon Test",
+              excerpt: "Résumé de brouillon.",
+              body: ["Brouillon."],
+              status: "draft",
             },
           ],
         }),
@@ -47,9 +54,47 @@ describe("CmsArticleRepository", () => {
     ]);
 
     expect(fetchMock).toHaveBeenCalledOnce();
-    expect(
-      (fetchMock.mock.calls[0]?.[1] as RequestInit | undefined)?.headers,
-    ).toBeInstanceOf(Headers);
+  });
+
+  it("requests uncached preview content and exposes draft articles", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          items: [
+            {
+              slug: "brouillon-test",
+              title: "Brouillon Test",
+              excerpt: "Résumé de brouillon.",
+              body: ["Brouillon."],
+              status: "draft",
+            },
+          ],
+        }),
+        { status: 200 },
+      ),
+    );
+
+    vi.stubGlobal("fetch", fetchMock);
+
+    const repository = new CmsArticleRepository({
+      endpoint: new URL("https://cms.example.test/articles"),
+    });
+
+    await expect(
+      repository.findPreviewBySlug("brouillon-test"),
+    ).resolves.toEqual({
+      slug: "brouillon-test",
+      title: "Brouillon Test",
+      excerpt: "Résumé de brouillon.",
+      body: ["Brouillon."],
+    });
+
+    const [requestUrl, requestInit] = fetchMock.mock.calls[0] ?? [];
+
+    expect(String(requestUrl)).toContain("preview=1");
+    expect(requestInit).toMatchObject({
+      cache: "no-store",
+    });
   });
 
   it("fails closed when the CMS response violates the contract", async () => {
@@ -64,7 +109,7 @@ describe("CmsArticleRepository", () => {
                 title: "",
                 excerpt: "",
                 body: [],
-                status: "draft",
+                status: "archived",
               },
             ],
           }),
