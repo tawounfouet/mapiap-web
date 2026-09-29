@@ -38,6 +38,16 @@ export interface ActualitesIndexContent {
   contactCta: HomeContactCtaContent;
 }
 
+export interface ContactPageContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  formTitle: string;
+  formDescription: string;
+  directContactTitle: string;
+  directContactDescription: string;
+}
+
 export interface PersonSummary {
   firstName: string;
   lastName: string;

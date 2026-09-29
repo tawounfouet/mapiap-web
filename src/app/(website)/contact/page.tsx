@@ -1,15 +1,19 @@
-import { Section } from "@/components/layout/section";
-import { Container } from "@/components/ui/container";
-import { Heading } from "@/components/ui/heading";
+import type { Metadata } from "next";
+
+import { ContactFormSection } from "@/components/sections/contact-form-section";
+import { ContactHeroSection } from "@/components/sections/contact-hero-section";
+import { contactContent } from "@/content/contact";
+
+export const metadata: Metadata = {
+  title: "Contact | MAPIAP Audit & Conseils",
+  description: "Contactez MAPIAP Audit & Conseils.",
+};
 
 export default function ContactPage() {
   return (
-    <Section>
-      <Container size="content">
-        <Heading as="h1" size="xl">
-          Contact
-        </Heading>
-      </Container>
-    </Section>
+    <>
+      <ContactHeroSection content={contactContent} />
+      <ContactFormSection content={contactContent} />
+    </>
   );
 }
