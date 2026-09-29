@@ -1,9 +1,9 @@
 import { draftMode } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { redirect } from "next/navigation";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const draft = await draftMode();
   draft.disable();
 
-  return NextResponse.redirect(new URL("/actualites", request.url));
+  redirect("/actualites");
 }
