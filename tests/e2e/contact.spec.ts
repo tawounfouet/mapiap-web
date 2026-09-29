@@ -30,7 +30,7 @@ test("valid contact request never reports false delivery success", async ({
   await page.getByLabel("Email").fill("jean@example.com");
   await page.getByLabel("Organisation").fill("Entreprise Test");
   await page
-    .getByLabel("Votre demande")
+    .getByRole("textbox", { name: "Votre demande" })
     .fill("Je souhaite échanger au sujet d’un besoin professionnel précis.");
   await page
     .getByLabel(
