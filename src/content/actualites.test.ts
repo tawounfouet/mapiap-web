@@ -1,16 +1,15 @@
 import { describe, expect, it } from "vitest";
 
-import { articles, getArticleBySlug, getArticleHref } from "./actualites";
+import { articles, getArticleHref, toArticleSummary } from "./actualites";
 
 describe("actualites content helpers", () => {
-  it("resolves a known article by slug", () => {
-    const article = getArticleBySlug(articles[0].slug);
-
-    expect(article?.title).toBe("Article 01");
-  });
-
-  it("returns undefined for an unknown article slug", () => {
-    expect(getArticleBySlug("article-inconnu")).toBeUndefined();
+  it("maps ArticleContent to its summary projection", () => {
+    expect(toArticleSummary(articles[0])).toEqual({
+      slug: "article-01-a-valider",
+      title: "Article 01",
+      excerpt:
+        "À valider — titre, angle éditorial et résumé de la première publication.",
+    });
   });
 
   it("builds the public article detail path", () => {

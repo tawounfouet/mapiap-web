@@ -1,6 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-test("actualites index exposes development publications", async ({ page }) => {
+test("actualites index exposes the configured published articles", async ({
+  page,
+}) => {
   await page.goto("/actualites");
 
   await expect(
@@ -30,7 +32,7 @@ test("actualites index exposes development publications", async ({ page }) => {
   expect(hasHorizontalOverflow).toBe(false);
 });
 
-test("article detail route renders known content", async ({ page }) => {
+test("article detail route renders a configured article", async ({ page }) => {
   await page.goto("/actualites/article-01-a-valider");
 
   await expect(
