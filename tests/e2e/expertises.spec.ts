@@ -42,14 +42,14 @@ test("expertise detail route renders known content", async ({ page }) => {
     }),
   ).toBeVisible();
 
-  await expect(
-    page.getByRole("navigation", { name: "Fil d’Ariane" }),
-  ).toBeVisible();
+  const breadcrumb = page.getByRole("navigation", {
+    name: "Fil d’Ariane",
+  });
 
-  await expect(page.getByRole("link", { name: "Expertises" })).toHaveAttribute(
-    "href",
-    "/expertises",
-  );
+  await expect(breadcrumb).toBeVisible();
+  await expect(
+    breadcrumb.getByRole("link", { name: "Expertises" }),
+  ).toHaveAttribute("href", "/expertises");
 
   await expect(
     page.getByRole("link", { name: "Nous contacter" }).last(),
