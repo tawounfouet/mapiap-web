@@ -1,4 +1,5 @@
 import { draftMode } from "next/headers";
+import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
 
 import { getArticleRepository } from "@/features/articles/repository/get-article-repository";
@@ -40,6 +41,8 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  let previewSlug: string;
+
   try {
     const repository = getArticleRepository();
     const article = await repository.findPreviewBySlug(slug);
@@ -53,12 +56,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const draft = await draftMode();
-    draft.enable();
-
-    return NextResponse.redirect(
-      new URL(`/preview/actualites/${article.slug}`, request.url),
-    );
+    previewSlug = article.slug;
   } catch {
     return NextResponse.json(
       {
@@ -67,4 +65,9 @@ export async function GET(request: NextRequest) {
       { status: 503 },
     );
   }
+
+  const draft = await draftMode();
+  draft.enable();
+
+  redirect(`/preview/actualites/${previewSlug}`);
 }
