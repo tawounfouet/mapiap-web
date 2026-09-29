@@ -7,9 +7,7 @@ export async function GET(request: NextRequest) {
   const draft = await draftMode();
   draft.disable();
 
-  const response = NextResponse.redirect(
-    new URL("/actualites", request.url),
-  );
+  const response = NextResponse.redirect(new URL("/actualites", request.url));
 
   response.cookies.set(PREVIEW_SESSION_COOKIE, "", {
     expires: new Date(0),

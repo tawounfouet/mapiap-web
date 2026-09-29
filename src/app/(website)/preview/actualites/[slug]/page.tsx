@@ -22,10 +22,7 @@ interface ArticlePreviewPageProps {
 export const dynamic = "force-dynamic";
 
 async function previewSessionIsEnabled() {
-  const [draft, cookieStore] = await Promise.all([
-    draftMode(),
-    cookies(),
-  ]);
+  const [draft, cookieStore] = await Promise.all([draftMode(), cookies()]);
   const secret = process.env.CMS_PREVIEW_SECRET?.trim();
   const signedSession = previewSessionIsValid(
     cookieStore.get(PREVIEW_SESSION_COOKIE)?.value,
