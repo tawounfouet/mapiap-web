@@ -8,9 +8,15 @@ import type { ExpertiseSummary } from "@/types/content";
 
 export interface ExpertiseCardProps {
   expertise: ExpertiseSummary;
+  href?: string;
+  linkLabel?: string;
 }
 
-export function ExpertiseCard({ expertise }: ExpertiseCardProps) {
+export function ExpertiseCard({
+  expertise,
+  href,
+  linkLabel = "En savoir plus",
+}: ExpertiseCardProps) {
   return (
     <Card className="flex h-full flex-col">
       <Text
@@ -29,10 +35,12 @@ export function ExpertiseCard({ expertise }: ExpertiseCardProps) {
         {expertise.shortDescription}
       </Text>
 
-      <Link className="mt-8 gap-2" href="/expertises" variant="standalone">
-        Voir les expertises
-        <ArrowUpRight aria-hidden size={16} />
-      </Link>
+      {href ? (
+        <Link className="mt-8 gap-2" href={href} variant="standalone">
+          {linkLabel}
+          <ArrowUpRight aria-hidden size={16} />
+        </Link>
+      ) : null}
     </Card>
   );
 }

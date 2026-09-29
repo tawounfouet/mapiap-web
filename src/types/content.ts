@@ -9,6 +9,18 @@ export interface ExpertiseSummary {
   shortDescription: string;
 }
 
+export interface ExpertiseContent extends ExpertiseSummary {
+  introduction: string;
+  body: readonly string[];
+}
+
+export interface ExpertisesIndexContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  contactCta: HomeContactCtaContent;
+}
+
 export interface PersonSummary {
   firstName: string;
   lastName: string;

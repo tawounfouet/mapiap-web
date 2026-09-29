@@ -1,15 +1,27 @@
-import { Section } from "@/components/layout/section";
-import { Container } from "@/components/ui/container";
-import { Heading } from "@/components/ui/heading";
+import type { Metadata } from "next";
+
+import { ContactCtaSection } from "@/components/sections/contact-cta-section";
+import { ExpertisesHeroSection } from "@/components/sections/expertises-hero-section";
+import { ExpertisesIndexSection } from "@/components/sections/expertises-index-section";
+import {
+  expertiseSummaries,
+  expertisesIndexContent,
+} from "@/content/expertises";
+
+export const metadata: Metadata = {
+  title: "Expertises | MAPIAP Audit & Conseils",
+  description: "Découvrez les domaines d’expertise de MAPIAP Audit & Conseils.",
+};
 
 export default function ExpertisesPage() {
   return (
-    <Section>
-      <Container size="content">
-        <Heading as="h1" size="xl">
-          Expertises
-        </Heading>
-      </Container>
-    </Section>
+    <>
+      <ExpertisesHeroSection content={expertisesIndexContent} />
+      <ExpertisesIndexSection items={expertiseSummaries} />
+      <ContactCtaSection
+        content={expertisesIndexContent.contactCta}
+        headingId="expertises-contact-title"
+      />
+    </>
   );
 }
