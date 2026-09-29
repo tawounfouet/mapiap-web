@@ -80,14 +80,14 @@ describe("CmsArticleRepository", () => {
       endpoint: new URL("https://cms.example.test/articles"),
     });
 
-    await expect(repository.findPreviewBySlug("brouillon-test")).resolves.toEqual(
-      {
-        slug: "brouillon-test",
-        title: "Brouillon Test",
-        excerpt: "Résumé de brouillon.",
-        body: ["Brouillon."],
-      },
-    );
+    await expect(
+      repository.findPreviewBySlug("brouillon-test"),
+    ).resolves.toEqual({
+      slug: "brouillon-test",
+      title: "Brouillon Test",
+      excerpt: "Résumé de brouillon.",
+      body: ["Brouillon."],
+    });
 
     const [requestUrl, requestInit] = fetchMock.mock.calls[0] ?? [];
 

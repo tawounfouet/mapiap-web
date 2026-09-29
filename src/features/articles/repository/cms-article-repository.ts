@@ -102,6 +102,8 @@ export class CmsArticleRepository implements ArticleRepository {
   async findPreviewBySlug(slug: string) {
     const articles = await this.fetchArticles(true);
 
-    return articles.map(toArticleContent).find((article) => article.slug === slug);
+    return articles
+      .map(toArticleContent)
+      .find((article) => article.slug === slug);
   }
 }
