@@ -3,10 +3,7 @@ import type { Metadata } from "next";
 import { ActualitesHeroSection } from "@/components/sections/actualites-hero-section";
 import { ActualitesIndexSection } from "@/components/sections/actualites-index-section";
 import { ContactCtaSection } from "@/components/sections/contact-cta-section";
-import {
-  actualitesIndexContent,
-  articleSummaries,
-} from "@/content/actualites";
+import { actualitesIndexContent, articleSummaries } from "@/content/actualites";
 
 export const metadata: Metadata = {
   title: "Actualités | MAPIAP Audit & Conseils",
