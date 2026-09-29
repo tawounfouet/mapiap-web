@@ -10,8 +10,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Expertises | MAPIAP Audit & Conseils",
-  description:
-    "Découvrez les domaines d’expertise de MAPIAP Audit & Conseils.",
+  description: "Découvrez les domaines d’expertise de MAPIAP Audit & Conseils.",
 };
 
 export default function ExpertisesPage() {

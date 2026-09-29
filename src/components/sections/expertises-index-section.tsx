@@ -9,9 +9,7 @@ export interface ExpertisesIndexSectionProps {
   items: readonly ExpertiseSummary[];
 }
 
-export function ExpertisesIndexSection({
-  items,
-}: ExpertisesIndexSectionProps) {
+export function ExpertisesIndexSection({ items }: ExpertisesIndexSectionProps) {
   return (
     <Section aria-labelledby="expertises-index-title" tone="muted">
       <Container>
@@ -29,9 +27,9 @@ export function ExpertisesIndexSection({
           </Heading>
 
           <Text className="mt-5" tone="muted">
-            Les cartes ci-dessous matérialisent la structure attendue. Les
-            liens vers les pages détail seront activés au LOT-08, une fois la
-            route dynamique qualifiée.
+            Les cartes ci-dessous matérialisent la structure attendue. Les liens
+            vers les pages détail seront activés au LOT-08, une fois la route
+            dynamique qualifiée.
           </Text>
         </div>
 

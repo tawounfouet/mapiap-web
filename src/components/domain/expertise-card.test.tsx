@@ -21,15 +21,11 @@ describe("ExpertiseCard", () => {
 
   it("renders an explicit link when a destination is provided", () => {
     render(
-      <ExpertiseCard
-        expertise={expertise}
-        href="/expertises/expertise-test"
-      />,
+      <ExpertiseCard expertise={expertise} href="/expertises/expertise-test" />,
     );
 
-    expect(screen.getByRole("link", { name: /en savoir plus/i })).toHaveAttribute(
-      "href",
-      "/expertises/expertise-test",
-    );
+    expect(
+      screen.getByRole("link", { name: /en savoir plus/i }),
+    ).toHaveAttribute("href", "/expertises/expertise-test");
   });
 });

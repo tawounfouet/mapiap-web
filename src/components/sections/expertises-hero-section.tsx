@@ -7,9 +7,7 @@ export interface ExpertisesHeroSectionProps {
   content: Pick<ExpertisesIndexContent, "eyebrow" | "title" | "description">;
 }
 
-export function ExpertisesHeroSection({
-  content,
-}: ExpertisesHeroSectionProps) {
+export function ExpertisesHeroSection({ content }: ExpertisesHeroSectionProps) {
   return (
     <section
       aria-labelledby="expertises-hero-title"
