@@ -1,5 +1,5 @@
-import { Section } from "@/components/layout/section";
 import { ExpertiseCard } from "@/components/domain/expertise-card";
+import { Section } from "@/components/layout/section";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
@@ -39,7 +39,12 @@ export function ExpertiseSection({ items }: ExpertiseSectionProps) {
 
         <div className="grid gap-5 md:grid-cols-3">
           {items.map((expertise) => (
-            <ExpertiseCard expertise={expertise} key={expertise.slug} />
+            <ExpertiseCard
+              expertise={expertise}
+              href="/expertises"
+              key={expertise.slug}
+              linkLabel="Voir les expertises"
+            />
           ))}
         </div>
       </Container>
