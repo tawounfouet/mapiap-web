@@ -61,7 +61,9 @@ export class CmsArticleRepository implements ArticleRepository {
     const parsed = cmsArticlesResponseSchema.safeParse(payload);
 
     if (!parsed.success) {
-      throw new Error("CMS article response does not match the expected contract.");
+      throw new Error(
+        "CMS article response does not match the expected contract.",
+      );
     }
 
     return parsed.data.items.map(toArticleContent);

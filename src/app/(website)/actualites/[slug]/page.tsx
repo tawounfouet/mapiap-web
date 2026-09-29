@@ -4,10 +4,7 @@ import { notFound } from "next/navigation";
 import { ArticleBodySection } from "@/components/sections/article-body-section";
 import { ArticleDetailHeroSection } from "@/components/sections/article-detail-hero-section";
 import { ContactCtaSection } from "@/components/sections/contact-cta-section";
-import {
-  actualitesIndexContent,
-  getArticleHref,
-} from "@/content/actualites";
+import { actualitesIndexContent, getArticleHref } from "@/content/actualites";
 import { getArticleRepository } from "@/features/articles/repository/get-article-repository";
 import { isProvisionalSlug } from "@/lib/seo/provisional";
 import { getCanonicalUrl } from "@/lib/seo/site-url";

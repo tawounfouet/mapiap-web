@@ -49,7 +49,8 @@ describe("content configuration", () => {
   });
 
   it("returns the configured CMS endpoint and optional token", () => {
-    process.env.CMS_CONTENT_API_URL = "https://cms.example.test/content/articles";
+    process.env.CMS_CONTENT_API_URL =
+      "https://cms.example.test/content/articles";
     process.env.CMS_CONTENT_API_TOKEN = "secret-token";
 
     expect(getCmsContentConfig()).toEqual({
