@@ -1,8 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const draftSlug = "article-brouillon-a-valider";
-const previewPath =
-  `/api/preview?secret=playwright-preview-secret&slug=${draftSlug}`;
+const previewPath = `/api/preview?secret=playwright-preview-secret&slug=${draftSlug}`;
 
 test("draft article stays hidden without preview mode", async ({ page }) => {
   const response = await page.goto(`/actualites/${draftSlug}`);
