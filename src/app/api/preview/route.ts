@@ -1,4 +1,3 @@
-import { draftMode } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 import { getArticleRepository } from "@/features/articles/repository/get-article-repository";
@@ -56,9 +55,6 @@ export async function GET(request: NextRequest) {
         { status: 404 },
       );
     }
-
-    const draft = await draftMode();
-    draft.enable();
 
     const response = NextResponse.redirect(
       new URL(`/preview/actualites/${article.slug}`, request.url),
