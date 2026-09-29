@@ -6,10 +6,9 @@ import { ArticleDetailHeroSection } from "@/components/sections/article-detail-h
 import { ContactCtaSection } from "@/components/sections/contact-cta-section";
 import {
   actualitesIndexContent,
-  articles,
-  getArticleBySlug,
   getArticleHref,
 } from "@/content/actualites";
+import { getArticleRepository } from "@/features/articles/repository/get-article-repository";
 import { isProvisionalSlug } from "@/lib/seo/provisional";
 import { getCanonicalUrl } from "@/lib/seo/site-url";
 
@@ -19,9 +18,12 @@ interface ArticlePageProps {
   }>;
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const repository = getArticleRepository();
+  const articles = await repository.listPublished();
+
   return articles.map(({ slug }) => ({
     slug,
   }));
@@ -31,7 +33,8 @@ export async function generateMetadata({
   params,
 }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const repository = getArticleRepository();
+  const article = await repository.findPublishedBySlug(slug);
 
   if (!article) {
     notFound();
@@ -54,7 +57,8 @@ export async function generateMetadata({
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const repository = getArticleRepository();
+  const article = await repository.findPublishedBySlug(slug);
 
   if (!article) {
     notFound();

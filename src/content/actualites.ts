@@ -34,12 +34,6 @@ export const articles = [
   },
 ] as const satisfies readonly ArticleContent[];
 
-export const articleSummaries = articles.map(({ slug, title, excerpt }) => ({
-  slug,
-  title,
-  excerpt,
-})) satisfies readonly ArticleSummary[];
-
 export const actualitesIndexContent = {
   eyebrow: "Actualités",
   title: "Actualités & publications",
@@ -57,8 +51,12 @@ export const actualitesIndexContent = {
   },
 } satisfies ActualitesIndexContent;
 
-export function getArticleBySlug(slug: string): ArticleContent | undefined {
-  return articles.find((article) => article.slug === slug);
+export function toArticleSummary(article: ArticleContent): ArticleSummary {
+  return {
+    slug: article.slug,
+    title: article.title,
+    excerpt: article.excerpt,
+  };
 }
 
 export function getArticleHref(slug: string) {
