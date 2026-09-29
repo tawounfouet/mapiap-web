@@ -4,11 +4,15 @@ import { ActualitesHeroSection } from "@/components/sections/actualites-hero-sec
 import { ActualitesIndexSection } from "@/components/sections/actualites-index-section";
 import { ContactCtaSection } from "@/components/sections/contact-cta-section";
 import { actualitesIndexContent, articleSummaries } from "@/content/actualites";
+import { getCanonicalUrl } from "@/lib/seo/site-url";
 
 export const metadata: Metadata = {
-  title: "Actualités | MAPIAP Audit & Conseils",
+  title: "Actualités",
   description:
     "Retrouvez les actualités et publications de MAPIAP Audit & Conseils.",
+  alternates: {
+    canonical: getCanonicalUrl("/actualites"),
+  },
 };
 
 export default function ActualitesPage() {

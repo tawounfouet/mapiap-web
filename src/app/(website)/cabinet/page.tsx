@@ -6,10 +6,14 @@ import { CabinetHeroSection } from "@/components/sections/cabinet-hero-section";
 import { CabinetIntroductionSection } from "@/components/sections/cabinet-introduction-section";
 import { ContactCtaSection } from "@/components/sections/contact-cta-section";
 import { cabinetContent } from "@/content/cabinet";
+import { getCanonicalUrl } from "@/lib/seo/site-url";
 
 export const metadata: Metadata = {
-  title: "Cabinet | MAPIAP Audit & Conseils",
+  title: "Cabinet",
   description: "Présentation du cabinet MAPIAP Audit & Conseils.",
+  alternates: {
+    canonical: getCanonicalUrl("/cabinet"),
+  },
 };
 
 export default function CabinetPage() {
