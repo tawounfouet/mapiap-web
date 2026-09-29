@@ -27,6 +27,13 @@ export default defineConfig({
   ],
   webServer: {
     command: process.env.CI ? "pnpm start" : "pnpm dev",
+    env: {
+      EDITORIAL_PREVIEW_SECRET:
+        process.env.EDITORIAL_PREVIEW_SECRET ?? "playwright-preview-secret",
+      EDITORIAL_REVALIDATION_SECRET:
+        process.env.EDITORIAL_REVALIDATION_SECRET ??
+        "playwright-revalidation-secret",
+    },
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
   },
