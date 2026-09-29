@@ -71,3 +71,13 @@ export const expertisesIndexContent = {
     },
   },
 } satisfies ExpertisesIndexContent;
+
+export function getExpertiseBySlug(
+  slug: string,
+): ExpertiseContent | undefined {
+  return expertises.find((expertise) => expertise.slug === slug);
+}
+
+export function getExpertiseHref(slug: string) {
+  return `/expertises/${slug}`;
+}
