@@ -1,10 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  expertises,
-  getExpertiseBySlug,
-  getExpertiseHref,
-} from "./expertises";
+import { expertises, getExpertiseBySlug, getExpertiseHref } from "./expertises";
 
 describe("expertises content helpers", () => {
   it("resolves a known expertise by slug", () => {
