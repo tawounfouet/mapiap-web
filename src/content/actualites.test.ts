@@ -1,10 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  articles,
-  getArticleHref,
-  toArticleSummary,
-} from "./actualites";
+import { articles, getArticleHref, toArticleSummary } from "./actualites";
 
 describe("actualites content helpers", () => {
   it("maps ArticleContent to its summary projection", () => {
