@@ -33,21 +33,19 @@ export function ArticlePreviewClient() {
 
   useEffect(() => {
     const controller = new AbortController();
-    const slug = new URLSearchParams(window.location.search)
-      .get("slug")
-      ?.trim();
-
-    if (!slug) {
-      setState({
-        status: "error",
-      });
-
-      return () => {
-        controller.abort();
-      };
-    }
 
     async function loadPreview() {
+      const slug = new URLSearchParams(window.location.search)
+        .get("slug")
+        ?.trim();
+
+      if (!slug) {
+        setState({
+          status: "error",
+        });
+        return;
+      }
+
       try {
         const response = await fetch(
           `/api/preview/article?slug=${encodeURIComponent(slug)}`,
@@ -71,7 +69,7 @@ export function ArticlePreviewClient() {
           status: "ready",
           article: payload.item,
         });
-      } catch (error) {
+      } catch {
         if (controller.signal.aborted) {
           return;
         }
