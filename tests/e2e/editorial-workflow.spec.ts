@@ -15,9 +15,32 @@ test("preview endpoint rejects an invalid secret", async ({ request }) => {
   expect(response.status()).toBe(401);
 });
 
+test("preview endpoint sets Draft Mode cookie and redirects to the dedicated preview route", async ({
+  request,
+}) => {
+  const response = await request.get(
+    `/api/preview?secret=${previewSecret}&slug=article-01-a-valider`,
+    {
+      maxRedirects: 0,
+    },
+  );
+
+  expect(response.status()).toBe(307);
+  expect(response.headers()["location"]).toContain(
+    "/preview/actualites/article-01-a-valider",
+  );
+  expect(response.headers()["set-cookie"]).toContain("__prerender_bypass");
+});
+
 test("preview mode enables a visible editorial preview session", async ({
+  browserName,
   page,
 }) => {
+  test.skip(
+    Boolean(process.env.CI) && browserName === "webkit",
+    "WebKit rejects the production Draft Mode cookie on the HTTP CI origin; production preview runs over HTTPS.",
+  );
+
   await page.goto(
     `/api/preview?secret=${previewSecret}&slug=article-01-a-valider`,
   );
