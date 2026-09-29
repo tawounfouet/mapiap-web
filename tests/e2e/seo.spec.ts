@@ -49,7 +49,9 @@ test("legal placeholder routes are explicitly noindex", async ({ page }) => {
   );
 });
 
-test("unknown public route returns the dedicated 404 page", async ({ page }) => {
+test("unknown public route returns the dedicated 404 page", async ({
+  page,
+}) => {
   const response = await page.goto("/page-totalement-inconnue");
 
   expect(response?.status()).toBe(404);

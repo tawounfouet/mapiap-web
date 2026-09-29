@@ -31,8 +31,6 @@ describe("site URL helpers", () => {
     process.env.NEXT_PUBLIC_SITE_URL = "https://mapiap.test/some/path";
 
     expect(getSiteUrl()?.toString()).toBe("https://mapiap.test/");
-    expect(getCanonicalUrl("/cabinet")).toBe(
-      "https://mapiap.test/cabinet",
-    );
+    expect(getCanonicalUrl("/cabinet")).toBe("https://mapiap.test/cabinet");
   });
 });
