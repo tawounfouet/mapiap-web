@@ -3,6 +3,7 @@ import { Section } from "@/components/layout/section";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
+import { getExpertiseHref } from "@/content/expertises";
 import type { ExpertiseSummary } from "@/types/content";
 
 export interface ExpertisesIndexSectionProps {
@@ -27,15 +28,18 @@ export function ExpertisesIndexSection({ items }: ExpertisesIndexSectionProps) {
           </Heading>
 
           <Text className="mt-5" tone="muted">
-            Les cartes ci-dessous matérialisent la structure attendue. Les liens
-            vers les pages détail seront activés au LOT-08, une fois la route
-            dynamique qualifiée.
+            Les pages détail sont désormais actives. Leurs contenus métier
+            restent provisoires jusqu’à validation des trois expertises.
           </Text>
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
           {items.map((expertise) => (
-            <ExpertiseCard expertise={expertise} key={expertise.slug} />
+            <ExpertiseCard
+              expertise={expertise}
+              href={getExpertiseHref(expertise.slug)}
+              key={expertise.slug}
+            />
           ))}
         </div>
       </Container>

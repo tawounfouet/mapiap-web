@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { Link } from "@/components/ui/link";
 import { Text } from "@/components/ui/text";
+import { getExpertiseHref } from "@/content/expertises";
 import type { ExpertiseSummary } from "@/types/content";
 
 export interface ExpertiseSectionProps {
@@ -41,9 +42,8 @@ export function ExpertiseSection({ items }: ExpertiseSectionProps) {
           {items.map((expertise) => (
             <ExpertiseCard
               expertise={expertise}
-              href="/expertises"
+              href={getExpertiseHref(expertise.slug)}
               key={expertise.slug}
-              linkLabel="Voir les expertises"
             />
           ))}
         </div>
