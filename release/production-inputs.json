@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "releaseTarget": "1.0.0",
+  "policy": "Do not invent or infer client, brand, legal or production values. A release item is resolved only from confirmed input plus the corresponding repository/runtime change.",
+  "blockingInputs": [
+    {
+      "id": "RC-001",
+      "category": "runtime",
+      "owner": "CLIENT",
+      "title": "Official production domain",
+      "state": "blocked_external_input",
+      "resolution": "Confirm the exact HTTPS production domain, configure NEXT_PUBLIC_SITE_URL and complete DNS/hosting activation."
+    },
+    {
+      "id": "RC-002",
+      "category": "runtime",
+      "owner": "SHARED",
+      "title": "Contact delivery transport",
+      "state": "blocked_external_input",
+      "resolution": "Choose the production delivery destination/provider and configure CONTACT_WEBHOOK_URL."
+    },
+    {
+      "id": "RC-003",
+      "category": "content",
+      "owner": "CLIENT",
+      "title": "Homepage final content",
+      "state": "blocked_external_input",
+      "resolution": "Approve final homepage wording and remove every client-facing À valider marker from src/content/home.ts."
+    },
+    {
+      "id": "RC-004",
+      "category": "content",
+      "owner": "CLIENT",
+      "title": "Cabinet final content",
+      "state": "blocked_external_input",
+      "resolution": "Approve the cabinet presentation and remove every client-facing À valider marker from src/content/cabinet.ts."
+    },
+    {
+      "id": "RC-005",
+      "category": "content",
+      "owner": "CLIENT",
+      "title": "Expertises final content",
+      "state": "blocked_external_input",
+      "resolution": "Approve the three expertise labels, summaries and detailed content in src/content/expertises.ts."
+    },
+    {
+      "id": "RC-006",
+      "category": "content",
+      "owner": "CLIENT",
+      "title": "Actualités final content",
+      "state": "blocked_external_input",
+      "resolution": "Provide or approve the first publishable article set, or explicitly choose an empty production editorial state."
+    },
+    {
+      "id": "RC-007",
+      "category": "content",
+      "owner": "CLIENT",
+      "title": "Contact final content",
+      "state": "blocked_external_input",
+      "resolution": "Approve the public contact wording and validated direct-contact information."
+    },
+    {
+      "id": "RC-008",
+      "category": "content",
+      "owner": "SHARED",
+      "title": "Expertise production slugs",
+      "state": "blocked_dependency",
+      "dependsOn": ["RC-005"],
+      "resolution": "Replace provisional *-a-valider expertise slugs after expertise labels are approved."
+    },
+    {
+      "id": "RC-009",
+      "category": "content",
+      "owner": "SHARED",
+      "title": "Article production slugs",
+      "state": "blocked_dependency",
+      "dependsOn": ["RC-006"],
+      "resolution": "Replace provisional *-a-valider local article slugs after the production editorial set is approved."
+    },
+    {
+      "id": "RC-010",
+      "category": "brand",
+      "owner": "CLIENT",
+      "title": "Official brand color tokens",
+      "state": "blocked_external_input",
+      "resolution": "Provide or approve the official MAPIAP color values, then replace the provisional token note in src/design-system/tokens.css."
+    },
+    {
+      "id": "RC-011",
+      "category": "brand",
+      "owner": "CLIENT",
+      "title": "Yves TCHAMO portrait",
+      "state": "blocked_external_input",
+      "resolution": "Provide the approved professional portrait and replace the public profile placeholder."
+    },
+    {
+      "id": "RC-012",
+      "category": "legal",
+      "owner": "CLIENT",
+      "title": "Legal notices",
+      "state": "blocked_external_input",
+      "resolution": "Provide the verified legal/company/hosting information required to finalize the legal notices."
+    },
+    {
+      "id": "RC-013",
+      "category": "legal",
+      "owner": "CLIENT",
+      "title": "Privacy policy",
+      "state": "blocked_external_input",
+      "resolution": "Approve the production data-processing facts and finalize the privacy policy accordingly."
+    }
+  ],
+  "conditionalRuntimeGates": [
+    {
+      "id": "RC-CMS-001",
+      "category": "runtime",
+      "owner": "WEBTECH",
+      "title": "CMS content endpoint",
+      "appliesWhen": "CONTENT_SOURCE=cms"
+    },
+    {
+      "id": "RC-CMS-002",
+      "category": "runtime",
+      "owner": "WEBTECH",
+      "title": "Editorial preview secret",
+      "appliesWhen": "CONTENT_SOURCE=cms"
+    },
+    {
+      "id": "RC-CMS-003",
+      "category": "runtime",
+      "owner": "WEBTECH",
+      "title": "Editorial revalidation secret",
+      "appliesWhen": "CONTENT_SOURCE=cms"
+    },
+    {
+      "id": "RC-ANALYTICS-001",
+      "category": "observability",
+      "owner": "WEBTECH",
+      "title": "Analytics transport",
+      "appliesWhen": "ANALYTICS_MODE=consent"
+    }
+  ]
+}
