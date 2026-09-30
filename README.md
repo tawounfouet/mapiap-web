@@ -28,6 +28,8 @@ LOT-16  Final Qualification                  DONE
 
 Technical readiness does **not** imply launch readiness. The repository still contains explicit client/content/legal/brand placeholders. Run the production release audit before any public launch.
 
+The Release Closure source of truth is `release/production-inputs.json`. The operational procedure is documented in `docs/PRODUCTION_RELEASE_CLOSURE.md`.
+
 ## Requirements
 
 - Node.js 24.x
@@ -66,19 +68,27 @@ pnpm check
 
 ## Production release gate
 
-Generate the current launch-readiness report without failing the command:
+Generate the current human-readable launch-readiness audit without failing the command:
 
 ```bash
 pnpm release:audit
 ```
 
-Require every launch blocker to be resolved:
+Generate the same state as structured JSON for tooling, handoff or release evidence:
+
+```bash
+pnpm release:report
+```
+
+Require every active launch blocker to be resolved:
 
 ```bash
 pnpm release:check
 ```
 
-`release:check` exits non-zero while production blockers remain. Typical blockers include:
+`release:check` exits non-zero while production blockers remain. Each blocker now carries a stable Release Closure ID, category and owner.
+
+Typical blockers include:
 
 - official production domain not configured;
 - contact transport not configured;

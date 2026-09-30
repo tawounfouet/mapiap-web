@@ -21,6 +21,7 @@
     "test:e2e:ui": "playwright test --ui",
     "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test:run && pnpm build",
     "release:audit": "node scripts/release-readiness.mjs",
+    "release:report": "node scripts/release-readiness.mjs --json",
     "release:check": "node scripts/release-readiness.mjs --strict"
   },
   "dependencies": {
