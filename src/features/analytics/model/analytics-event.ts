@@ -1,10 +1,6 @@
 import { z } from "zod";
 
-const pathSchema = z
-  .string()
-  .min(1)
-  .max(2048)
-  .regex(/^\//);
+const pathSchema = z.string().min(1).max(2048).regex(/^\//);
 
 const baseEventSchema = z.object({
   path: pathSchema,

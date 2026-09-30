@@ -19,11 +19,13 @@ export function AnalyticsRuntime({ enabled }: AnalyticsRuntimeProps) {
   const pathname = usePathname();
 
   const reportWebVital = useCallback(
-    (metric: Parameters<typeof useReportWebVitals>[0] extends (
-      metric: infer Metric,
-    ) => void
-      ? Metric
-      : never) => {
+    (
+      metric: Parameters<typeof useReportWebVitals>[0] extends (
+        metric: infer Metric,
+      ) => void
+        ? Metric
+        : never,
+    ) => {
       if (!enabled || !hasAnalyticsConsent()) {
         return;
       }

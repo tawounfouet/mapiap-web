@@ -39,8 +39,7 @@ describe("analytics configuration", () => {
   });
 
   it("returns an optional validated webhook URL", () => {
-    process.env.ANALYTICS_WEBHOOK_URL =
-      "https://analytics.example.test/events";
+    process.env.ANALYTICS_WEBHOOK_URL = "https://analytics.example.test/events";
 
     expect(getAnalyticsWebhookUrl()?.toString()).toBe(
       "https://analytics.example.test/events",

@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 
-import {
-  getAnalyticsMode,
-  getAnalyticsWebhookUrl,
-} from "@/config/analytics";
+import { getAnalyticsMode, getAnalyticsWebhookUrl } from "@/config/analytics";
 import { analyticsEventSchema } from "@/features/analytics/model/analytics-event";
 
 export async function POST(request: Request) {

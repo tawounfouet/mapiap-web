@@ -1,11 +1,9 @@
 export type AnalyticsConsent = "accepted" | "declined";
 
-export const ANALYTICS_CONSENT_STORAGE_KEY =
-  "mapiap.analytics-consent.v1";
+export const ANALYTICS_CONSENT_STORAGE_KEY = "mapiap.analytics-consent.v1";
 export const ANALYTICS_CONSENT_CHANGED_EVENT =
   "mapiap:analytics-consent-changed";
-export const ANALYTICS_CONSENT_OPEN_EVENT =
-  "mapiap:analytics-consent-open";
+export const ANALYTICS_CONSENT_OPEN_EVENT = "mapiap:analytics-consent-open";
 
 export function readAnalyticsConsent(): AnalyticsConsent | undefined {
   if (typeof window === "undefined") {
