@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
+import { getAnalyticsMode } from "@/config/analytics";
 import { mainNavigation } from "@/content/navigation";
 
 export default function WebsiteLayout({
@@ -10,6 +11,8 @@ export default function WebsiteLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const analyticsEnabled = getAnalyticsMode() === "consent";
+
   return (
     <>
       <SkipLink />
@@ -17,7 +20,10 @@ export default function WebsiteLayout({
       <main id="main-content" tabIndex={-1}>
         {children}
       </main>
-      <SiteFooter items={mainNavigation} />
+      <SiteFooter
+        analyticsConsentEnabled={analyticsEnabled}
+        items={mainNavigation}
+      />
     </>
   );
 }
