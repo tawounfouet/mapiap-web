@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
   ANALYTICS_CONSENT_OPEN_EVENT,
   readAnalyticsConsent,
+  subscribeAnalyticsConsent,
   writeAnalyticsConsent,
 } from "@/features/analytics/client/consent";
 
@@ -16,18 +17,20 @@ export interface AnalyticsConsentBannerProps {
 export function AnalyticsConsentBanner({
   enabled,
 }: AnalyticsConsentBannerProps) {
-  const [open, setOpen] = useState(false);
+  const consent = useSyncExternalStore(
+    subscribeAnalyticsConsent,
+    readAnalyticsConsent,
+    () => undefined,
+  );
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
 
   useEffect(() => {
     if (!enabled) {
-      setOpen(false);
       return;
     }
 
-    setOpen(readAnalyticsConsent() === undefined);
-
     function handleOpenPreferences() {
-      setOpen(true);
+      setPreferencesOpen(true);
     }
 
     window.addEventListener(
@@ -43,7 +46,9 @@ export function AnalyticsConsentBanner({
     };
   }, [enabled]);
 
-  if (!enabled || !open) {
+  const open = enabled && (consent === undefined || preferencesOpen);
+
+  if (!open) {
     return null;
   }
 
@@ -66,7 +71,7 @@ export function AnalyticsConsentBanner({
           <Button
             onClick={() => {
               writeAnalyticsConsent("declined");
-              setOpen(false);
+              setPreferencesOpen(false);
             }}
             variant="secondary"
           >
@@ -75,7 +80,7 @@ export function AnalyticsConsentBanner({
           <Button
             onClick={() => {
               writeAnalyticsConsent("accepted");
-              setOpen(false);
+              setPreferencesOpen(false);
             }}
           >
             Accepter
