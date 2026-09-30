@@ -4,7 +4,7 @@ Frontend du site **MAPIAP Audit & Conseils**, développé par **WebTech Solution
 
 ## Status
 
-Core frontend implementation is technically qualified through LOT-16.
+Core frontend implementation is technically qualified through LOT-16. Public launch remains blocked until the strict production release gate is green.
 
 ```text
 LOT-00  Repository Bootstrap                 DONE
@@ -23,7 +23,7 @@ LOT-12  SEO & Technical Routes               DONE
 LOT-13  CMS Integration                      DONE
 LOT-14  Editorial Workflow & Preview         DONE
 LOT-15  Observability / Analytics / Consent  DONE
-LOT-16  Final Qualification                  IN PROGRESS
+LOT-16  Final Qualification                  DONE
 ```
 
 Technical readiness does **not** imply launch readiness. The repository still contains explicit client/content/legal/brand placeholders. Run the production release audit before any public launch.
