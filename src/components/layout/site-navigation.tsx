@@ -1,5 +1,4 @@
 import { Link } from "@/components/ui/link";
-import { cn } from "@/lib/utils/cn";
 import type { NavigationItem } from "@/types/navigation";
 
 export interface SiteNavigationProps {
