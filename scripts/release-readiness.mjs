@@ -258,13 +258,11 @@ if (jsonOutput) {
 
   if (blockers.length > 0) {
     console.log("\nBlockers:");
-    blockers.forEach(
-      ({ id, category, owner, code, message }, index) => {
-        console.log(
-          `${index + 1}. [${id}] [${category}] [${owner}] [${code}] ${message}`,
-        );
-      },
-    );
+    blockers.forEach(({ id, category, owner, code, message }, index) => {
+      console.log(
+        `${index + 1}. [${id}] [${category}] [${owner}] [${code}] ${message}`,
+      );
+    });
   }
 
   if (warnings.length > 0) {
