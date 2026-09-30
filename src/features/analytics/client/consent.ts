@@ -19,6 +19,22 @@ export function readAnalyticsConsent(): AnalyticsConsent | undefined {
   return undefined;
 }
 
+export function subscribeAnalyticsConsent(callback: () => void) {
+  function handleStorage(event: StorageEvent) {
+    if (event.key === ANALYTICS_CONSENT_STORAGE_KEY) {
+      callback();
+    }
+  }
+
+  window.addEventListener(ANALYTICS_CONSENT_CHANGED_EVENT, callback);
+  window.addEventListener("storage", handleStorage);
+
+  return () => {
+    window.removeEventListener(ANALYTICS_CONSENT_CHANGED_EVENT, callback);
+    window.removeEventListener("storage", handleStorage);
+  };
+}
+
 export function writeAnalyticsConsent(value: AnalyticsConsent) {
   window.localStorage.setItem(ANALYTICS_CONSENT_STORAGE_KEY, value);
   window.dispatchEvent(
