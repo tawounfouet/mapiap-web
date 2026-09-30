@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { AnalyticsConsentBanner } from "@/components/analytics/analytics-consent";
+import { AnalyticsRuntime } from "@/components/analytics/analytics-runtime";
+import { getAnalyticsMode } from "@/config/analytics";
 import { siteConfig } from "@/config/site";
 import { getSiteUrl } from "@/lib/seo/site-url";
 
@@ -8,6 +11,7 @@ import "./globals.css";
 
 const siteUrl = getSiteUrl();
 const defaultDescription = "Site officiel de MAPIAP Audit & Conseils.";
+const analyticsEnabled = getAnalyticsMode() === "consent";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -43,7 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <AnalyticsRuntime enabled={analyticsEnabled} />
+        {children}
+        <AnalyticsConsentBanner enabled={analyticsEnabled} />
+      </body>
     </html>
   );
 }

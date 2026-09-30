@@ -1,3 +1,4 @@
+import { AnalyticsPreferencesButton } from "@/components/analytics/analytics-preferences-button";
 import { SiteNavigation } from "@/components/layout/site-navigation";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/components/ui/link";
@@ -7,9 +8,13 @@ import type { NavigationItem } from "@/types/navigation";
 
 export interface SiteFooterProps {
   items: readonly NavigationItem[];
+  analyticsConsentEnabled?: boolean;
 }
 
-export function SiteFooter({ items }: SiteFooterProps) {
+export function SiteFooter({
+  items,
+  analyticsConsentEnabled = false,
+}: SiteFooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -37,7 +42,7 @@ export function SiteFooter({ items }: SiteFooterProps) {
             />
 
             <nav aria-label="Navigation légale">
-              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 {legalNavigation.map((item) => (
                   <li key={item.href}>
                     <Link href={item.href} variant="navigation">
@@ -45,6 +50,11 @@ export function SiteFooter({ items }: SiteFooterProps) {
                     </Link>
                   </li>
                 ))}
+                {analyticsConsentEnabled ? (
+                  <li>
+                    <AnalyticsPreferencesButton enabled />
+                  </li>
+                ) : null}
               </ul>
             </nav>
 
