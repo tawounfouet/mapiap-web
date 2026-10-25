@@ -22,12 +22,18 @@ test.describe("homepage visual baselines", () => {
         await document.fonts.ready;
       });
 
+      await page.addStyleTag({
+        content: `
+          main img {
+            visibility: hidden !important;
+          }
+        `,
+      });
+
       await expect(page).toHaveScreenshot(baseline.name, {
         animations: "disabled",
         caret: "hide",
         fullPage: true,
-        mask: [page.locator("main img")],
-        maskColor: "#e5e5e5",
         maxDiffPixelRatio: 0.01,
       });
     });
