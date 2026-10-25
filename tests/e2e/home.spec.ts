@@ -34,9 +34,9 @@ test("homepage exposes the visual-alignment narrative and navigation", async ({
     name: "Navigation principale",
   });
 
-  await expect(
-    primaryNavigation.getByRole("link", { name: "Accueil" }),
-  ).toHaveAttribute("href", "/");
+  const homeLink = primaryNavigation.getByRole("link", { name: "Accueil" });
+  await expect(homeLink).toHaveAttribute("href", "/");
+  await expect(homeLink).toHaveAttribute("aria-current", "page");
 
   await primaryNavigation.getByRole("link", { name: "Cabinet" }).click();
 
@@ -46,4 +46,10 @@ test("homepage exposes the visual-alignment narrative and navigation", async ({
       name: "MAPIAP Audit & Conseils",
     }),
   ).toBeVisible();
+
+  await expect(
+    page
+      .getByRole("navigation", { name: "Navigation principale" })
+      .getByRole("link", { name: "Cabinet" }),
+  ).toHaveAttribute("aria-current", "page");
 });

@@ -1,3 +1,6 @@
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+
 import { MobileNavigation } from "@/components/layout/mobile-navigation";
 import { SiteNavigation } from "@/components/layout/site-navigation";
 import { Container } from "@/components/ui/container";
@@ -30,7 +33,7 @@ export function SiteHeader({ items }: SiteHeaderProps) {
           </Link>
 
           <div className="hidden items-center gap-7 lg:flex">
-            <SiteNavigation items={items} />
+            <SiteNavigation items={items} showActiveState />
             <Link
               className="bg-brand-teal hover:bg-brand-teal-dark gap-2 px-5 text-white hover:opacity-100"
               href="/contact"
@@ -40,11 +43,10 @@ export function SiteHeader({ items }: SiteHeaderProps) {
               <ArrowRight aria-hidden size={16} />
             </Link>
           </div>
+
           <MobileNavigation items={items} />
         </div>
       </Container>
     </header>
   );
 }
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";

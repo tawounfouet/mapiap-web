@@ -29,7 +29,9 @@ for (const width of mobileViewports) {
   );
 }
 
-test("mobile navigation preserves keyboard behavior", async ({ page }) => {
+test("mobile navigation preserves keyboard behavior and active state", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/", { waitUntil: "networkidle" });
 
@@ -40,10 +42,11 @@ test("mobile navigation preserves keyboard behavior", async ({ page }) => {
     name: "Navigation mobile",
   });
 
+  const homeLink = mobileNavigation.getByRole("link", { name: "Accueil" });
+
   await expect(mobileNavigation).toBeVisible();
-  await expect(
-    mobileNavigation.getByRole("link", { name: "Accueil" }),
-  ).toBeFocused();
+  await expect(homeLink).toBeFocused();
+  await expect(homeLink).toHaveAttribute("aria-current", "page");
 
   await page.keyboard.press("Escape");
 

@@ -1,10 +1,13 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Link } from "@/components/ui/link";
+import { isNavigationItemActive } from "@/lib/navigation/navigation-state";
+import { cn } from "@/lib/utils/cn";
 import type { NavigationItem } from "@/types/navigation";
 
 export interface MobileNavigationProps {
@@ -16,6 +19,7 @@ const navigationId = "mobile-navigation";
 
 export function MobileNavigation({ items }: MobileNavigationProps) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!open) {
@@ -65,21 +69,29 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
           id={navigationId}
         >
           <ul className="space-y-1">
-            {items.map((item) => (
-              <li key={item.href}>
-                <Link
-                  className="block py-3"
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  variant="navigation"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {items.map((item) => {
+              const active = isNavigationItemActive(pathname, item.href);
+
+              return (
+                <li key={item.href}>
+                  <Link
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "block min-h-11 py-3",
+                      active && "text-brand-teal font-semibold",
+                    )}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    variant="navigation"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
             <li className="pt-3">
               <Link
-                className="bg-brand-teal hover:bg-brand-teal-dark w-full text-white hover:opacity-100"
+                className="bg-brand-teal hover:bg-brand-teal-dark min-h-11 w-full text-white hover:opacity-100"
                 href="/contact"
                 onClick={() => setOpen(false)}
                 variant="button-primary"
