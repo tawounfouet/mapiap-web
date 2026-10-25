@@ -56,4 +56,4 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: E2E tests
-        run: pnpm exec playwright test --grep-invert "homepage visual baselines"
+        run: pnpm test:e2e
