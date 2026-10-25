@@ -15,10 +15,7 @@ export interface HomeCabinetProps {
   differentiators: readonly HomeDifferentiator[];
 }
 
-export function HomeCabinet({
-  content,
-  differentiators,
-}: HomeCabinetProps) {
+export function HomeCabinet({ content, differentiators }: HomeCabinetProps) {
   return (
     <section className="bg-white py-12 lg:py-16" id="cabinet">
       <Container>
