@@ -34,8 +34,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Format check
-        run: pnpm format:check
+      - name: Format preview
+        run: |
+          pnpm format
+          git diff -- src/components/sections/home/home-cabinet.tsx tests/e2e/home-responsive.spec.ts
+          git diff --exit-code
 
       - name: Lint
         run: pnpm lint
