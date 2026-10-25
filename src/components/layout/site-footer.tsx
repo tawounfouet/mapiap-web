@@ -50,7 +50,11 @@ export function SiteFooter({
             <ul className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
               {legalNavigation.map((item) => (
                 <li key={item.href}>
-                  <Link className="text-xs" href={item.href} variant="navigation">
+                  <Link
+                    className="text-xs"
+                    href={item.href}
+                    variant="navigation"
+                  >
                     {item.label}
                   </Link>
                 </li>
