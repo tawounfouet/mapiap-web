@@ -5,10 +5,7 @@ import { HomeDifferentiators } from "@/components/sections/home/home-differentia
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Link } from "@/components/ui/link";
-import type {
-  HomeCabinetContent,
-  HomeDifferentiator,
-} from "@/types/content";
+import type { HomeCabinetContent, HomeDifferentiator } from "@/types/content";
 
 export interface HomeCabinetProps {
   content: HomeCabinetContent;
