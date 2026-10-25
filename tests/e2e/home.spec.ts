@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("homepage MVP exposes the primary narrative and navigation", async ({
+test("homepage exposes the visual-alignment narrative and navigation", async ({
   page,
 }) => {
   await page.goto("/");
@@ -8,21 +8,21 @@ test("homepage MVP exposes the primary narrative and navigation", async ({
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Expertise. Innovation. Performance.",
+      name: "Transformer vos ambitions en résultats durables",
     }),
   ).toBeVisible();
 
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Trois expertises à structurer",
+      name: "Trois domaines d’expertise pour créer de la valeur durable",
     }),
   ).toBeVisible();
 
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Yves TCHAMO",
+      name: "Une méthode structurée, du diagnostic à l’impact",
     }),
   ).toBeVisible();
 
@@ -30,10 +30,15 @@ test("homepage MVP exposes the primary narrative and navigation", async ({
     page.getByRole("link", { name: "Nous contacter" }).first(),
   ).toHaveAttribute("href", "/contact");
 
-  await page
-    .getByRole("navigation", { name: "Navigation principale" })
-    .getByRole("link", { name: "Cabinet" })
-    .click();
+  const primaryNavigation = page.getByRole("navigation", {
+    name: "Navigation principale",
+  });
+
+  const homeLink = primaryNavigation.getByRole("link", { name: "Accueil" });
+  await expect(homeLink).toHaveAttribute("href", "/");
+  await expect(homeLink).toHaveAttribute("aria-current", "page");
+
+  await primaryNavigation.getByRole("link", { name: "Cabinet" }).click();
 
   await expect(
     page.getByRole("heading", {
@@ -41,4 +46,10 @@ test("homepage MVP exposes the primary narrative and navigation", async ({
       name: "MAPIAP Audit & Conseils",
     }),
   ).toBeVisible();
+
+  await expect(
+    page
+      .getByRole("navigation", { name: "Navigation principale" })
+      .getByRole("link", { name: "Cabinet" }),
+  ).toHaveAttribute("aria-current", "page");
 });
