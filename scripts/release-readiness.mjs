@@ -56,6 +56,7 @@ async function contains(pathname, value) {
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+const expectedSiteUrl = releaseItems.get("RC-001")?.expectedValue;
 
 if (!siteUrl) {
   addBlocker(
@@ -72,6 +73,12 @@ if (!siteUrl) {
         "RC-001",
         "DOMAIN_NOT_HTTPS",
         "NEXT_PUBLIC_SITE_URL must use HTTPS for production release.",
+      );
+    } else if (expectedSiteUrl && parsedUrl.origin !== expectedSiteUrl) {
+      addBlocker(
+        "RC-001",
+        "DOMAIN_MISMATCH",
+        `NEXT_PUBLIC_SITE_URL must match the confirmed production origin ${expectedSiteUrl}.`,
       );
     }
   } catch {
@@ -218,19 +225,21 @@ const legalFiles = [
   {
     id: "RC-012",
     pathname: "src/app/(website)/mentions-legales/page.tsx",
+    marker: 'data-release-blocker="RC-012"',
   },
   {
     id: "RC-013",
     pathname: "src/app/(website)/politique-de-confidentialite/page.tsx",
+    marker: "à finaliser",
   },
 ];
 
-for (const { id, pathname } of legalFiles) {
-  if (await contains(pathname, "à finaliser")) {
+for (const { id, pathname, marker } of legalFiles) {
+  if (await contains(pathname, marker)) {
     addBlocker(
       id,
       "LEGAL_CONTENT_PENDING",
-      `${pathname} is still a legal placeholder.`,
+      `${pathname} still contains unresolved legal release information.`,
     );
   }
 }

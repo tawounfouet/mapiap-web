@@ -6,10 +6,11 @@
     {
       "id": "RC-001",
       "category": "runtime",
-      "owner": "CLIENT",
+      "owner": "WEBTECH",
       "title": "Official production domain",
-      "state": "blocked_external_input",
-      "resolution": "Confirm the exact HTTPS production domain, configure NEXT_PUBLIC_SITE_URL and complete DNS/hosting activation."
+      "state": "blocked_runtime_configuration",
+      "expectedValue": "https://mapiap-conseils.com",
+      "resolution": "Configure NEXT_PUBLIC_SITE_URL=https://mapiap-conseils.com in production and complete DNS/hosting activation."
     },
     {
       "id": "RC-002",
@@ -96,10 +97,10 @@
     {
       "id": "RC-012",
       "category": "legal",
-      "owner": "CLIENT",
+      "owner": "SHARED",
       "title": "Legal notices",
-      "state": "blocked_external_input",
-      "resolution": "Provide the verified legal/company/hosting information required to finalize the legal notices."
+      "state": "blocked_partial_input",
+      "resolution": "Company identity is integrated from the RCS/RNE records. Confirm the publication director, public contact details, hosting provider and regulated-profession notices."
     },
     {
       "id": "RC-013",
