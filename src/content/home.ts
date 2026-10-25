@@ -15,8 +15,7 @@ export const homeContent = {
     highlight: "résultats durables",
     description:
       "Un accompagnement stratégique pour des organisations plus performantes, plus innovantes et plus résilientes.",
-    image:
-      "/media/home/hero.jpg",
+    image: "/media/home/hero.jpg",
     primaryAction: {
       label: "Nous contacter",
       href: "/contact",
@@ -53,8 +52,7 @@ export const homeContent = {
     title: "Un partenaire engagé à vos côtés",
     description:
       "MAPIAP est un cabinet d’audit et de conseils qui accompagne les organisations dans leurs enjeux de performance, d’innovation et de transformation durable.",
-    image:
-      "/media/home/cabinet.jpg",
+    image: "/media/home/cabinet.jpg",
     action: {
       label: "Découvrir le cabinet",
       href: "/cabinet",
@@ -84,24 +82,21 @@ export const homeContent = {
       {
         title: "Audit & Évaluation",
         description: "Des analyses rigoureuses pour des décisions éclairées.",
-        image:
-          "/media/home/expertise-audit.jpg",
+        image: "/media/home/expertise-audit.jpg",
         icon: "bar-chart",
         href: "/expertises",
       },
       {
         title: "Conseil stratégique",
         description: "Des stratégies sur mesure pour une croissance durable.",
-        image:
-          "/media/home/expertise-strategy.jpg",
+        image: "/media/home/expertise-strategy.jpg",
         icon: "lightbulb",
         href: "/expertises",
       },
       {
         title: "Transformation & Innovation",
         description: "Des solutions innovantes pour relever vos défis.",
-        image:
-          "/media/home/expertise-transformation.jpg",
+        image: "/media/home/expertise-transformation.jpg",
         icon: "cog",
         href: "/expertises",
       },
@@ -139,8 +134,7 @@ export const homeContent = {
     featured: {
       title: "Comment réussir votre transformation durable ?",
       href: "/actualites",
-      image:
-        "/media/home/hero.jpg",
+      image: "/media/home/hero.jpg",
       category: "Conseil",
       date: "12 mars 2024",
     },
@@ -185,8 +179,7 @@ export const homeContent = {
     eyebrow: "Discutons de vos projets",
     title:
       "Un premier échange pour comprendre vos enjeux et identifier ensemble les meilleures opportunités.",
-    image:
-      "/media/home/hero.jpg",
+    image: "/media/home/hero.jpg",
     action: {
       label: "Nous contacter",
       href: "/contact",
