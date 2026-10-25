@@ -12,22 +12,22 @@ export function CabinetFounderSection({ content }: CabinetFounderSectionProps) {
   return (
     <section
       aria-labelledby="cabinet-founder-title"
-      className="bg-white py-10 lg:py-14"
+      className="bg-white py-8 lg:py-10"
     >
       <Container>
-        <div className="grid items-center gap-7 lg:grid-cols-12 lg:gap-10">
+        <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-8">
           <div
             aria-label="Portrait professionnel à intégrer"
-            className="from-brand-navy to-brand-teal relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br lg:col-span-5 lg:aspect-[4/5]"
+            className="from-brand-navy to-brand-teal relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br lg:col-span-4 lg:aspect-square"
             role="img"
           >
-            <div className="absolute inset-4 rounded-lg border border-white/15" />
-            <span className="relative text-5xl font-extrabold tracking-tight text-white/95 lg:text-6xl">
+            <div className="absolute inset-3 rounded-md border border-white/15" />
+            <span className="relative text-5xl font-extrabold tracking-tight text-white/95">
               {initials}
             </span>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             {content.eyebrow ? <Eyebrow>{content.eyebrow}</Eyebrow> : null}
             <h2
               className="text-brand-navy text-2xl leading-[1.18] font-extrabold tracking-tight lg:text-[1.75rem]"
@@ -35,11 +35,11 @@ export function CabinetFounderSection({ content }: CabinetFounderSectionProps) {
             >
               {content.person.firstName} {content.person.lastName}
             </h2>
-            <p className="text-brand-teal mt-2 text-sm font-semibold">
+            <p className="text-brand-teal mt-1.5 text-sm font-semibold">
               {content.person.role}
             </p>
             {content.person.shortBio ? (
-              <p className="text-brand-gray mt-4 max-w-2xl text-sm leading-6 lg:text-base lg:leading-7">
+              <p className="text-brand-gray mt-3 max-w-2xl text-sm leading-6 lg:text-base lg:leading-7">
                 {content.person.shortBio}
               </p>
             ) : null}
