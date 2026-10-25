@@ -10,9 +10,9 @@ describe("isNavigationItemActive", () => {
 
   it("matches a section and its nested routes", () => {
     expect(isNavigationItemActive("/expertises", "/expertises")).toBe(true);
-    expect(
-      isNavigationItemActive("/expertises/audit", "/expertises"),
-    ).toBe(true);
+    expect(isNavigationItemActive("/expertises/audit", "/expertises")).toBe(
+      true,
+    );
   });
 
   it("is safe when the pathname is temporarily unavailable", () => {
