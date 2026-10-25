@@ -13,12 +13,24 @@ export interface HomeExpertisesProps {
 
 export function HomeExpertises({ content }: HomeExpertisesProps) {
   return (
-    <section className="bg-surface-muted py-12 lg:py-16">
+    <section className="bg-surface-muted py-10 lg:py-14">
       <Container>
-        <Eyebrow>{content.eyebrow}</Eyebrow>
-        <h2 className="text-brand-navy max-w-3xl text-[1.75rem] leading-[1.2] font-extrabold tracking-tight lg:text-3xl">
-          {content.title}
-        </h2>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <Eyebrow>{content.eyebrow}</Eyebrow>
+            <h2 className="text-brand-navy max-w-3xl text-[1.75rem] leading-[1.2] font-extrabold tracking-tight lg:max-w-5xl lg:text-3xl">
+              {content.title}
+            </h2>
+          </div>
+          <Link
+            className="text-brand-teal mt-8 hidden shrink-0 gap-1.5 text-[0.6875rem] no-underline min-[380px]:inline-flex lg:hidden"
+            href={content.allAction.href}
+            variant="standalone"
+          >
+            {content.allAction.label}
+            <ArrowRight aria-hidden size={13} />
+          </Link>
+        </div>
 
         <div className="mt-7 grid gap-3 lg:hidden">
           {content.items.map((item) => {

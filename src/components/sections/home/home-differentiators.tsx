@@ -17,7 +17,7 @@ export function HomeDifferentiators({
     <div
       className={cn(
         variant === "embedded"
-          ? "grid gap-5"
+          ? "bg-surface-muted grid gap-5 rounded-xl p-5 lg:p-6"
           : "border-border bg-surface-muted rounded-xl border p-5",
         className,
       )}
@@ -47,11 +47,16 @@ export function HomeDifferentiators({
               )}
               key={item.title}
             >
-              <span className="border-border bg-surface-muted text-brand-teal flex size-10 shrink-0 items-center justify-center rounded-lg border">
+              <span className="border-border bg-surface text-brand-teal flex size-10 shrink-0 items-center justify-center rounded-lg border">
                 <Icon aria-hidden size={20} />
               </span>
               <div>
-                <h3 className="text-brand-navy mt-2 text-xs font-bold sm:text-sm">
+                <h3
+                  className={cn(
+                    "text-brand-navy text-xs font-bold sm:text-sm",
+                    variant === "section" && "mt-2",
+                  )}
+                >
                   {item.title}
                 </h3>
                 <p className="text-brand-gray mt-0.5 text-[0.6875rem] leading-4 sm:text-xs">

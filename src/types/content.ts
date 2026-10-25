@@ -110,6 +110,7 @@ export interface HomeExpertiseTeaser {
 export interface HomeExpertiseSectionContent {
   eyebrow: string;
   title: string;
+  allAction: CallToAction;
   items: readonly HomeExpertiseTeaser[];
 }
 

@@ -64,19 +64,41 @@ export function HomeNews({ content }: HomeNewsProps) {
         </span>
       </Link>
 
-      {content.secondary.map((item) => (
-        <Link
-          className="group border-border flex items-center justify-between gap-4 border-b px-2 py-4 no-underline"
-          href={item.href}
-          key={item.title}
-          variant="standalone"
-        >
-          <span className="text-brand-navy group-hover:text-brand-teal text-sm font-bold transition-colors">
-            {item.title}
-          </span>
-          <ArrowRight className="text-brand-teal shrink-0" size={16} />
-        </Link>
-      ))}
+      <div className="mt-3 hidden gap-2 lg:grid">
+        {content.secondary.map((item) => (
+          <Link
+            className="group border-border grid grid-cols-[4.5rem_1fr_auto] items-center gap-3 rounded-lg border bg-white p-2 no-underline"
+            href={item.href}
+            key={item.title}
+            variant="standalone"
+          >
+            {item.image ? (
+              <span className="relative h-14 overflow-hidden rounded-md">
+                <Image
+                  alt=""
+                  className="object-cover"
+                  fill
+                  sizes="72px"
+                  src={item.image}
+                />
+              </span>
+            ) : (
+              <span className="bg-surface-muted h-14 rounded-md" />
+            )}
+            <span className="min-w-0">
+              {item.date ? (
+                <span className="text-brand-gray-light text-[0.625rem]">
+                  {item.date}
+                </span>
+              ) : null}
+              <span className="text-brand-navy group-hover:text-brand-teal mt-0.5 block text-xs leading-4 font-bold transition-colors">
+                {item.title}
+              </span>
+            </span>
+            <ArrowRight className="text-brand-teal shrink-0" size={15} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

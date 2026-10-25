@@ -78,6 +78,10 @@ export const homeContent = {
   expertiseSection: {
     eyebrow: "Nos expertises",
     title: "Trois domaines d’expertise pour créer de la valeur durable",
+    allAction: {
+      label: "Voir toutes les expertises",
+      href: "/expertises",
+    },
     items: [
       {
         title: "Audit & Évaluation",
@@ -142,10 +146,14 @@ export const homeContent = {
       {
         title: "Innovation et performance : quels leviers pour 2024 ?",
         href: "/actualites",
+        image: "/media/home/expertise-strategy.jpg",
+        date: "5 mars 2024",
       },
       {
         title: "Audit : un outil stratégique pour anticiper les risques",
         href: "/actualites",
+        image: "/media/home/cabinet.jpg",
+        date: "28 février 2024",
       },
     ],
   },
