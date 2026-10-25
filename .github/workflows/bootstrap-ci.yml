@@ -95,6 +95,7 @@ jobs:
 
       - name: Validate localized content
         run: |
+          pnpm exec prettier src/content/home.ts --write
           pnpm format:check
           pnpm typecheck
 
