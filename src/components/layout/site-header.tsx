@@ -15,7 +15,7 @@ export function SiteHeader({ items }: SiteHeaderProps) {
   return (
     <header className="border-border bg-background/95 sticky top-0 z-40 border-b backdrop-blur-md">
       <Container>
-        <div className="flex h-20 items-center justify-between gap-5">
+        <div className="flex h-[4.25rem] items-center justify-between gap-5">
           <Link
             aria-label="MAPIAP Audit & Conseils - Accueil"
             className="shrink-0"
@@ -24,7 +24,7 @@ export function SiteHeader({ items }: SiteHeaderProps) {
           >
             <Image
               alt=""
-              className="h-auto w-36 sm:w-44"
+              className="h-auto w-36 sm:w-40"
               height={60}
               priority
               src="/brand/mapiap-horizontal-dark.svg"
@@ -32,10 +32,10 @@ export function SiteHeader({ items }: SiteHeaderProps) {
             />
           </Link>
 
-          <div className="hidden items-center gap-7 lg:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             <SiteNavigation items={items} showActiveState />
             <Link
-              className="bg-brand-teal hover:bg-brand-teal-dark gap-2 px-5 text-white hover:opacity-100"
+              className="bg-brand-teal hover:bg-brand-teal-dark min-h-10 gap-2 px-5 text-white hover:opacity-100"
               href="/contact"
               variant="button-primary"
             >

@@ -14,19 +14,19 @@ export interface HomeCabinetProps {
 
 export function HomeCabinet({ content, differentiators }: HomeCabinetProps) {
   return (
-    <section className="bg-white py-10 lg:py-14" id="cabinet">
+    <section className="bg-white py-8 lg:py-10" id="cabinet">
       <Container>
-        <div className="grid items-start gap-7 min-[380px]:grid-cols-8 lg:grid-cols-12 lg:items-center lg:gap-8">
+        <div className="grid items-start gap-5 min-[380px]:grid-cols-8 lg:grid-cols-12 lg:items-center lg:gap-7">
           <div className="min-[380px]:col-span-5 lg:col-span-5">
             <Eyebrow>{content.eyebrow}</Eyebrow>
-            <h2 className="text-brand-navy text-[1.75rem] leading-[1.2] font-extrabold tracking-tight lg:text-3xl">
+            <h2 className="text-brand-navy text-2xl leading-[1.18] font-extrabold tracking-tight lg:text-[1.75rem]">
               {content.title}
             </h2>
-            <p className="text-brand-gray mt-4 max-w-xl text-sm leading-6 lg:text-base lg:leading-7">
+            <p className="text-brand-gray mt-3 max-w-xl text-sm leading-6">
               {content.description}
             </p>
             <Link
-              className="text-brand-navy hover:text-brand-teal mt-5 gap-2 text-sm no-underline"
+              className="text-brand-navy hover:text-brand-teal mt-4 gap-2 text-sm no-underline"
               href={content.action.href}
               variant="standalone"
             >
@@ -35,7 +35,7 @@ export function HomeCabinet({ content, differentiators }: HomeCabinetProps) {
             </Link>
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-md min-[380px]:col-span-3 min-[380px]:mt-9 lg:col-span-4 lg:mt-0 lg:aspect-[16/9]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-sm min-[380px]:col-span-3 min-[380px]:mt-7 lg:col-span-4 lg:mt-0 lg:aspect-[16/9]">
             <Image
               alt="Espace de travail contemporain propice aux échanges"
               className="object-cover transition-transform duration-400 hover:scale-[1.02] motion-reduce:transition-none"

@@ -17,21 +17,21 @@ export function HomeDifferentiators({
     <div
       className={cn(
         variant === "embedded"
-          ? "bg-surface-muted grid gap-5 rounded-xl p-5 lg:p-6"
-          : "border-border bg-surface-muted rounded-xl border p-5",
+          ? "bg-surface-muted grid gap-4 rounded-lg p-4"
+          : "py-1",
         className,
       )}
     >
       {variant === "section" ? (
-        <h2 className="text-brand-navy mb-5 text-xl font-extrabold">
+        <h2 className="text-brand-navy mb-4 text-lg font-extrabold">
           Pourquoi choisir MAPIAP ?
         </h2>
       ) : null}
       <div
         className={cn(
           variant === "embedded"
-            ? "grid gap-5"
-            : "grid grid-cols-3 gap-3 text-center",
+            ? "grid gap-4"
+            : "grid grid-cols-3 gap-2 text-center",
         )}
       >
         {items.map((item) => {
@@ -42,13 +42,13 @@ export function HomeDifferentiators({
               className={cn(
                 "min-w-0",
                 variant === "embedded"
-                  ? "flex items-center gap-4"
+                  ? "flex items-center gap-3"
                   : "flex flex-col items-center",
               )}
               key={item.title}
             >
-              <span className="border-border bg-surface text-brand-teal flex size-10 shrink-0 items-center justify-center rounded-lg border">
-                <Icon aria-hidden size={20} />
+              <span className="border-border bg-surface text-brand-teal flex size-9 shrink-0 items-center justify-center rounded-lg border">
+                <Icon aria-hidden size={19} />
               </span>
               <div>
                 <h3
@@ -59,7 +59,7 @@ export function HomeDifferentiators({
                 >
                   {item.title}
                 </h3>
-                <p className="text-brand-gray mt-0.5 text-[0.6875rem] leading-4 sm:text-xs">
+                <p className="text-brand-gray mt-0.5 text-[0.625rem] leading-4 sm:text-[0.6875rem]">
                   {item.description}
                 </p>
               </div>

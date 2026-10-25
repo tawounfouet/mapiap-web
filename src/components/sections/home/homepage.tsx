@@ -20,9 +20,9 @@ export function Homepage() {
       />
       <HomeExpertises content={homeContent.expertiseSection} />
 
-      <section className="bg-white py-12 lg:py-16">
+      <section className="bg-white py-8 lg:py-10">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="grid gap-7 lg:grid-cols-12 lg:gap-8">
             <HomeApproach content={homeContent.approachSection} />
             <HomeDifferentiators
               className="lg:hidden"

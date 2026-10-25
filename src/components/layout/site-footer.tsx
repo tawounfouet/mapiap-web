@@ -22,7 +22,7 @@ export function SiteFooter({
   return (
     <footer className="border-border bg-background border-t">
       <Container>
-        <div className="grid gap-7 py-8 lg:grid-cols-[auto_1fr] lg:items-center">
+        <div className="grid gap-4 py-5 lg:grid-cols-[auto_1fr] lg:items-center">
           <Link
             aria-label="MAPIAP Audit & Conseils - Accueil"
             className="inline-block w-fit"
@@ -31,7 +31,7 @@ export function SiteFooter({
           >
             <Image
               alt=""
-              className="h-auto w-36"
+              className="h-auto w-32"
               height={60}
               src="/brand/mapiap-horizontal-dark.svg"
               width={175}
@@ -40,17 +40,17 @@ export function SiteFooter({
 
           <SiteNavigation
             ariaLabel="Navigation de pied de page"
-            className="lg:justify-self-end"
+            className="hidden lg:block lg:justify-self-end"
             items={items}
           />
         </div>
 
-        <div className="border-border flex flex-col gap-4 border-t py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-border flex flex-col gap-2.5 border-t py-3 sm:flex-row sm:items-center sm:justify-between">
           <nav aria-label="Navigation légale">
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <ul className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
               {legalNavigation.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} variant="navigation">
+                  <Link className="text-xs" href={item.href} variant="navigation">
                     {item.label}
                   </Link>
                 </li>
