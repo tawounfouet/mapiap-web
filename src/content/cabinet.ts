@@ -6,6 +6,7 @@ export const cabinetContent = {
     title: "MAPIAP Audit & Conseils",
     description:
       "À valider - phrase institutionnelle de positionnement du cabinet et synthèse de sa proposition de valeur.",
+    image: "/media/home/hero.jpg",
   },
   introduction: {
     eyebrow: "Présentation",
@@ -14,6 +15,7 @@ export const cabinetContent = {
       "À valider - texte de présentation du cabinet, de son contexte, de sa manière d’accompagner ses clients et de son positionnement.",
       "À valider - éléments différenciants, périmètre d’intervention et formulation institutionnelle définitive.",
     ],
+    image: "/media/home/cabinet.jpg",
   },
   pillars: {
     eyebrow: "Signature",
@@ -53,6 +55,7 @@ export const cabinetContent = {
     title: "Échanger avec MAPIAP",
     description:
       "À valider - formulation finale du message de prise de contact du cabinet.",
+    image: "/media/home/hero.jpg",
     action: {
       label: "Nous contacter",
       href: "/contact",

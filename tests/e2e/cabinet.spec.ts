@@ -34,3 +34,19 @@ test("cabinet page exposes the institutional narrative", async ({ page }) => {
 
   expect(hasHorizontalOverflow).toBe(false);
 });
+
+for (const width of [390, 768, 1440] as const) {
+  test(
+    "cabinet page remains within the viewport at " + width + "px",
+    async ({ page }) => {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto("/cabinet", { waitUntil: "networkidle" });
+
+      const hasHorizontalOverflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > window.innerWidth,
+      );
+
+      expect(hasHorizontalOverflow).toBe(false);
+    },
+  );
+}

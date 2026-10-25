@@ -1,7 +1,5 @@
-import { PersonProfile } from "@/components/domain/person-profile";
-import { Section } from "@/components/layout/section";
 import { Container } from "@/components/ui/container";
-import { Text } from "@/components/ui/text";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import type { CabinetFounderContent } from "@/types/content";
 
 export interface CabinetFounderSectionProps {
@@ -9,21 +7,45 @@ export interface CabinetFounderSectionProps {
 }
 
 export function CabinetFounderSection({ content }: CabinetFounderSectionProps) {
-  return (
-    <Section aria-label="Direction du cabinet" tone="muted">
-      <Container>
-        {content.eyebrow ? (
-          <Text
-            className="mb-8 font-medium tracking-[0.18em] uppercase"
-            size="sm"
-            tone="muted"
-          >
-            {content.eyebrow}
-          </Text>
-        ) : null}
+  const initials = `${content.person.firstName.charAt(0)}${content.person.lastName.charAt(0)}`;
 
-        <PersonProfile headingAs="h2" person={content.person} />
+  return (
+    <section
+      aria-labelledby="cabinet-founder-title"
+      className="bg-white py-8 lg:py-10"
+    >
+      <Container>
+        <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-8">
+          <div
+            aria-label="Portrait professionnel à intégrer"
+            className="from-brand-navy to-brand-teal relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br lg:col-span-4 lg:aspect-square"
+            role="img"
+          >
+            <div className="absolute inset-3 rounded-md border border-white/15" />
+            <span className="relative text-5xl font-extrabold tracking-tight text-white/95">
+              {initials}
+            </span>
+          </div>
+
+          <div className="lg:col-span-8">
+            {content.eyebrow ? <Eyebrow>{content.eyebrow}</Eyebrow> : null}
+            <h2
+              className="text-brand-navy text-2xl leading-[1.18] font-extrabold tracking-tight lg:text-[1.75rem]"
+              id="cabinet-founder-title"
+            >
+              {content.person.firstName} {content.person.lastName}
+            </h2>
+            <p className="text-brand-teal mt-1.5 text-sm font-semibold">
+              {content.person.role}
+            </p>
+            {content.person.shortBio ? (
+              <p className="text-brand-gray mt-3 max-w-2xl text-sm leading-6 lg:text-base lg:leading-7">
+                {content.person.shortBio}
+              </p>
+            ) : null}
+          </div>
+        </div>
       </Container>
-    </Section>
+    </section>
   );
 }
