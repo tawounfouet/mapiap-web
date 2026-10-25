@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   qualify:
@@ -18,8 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -58,25 +56,4 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: E2E tests
-        run: pnpm exec playwright test --grep-invert "homepage visual baselines"
-
-      - name: Generate visual baselines
-        run: pnpm exec playwright test tests/e2e/home-visual.spec.ts --project=chromium --update-snapshots
-
-      - name: Commit visual baselines
-        if: github.event_name == 'pull_request'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tests/e2e/home-visual.spec.ts-snapshots/
-          if ! git diff --cached --quiet; then
-            git commit -m "test(home): add visual regression baselines"
-            git push origin "HEAD:${{ github.head_ref }}"
-          fi
-
-      - name: Upload visual baselines
-        uses: actions/upload-artifact@v4
-        with:
-          name: homepage-visual-baselines
-          path: tests/e2e/home-visual.spec.ts-snapshots/
-          if-no-files-found: error
+        run: pnpm test:e2e
