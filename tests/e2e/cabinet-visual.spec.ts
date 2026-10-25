@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 
-// Reference viewports from LOT-18 visual qualification.\nconst baselines = [
+// Reference viewports from LOT-18 visual qualification.
+const baselines = [
   {
     name: "cabinet-mobile-390.png",
     viewport: { width: 390, height: 844 },
