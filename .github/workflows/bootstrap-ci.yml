@@ -18,8 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -58,34 +56,24 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: E2E tests
-        run: pnpm exec playwright test --grep-invert "homepage visual baselines"
-
-      - name: Generate responsive visual baselines
-        run: pnpm exec playwright test tests/e2e/home-visual.spec.ts --project=chromium --update-snapshots
-
-      - name: Commit responsive visual baselines
-        if: github.event_name == 'pull_request'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tests/e2e/home-visual.spec.ts-snapshots/
-          if ! git diff --cached --quiet; then
-            git commit -m "test(home): extend responsive visual baselines"
-            git push origin "HEAD:${{ github.head_ref }}"
-          fi
+        run: pnpm test:e2e
 
       - name: Materialize homepage media
         run: |
-          mkdir -p .artifacts/homepage-media
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85" -o .artifacts/homepage-media/hero.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85" -o .artifacts/homepage-media/cabinet.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85" -o .artifacts/homepage-media/expertise-audit.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=900&q=85" -o .artifacts/homepage-media/expertise-strategy.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85" -o .artifacts/homepage-media/expertise-transformation.jpg
+          mkdir -p public/media/home
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85" -o public/media/home/hero.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85" -o public/media/home/cabinet.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85" -o public/media/home/expertise-audit.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=900&q=85" -o public/media/home/expertise-strategy.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85" -o public/media/home/expertise-transformation.jpg
 
-      - name: Upload homepage media
-        uses: actions/upload-artifact@v4
-        with:
-          name: homepage-media
-          path: .artifacts/homepage-media/
-          if-no-files-found: error
+      - name: Commit homepage media
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/media/home
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "chore(media): localize homepage assets"
+          git push origin HEAD:feat/homepage-visual-alignment
