@@ -14,8 +14,8 @@ export function HomeNews({ content }: HomeNewsProps) {
     <div className="lg:col-span-5">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <Eyebrow>{content.eyebrow}</Eyebrow>
-          <h2 className="text-brand-navy text-xl font-extrabold">
+          <Eyebrow className="mb-0 hidden lg:flex">{content.eyebrow}</Eyebrow>
+          <h2 className="text-brand-navy text-xl font-extrabold lg:sr-only">
             {content.title}
           </h2>
         </div>
