@@ -16,7 +16,7 @@ export const homeContent = {
     description:
       "Un accompagnement stratégique pour des organisations plus performantes, plus innovantes et plus résilientes.",
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85",
+      "/media/home/hero.jpg",
     primaryAction: {
       label: "Nous contacter",
       href: "/contact",
@@ -54,7 +54,7 @@ export const homeContent = {
     description:
       "MAPIAP est un cabinet d’audit et de conseils qui accompagne les organisations dans leurs enjeux de performance, d’innovation et de transformation durable.",
     image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85",
+      "/media/home/cabinet.jpg",
     action: {
       label: "Découvrir le cabinet",
       href: "/cabinet",
@@ -85,7 +85,7 @@ export const homeContent = {
         title: "Audit & Évaluation",
         description: "Des analyses rigoureuses pour des décisions éclairées.",
         image:
-          "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85",
+          "/media/home/expertise-audit.jpg",
         icon: "bar-chart",
         href: "/expertises",
       },
@@ -93,7 +93,7 @@ export const homeContent = {
         title: "Conseil stratégique",
         description: "Des stratégies sur mesure pour une croissance durable.",
         image:
-          "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=900&q=85",
+          "/media/home/expertise-strategy.jpg",
         icon: "lightbulb",
         href: "/expertises",
       },
@@ -101,7 +101,7 @@ export const homeContent = {
         title: "Transformation & Innovation",
         description: "Des solutions innovantes pour relever vos défis.",
         image:
-          "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85",
+          "/media/home/expertise-transformation.jpg",
         icon: "cog",
         href: "/expertises",
       },
@@ -140,7 +140,7 @@ export const homeContent = {
       title: "Comment réussir votre transformation durable ?",
       href: "/actualites",
       image:
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80",
+        "/media/home/hero.jpg",
       category: "Conseil",
       date: "12 mars 2024",
     },
@@ -186,7 +186,7 @@ export const homeContent = {
     title:
       "Un premier échange pour comprendre vos enjeux et identifier ensemble les meilleures opportunités.",
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=75",
+      "/media/home/hero.jpg",
     action: {
       label: "Nous contacter",
       href: "/contact",

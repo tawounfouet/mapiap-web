@@ -42,14 +42,6 @@ test.describe("homepage visual baselines", () => {
         await document.fonts.ready;
       });
 
-      await page.addStyleTag({
-        content: `
-          main img {
-            visibility: hidden !important;
-          }
-        `,
-      });
-
       await expect(page).toHaveScreenshot(baseline.name, {
         animations: "disabled",
         caret: "hide",

@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   qualify:
@@ -18,8 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -59,55 +57,3 @@ jobs:
 
       - name: E2E tests
         run: pnpm exec playwright test --grep-invert "homepage visual baselines"
-
-      - name: Generate responsive visual baselines
-        run: pnpm exec playwright test tests/e2e/home-visual.spec.ts --project=chromium --update-snapshots
-
-      - name: Materialize homepage media
-        run: |
-          mkdir -p public/media/home
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85" -o public/media/home/hero.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85" -o public/media/home/cabinet.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85" -o public/media/home/expertise-audit.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=900&q=85" -o public/media/home/expertise-strategy.jpg
-          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85" -o public/media/home/expertise-transformation.jpg
-
-      - name: Point homepage content to local media
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          path = Path("src/content/home.ts")
-          content = path.read_text(encoding="utf-8")
-          replacements = {
-              '"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85"': '"/media/home/hero.jpg"',
-              '"https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85"': '"/media/home/cabinet.jpg"',
-              '"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85"': '"/media/home/expertise-audit.jpg"',
-              '"https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=900&q=85"': '"/media/home/expertise-strategy.jpg"',
-              '"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85"': '"/media/home/expertise-transformation.jpg"',
-              '"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80"': '"/media/home/hero.jpg"',
-              '"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=75"': '"/media/home/hero.jpg"',
-          }
-          for source, target in replacements.items():
-              content = content.replace(source, target)
-          path.write_text(content, encoding="utf-8")
-          PY
-
-      - name: Validate localized content
-        run: |
-          pnpm exec prettier src/content/home.ts --write
-          pnpm format:check
-          pnpm typecheck
-
-      - name: Commit visual baselines and localized media
-        if: github.event_name == 'pull_request'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tests/e2e/home-visual.spec.ts-snapshots/ public/media/home/ src/content/home.ts
-          if git diff --cached --quiet; then
-            exit 0
-          fi
-          git commit -m "test(home): complete responsive visual baselines and localize media"
-          git pull --rebase origin "${{ github.head_ref }}"
-          git push origin "HEAD:${{ github.head_ref }}"
