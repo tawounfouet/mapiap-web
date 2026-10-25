@@ -57,3 +57,19 @@ jobs:
 
       - name: E2E tests
         run: pnpm test:e2e
+
+      - name: Materialize homepage media
+        run: |
+          mkdir -p .artifacts/homepage-media
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85" -o .artifacts/homepage-media/hero.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85" -o .artifacts/homepage-media/cabinet.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85" -o .artifacts/homepage-media/expertise-audit.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=900&q=85" -o .artifacts/homepage-media/expertise-strategy.jpg
+          curl --fail --location --retry 3 "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85" -o .artifacts/homepage-media/expertise-transformation.jpg
+
+      - name: Upload homepage media
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-media
+          path: .artifacts/homepage-media/
+          if-no-files-found: error
