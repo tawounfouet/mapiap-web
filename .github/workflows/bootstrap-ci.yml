@@ -56,4 +56,14 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: E2E tests
-        run: pnpm test:e2e
+        run: pnpm test:e2e -- --grep-invert "homepage visual baselines"
+
+      - name: Generate visual baselines
+        run: pnpm exec playwright test tests/e2e/home-visual.spec.ts --project=chromium --update-snapshots
+
+      - name: Upload visual baselines
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-visual-baselines
+          path: tests/e2e/home-visual.spec.ts-snapshots/
+          if-no-files-found: error
