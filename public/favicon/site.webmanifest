@@ -1,0 +1,19 @@
+{
+  "name": "MAPIAP Audit & Conseils",
+  "short_name": "MAPIAP",
+  "icons": [
+    {
+      "src": "/brand/mapiap-symbol-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/mapiap-symbol-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#01324B",
+  "background_color": "#FFFFFF",
+  "display": "standalone"
+}

@@ -11,7 +11,7 @@ export const siteConfig = {
     registration: "131 611 022 R.C.S. Paris",
     registeredOffice: "60 avenue de La Bourdonnais, 75007 Paris, France",
     activity: "Exercice de la profession d’expert-comptable",
-    apeCode: "6920Z — Activités comptables",
+    apeCode: "6920Z - Activités comptables",
     manager: "Yves KENMEGNE TCHAMO",
     domain: "mapiap-conseils.com",
   },

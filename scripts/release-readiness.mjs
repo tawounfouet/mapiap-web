@@ -195,12 +195,7 @@ if (await contains("src/content/actualites.ts", "-a-valider")) {
   );
 }
 
-if (
-  await contains(
-    "src/design-system/tokens.css",
-    "official navy and cyan values are intentionally not declared",
-  )
-) {
+if (await contains("src/design-system/tokens.css", "RC-010")) {
   addBlocker(
     "RC-010",
     "BRAND_TOKENS_PENDING",

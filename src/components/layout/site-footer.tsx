@@ -18,24 +18,27 @@ export function SiteFooter({
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-border bg-surface-muted border-t">
+    <footer className="border-border bg-background border-t">
       <Container>
-        <div className="flex flex-col gap-8 py-10 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-3">
+        <div className="flex flex-col gap-8 py-10 lg:flex-row lg:items-center lg:justify-between">
+          <div>
             <Link
-              aria-label="MAPIAP Audit & Conseils — Accueil"
-              className="text-base tracking-wide"
+              aria-label="MAPIAP Audit & Conseils - Accueil"
+              className="inline-block"
               href="/"
               variant="navigation"
             >
-              MAPIAP
+              <Image
+                alt=""
+                className="h-auto w-36"
+                height={60}
+                src="/brand/mapiap-horizontal-dark.svg"
+                width={175}
+              />
             </Link>
-            <Text size="sm" tone="muted">
-              Audit & Conseils
-            </Text>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 lg:text-right">
             <SiteNavigation
               ariaLabel="Navigation de pied de page"
               items={items}
@@ -67,3 +70,4 @@ export function SiteFooter({
     </footer>
   );
 }
+import Image from "next/image";

@@ -1,9 +1,8 @@
 /*
  * MAPIAP design tokens.
  *
- * The official navy and cyan values are intentionally not declared here yet.
- * They must be extracted from validated brand assets before becoming
- * production brand tokens.
+ * RC-010: these working values come from the provisional logo pack.
+ * They must still be confirmed against the final brand master.
  */
 
 :root {
@@ -15,14 +14,24 @@
   --mapiap-neutral-600: #525252;
   --mapiap-neutral-950: #171717;
 
+  /* Provisional brand primitives */
+  --mapiap-navy-900: #01324b;
+  --mapiap-navy-800: #022839;
+  --mapiap-teal-700: #075b65;
+  --mapiap-teal-500: #07a0a1;
+  --mapiap-cyan-400: #06cec9;
+  --mapiap-gray-600: #676b71;
+  --mapiap-gray-400: #999ea2;
+  --mapiap-gray-50: #f7f9fa;
+
   /* Semantic colors */
   --mapiap-color-background: var(--mapiap-neutral-0);
   --mapiap-color-surface: var(--mapiap-neutral-0);
-  --mapiap-color-surface-muted: var(--mapiap-neutral-100);
-  --mapiap-color-foreground: var(--mapiap-neutral-950);
-  --mapiap-color-muted-foreground: var(--mapiap-neutral-600);
-  --mapiap-color-border: var(--mapiap-neutral-200);
-  --mapiap-color-focus-ring: var(--mapiap-neutral-950);
+  --mapiap-color-surface-muted: var(--mapiap-gray-50);
+  --mapiap-color-foreground: var(--mapiap-navy-900);
+  --mapiap-color-muted-foreground: var(--mapiap-gray-600);
+  --mapiap-color-border: #dde5e8;
+  --mapiap-color-focus-ring: var(--mapiap-teal-500);
 
   /* Layout */
   --mapiap-container-page: 80rem;
@@ -55,6 +64,13 @@
   --color-muted-foreground: var(--mapiap-color-muted-foreground);
   --color-border: var(--mapiap-color-border);
   --color-focus-ring: var(--mapiap-color-focus-ring);
+  --color-brand-navy: var(--mapiap-navy-900);
+  --color-brand-navy-dark: var(--mapiap-navy-800);
+  --color-brand-teal-dark: var(--mapiap-teal-700);
+  --color-brand-teal: var(--mapiap-teal-500);
+  --color-brand-cyan: var(--mapiap-cyan-400);
+  --color-brand-gray: var(--mapiap-gray-600);
+  --color-brand-gray-light: var(--mapiap-gray-400);
 
   --radius-sm: var(--mapiap-radius-sm);
   --radius-md: var(--mapiap-radius-md);

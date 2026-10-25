@@ -10,5 +10,5 @@ export const contactContent = {
     "Décrivez votre besoin avec les éléments utiles pour permettre une première prise de connaissance.",
   directContactTitle: "Coordonnées du cabinet",
   directContactDescription:
-    "60 avenue de La Bourdonnais, 75007 Paris, France. À valider — téléphone et adresse email professionnelle à publier.",
+    "60 avenue de La Bourdonnais, 75007 Paris, France. À valider - téléphone et adresse email professionnelle à publier.",
 } satisfies ContactPageContent;

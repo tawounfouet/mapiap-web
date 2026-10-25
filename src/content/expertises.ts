@@ -16,33 +16,33 @@ export const expertises = [
     slug: "expertise-01-a-valider",
     title: "Expertise 01",
     shortDescription:
-      "À valider — intitulé et description métier de la première expertise.",
+      "À valider - intitulé et description métier de la première expertise.",
     introduction:
-      "À valider — introduction de la première expertise et contexte client associé.",
+      "À valider - introduction de la première expertise et contexte client associé.",
     body: [
-      "À valider — périmètre d’intervention, accompagnements et bénéfices attendus.",
+      "À valider - périmètre d’intervention, accompagnements et bénéfices attendus.",
     ],
   },
   {
     slug: "expertise-02-a-valider",
     title: "Expertise 02",
     shortDescription:
-      "À valider — intitulé et description métier de la deuxième expertise.",
+      "À valider - intitulé et description métier de la deuxième expertise.",
     introduction:
-      "À valider — introduction de la deuxième expertise et contexte client associé.",
+      "À valider - introduction de la deuxième expertise et contexte client associé.",
     body: [
-      "À valider — périmètre d’intervention, accompagnements et bénéfices attendus.",
+      "À valider - périmètre d’intervention, accompagnements et bénéfices attendus.",
     ],
   },
   {
     slug: "expertise-03-a-valider",
     title: "Expertise 03",
     shortDescription:
-      "À valider — intitulé et description métier de la troisième expertise.",
+      "À valider - intitulé et description métier de la troisième expertise.",
     introduction:
-      "À valider — introduction de la troisième expertise et contexte client associé.",
+      "À valider - introduction de la troisième expertise et contexte client associé.",
     body: [
-      "À valider — périmètre d’intervention, accompagnements et bénéfices attendus.",
+      "À valider - périmètre d’intervention, accompagnements et bénéfices attendus.",
     ],
   },
 ] as const satisfies readonly ExpertiseContent[];
@@ -64,7 +64,7 @@ export const expertisesIndexContent = {
     eyebrow: "Contact",
     title: "Parler de votre besoin avec MAPIAP",
     description:
-      "À valider — formulation finale du message reliant les expertises à la prise de contact.",
+      "À valider - formulation finale du message reliant les expertises à la prise de contact.",
     action: {
       label: "Nous contacter",
       href: "/contact",

@@ -43,7 +43,7 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <Button
         aria-controls={navigationId}
         aria-expanded={open}
@@ -77,6 +77,16 @@ export function MobileNavigation({ items }: MobileNavigationProps) {
                 </Link>
               </li>
             ))}
+            <li className="pt-3">
+              <Link
+                className="bg-brand-teal hover:bg-brand-teal-dark w-full text-white hover:opacity-100"
+                href="/contact"
+                onClick={() => setOpen(false)}
+                variant="button-primary"
+              >
+                Nous contacter
+              </Link>
+            </li>
           </ul>
         </nav>
       ) : null}

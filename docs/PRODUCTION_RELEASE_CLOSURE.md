@@ -1,4 +1,4 @@
-# MAPIAP — Production Release Closure
+# MAPIAP - Production Release Closure
 
 The implementation roadmap is closed through **LOT-16**. This document governs the remaining work between a technically qualified repository and an authorized public launch.
 

@@ -8,7 +8,7 @@ describe("actualites content helpers", () => {
       slug: "article-01-a-valider",
       title: "Article 01",
       excerpt:
-        "À valider — titre, angle éditorial et résumé de la première publication.",
+        "À valider - titre, angle éditorial et résumé de la première publication.",
     });
   });
 

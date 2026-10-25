@@ -21,6 +21,15 @@ export const metadata: Metadata = {
   },
   description: defaultDescription,
   applicationName: siteConfig.name,
+  manifest: "/favicon/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon-32.png", sizes: "32x32" },
+      { url: "/favicon/favicon-16.png", sizes: "16x16" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
   robots: siteUrl
     ? {
         index: true,

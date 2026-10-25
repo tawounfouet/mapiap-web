@@ -16,20 +16,20 @@ export const articles = [
     slug: "article-01-a-valider",
     title: "Article 01",
     excerpt:
-      "À valider — titre, angle éditorial et résumé de la première publication.",
+      "À valider - titre, angle éditorial et résumé de la première publication.",
     body: [
-      "À valider — contenu éditorial de la première publication MAPIAP.",
-      "À valider — développement, analyse ou actualité à publier.",
+      "À valider - contenu éditorial de la première publication MAPIAP.",
+      "À valider - développement, analyse ou actualité à publier.",
     ],
   },
   {
     slug: "article-02-a-valider",
     title: "Article 02",
     excerpt:
-      "À valider — titre, angle éditorial et résumé de la deuxième publication.",
+      "À valider - titre, angle éditorial et résumé de la deuxième publication.",
     body: [
-      "À valider — contenu éditorial de la deuxième publication MAPIAP.",
-      "À valider — développement, analyse ou actualité à publier.",
+      "À valider - contenu éditorial de la deuxième publication MAPIAP.",
+      "À valider - développement, analyse ou actualité à publier.",
     ],
   },
 ] as const satisfies readonly ArticleContent[];
@@ -45,9 +45,9 @@ export const draftArticles = [
     slug: "article-brouillon-a-valider",
     title: "Brouillon éditorial",
     excerpt:
-      "À valider — brouillon visible uniquement pendant une session d’aperçu.",
+      "À valider - brouillon visible uniquement pendant une session d’aperçu.",
     body: [
-      "À valider — contenu de brouillon utilisé pour qualifier le workflow éditorial.",
+      "À valider - contenu de brouillon utilisé pour qualifier le workflow éditorial.",
     ],
   },
 ] as const satisfies readonly ArticleContent[];
@@ -61,7 +61,7 @@ export const actualitesIndexContent = {
     eyebrow: "Contact",
     title: "Échanger avec MAPIAP",
     description:
-      "À valider — formulation finale du message reliant les publications à la prise de contact.",
+      "À valider - formulation finale du message reliant les publications à la prise de contact.",
     action: {
       label: "Nous contacter",
       href: "/contact",
