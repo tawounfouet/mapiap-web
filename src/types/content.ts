@@ -180,12 +180,14 @@ export interface CabinetHeroContent {
   eyebrow: string;
   title: string;
   description: string;
+  image?: string;
 }
 
 export interface CabinetIntroductionContent {
   eyebrow?: string;
   title: string;
   body: readonly string[];
+  image?: string;
 }
 
 export interface CabinetPillarsContent {

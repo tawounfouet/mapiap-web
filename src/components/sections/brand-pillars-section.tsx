@@ -1,56 +1,67 @@
-import { Section } from "@/components/layout/section";
-import { Card } from "@/components/ui/card";
+import { Gauge, Gem, Sparkles } from "lucide-react";
+
 import { Container } from "@/components/ui/container";
-import { Heading } from "@/components/ui/heading";
-import { Text } from "@/components/ui/text";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import type { CabinetPillarsContent } from "@/types/content";
 
 export interface BrandPillarsSectionProps {
   content: CabinetPillarsContent;
 }
 
+const pillarIcons = [Gem, Sparkles, Gauge] as const;
+
 export function BrandPillarsSection({ content }: BrandPillarsSectionProps) {
   return (
-    <Section aria-labelledby="cabinet-pillars-title">
+    <section
+      aria-labelledby="cabinet-pillars-title"
+      className="bg-surface-muted py-10 lg:py-14"
+    >
       <Container>
-        <div className="mb-10 max-w-3xl">
-          {content.eyebrow ? (
-            <Text
-              className="mb-4 font-medium tracking-[0.18em] uppercase"
-              size="sm"
-              tone="muted"
-            >
-              {content.eyebrow}
-            </Text>
-          ) : null}
-
-          <Heading as="h2" id="cabinet-pillars-title" size="lg">
+        <div className="max-w-3xl">
+          {content.eyebrow ? <Eyebrow>{content.eyebrow}</Eyebrow> : null}
+          <h2
+            className="text-brand-navy text-2xl leading-[1.18] font-extrabold tracking-tight lg:text-[1.75rem]"
+            id="cabinet-pillars-title"
+          >
             {content.title}
-          </Heading>
+          </h2>
 
           {content.description ? (
-            <Text className="mt-5" tone="muted">
+            <p className="text-brand-gray mt-3 max-w-2xl text-sm leading-6">
               {content.description}
-            </Text>
+            </p>
           ) : null}
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          {content.items.map((item, index) => (
-            <Card className="h-full" key={item.title}>
-              <Text className="font-medium tabular-nums" size="sm" tone="muted">
-                0{index + 1}
-              </Text>
-              <Heading as="h3" className="mt-5" size="sm">
-                {item.title}
-              </Heading>
-              <Text className="mt-4" tone="muted">
-                {item.description}
-              </Text>
-            </Card>
-          ))}
+        <div className="mt-6 grid gap-3 md:grid-cols-3 lg:gap-4">
+          {content.items.map((item, index) => {
+            const Icon = pillarIcons[index] ?? Gem;
+
+            return (
+              <article
+                className="border-border bg-surface rounded-xl border p-5 shadow-sm"
+                key={item.title}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <span className="bg-surface-muted text-brand-teal flex size-10 items-center justify-center rounded-lg">
+                    <Icon aria-hidden size={20} strokeWidth={1.8} />
+                  </span>
+                  <span className="text-brand-gray-light text-xs font-bold tabular-nums">
+                    0{index + 1}
+                  </span>
+                </div>
+
+                <h3 className="text-brand-navy mt-5 text-base font-bold">
+                  {item.title}
+                </h3>
+                <p className="text-brand-gray mt-2 text-sm leading-6">
+                  {item.description}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }
