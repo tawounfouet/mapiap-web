@@ -12,7 +12,9 @@ export interface HomeHeroProps {
 
 export function HomeHero({ content }: HomeHeroProps) {
   const highlight = content.highlight;
-  const titleParts = highlight ? content.title.split(highlight) : [content.title];
+  const titleParts = highlight
+    ? content.title.split(highlight)
+    : [content.title];
 
   return (
     <section
