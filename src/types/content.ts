@@ -60,12 +60,84 @@ export interface BrandPillar {
   description: string;
 }
 
+export type HomeIconKey =
+  | "bar-chart"
+  | "lightbulb"
+  | "target"
+  | "shield-check"
+  | "diamond"
+  | "cog"
+  | "leaf";
+
 export interface HomeHeroContent {
   eyebrow: string;
   title: string;
+  highlight?: string;
   description: string;
+  image?: string;
   primaryAction: CallToAction;
   secondaryAction?: CallToAction;
+}
+
+export interface HomeTrustItem {
+  title: string;
+  description: string;
+  icon: HomeIconKey;
+}
+
+export interface HomeCabinetContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+  action: CallToAction;
+}
+
+export interface HomeDifferentiator {
+  title: string;
+  description: string;
+  icon: HomeIconKey;
+}
+
+export interface HomeExpertiseTeaser {
+  title: string;
+  description: string;
+  image: string;
+  icon: HomeIconKey;
+  href: string;
+}
+
+export interface HomeExpertiseSectionContent {
+  eyebrow: string;
+  title: string;
+  items: readonly HomeExpertiseTeaser[];
+}
+
+export interface HomeApproachStep {
+  title: string;
+  description: string;
+}
+
+export interface HomeApproachSectionContent {
+  eyebrow: string;
+  title: string;
+  steps: readonly HomeApproachStep[];
+}
+
+export interface HomeNewsItem {
+  title: string;
+  href: string;
+  image?: string;
+  category?: string;
+  date?: string;
+}
+
+export interface HomeNewsSectionContent {
+  eyebrow: string;
+  title: string;
+  allAction: CallToAction;
+  featured: HomeNewsItem;
+  secondary: readonly HomeNewsItem[];
 }
 
 export interface HomeIntroductionContent {
@@ -86,11 +158,18 @@ export interface HomeContactCtaContent {
   eyebrow?: string;
   title: string;
   description?: string;
+  image?: string;
   action: CallToAction;
 }
 
 export interface HomeContent {
   hero: HomeHeroContent;
+  trust: readonly HomeTrustItem[];
+  cabinet: HomeCabinetContent;
+  differentiators: readonly HomeDifferentiator[];
+  expertiseSection: HomeExpertiseSectionContent;
+  approachSection: HomeApproachSectionContent;
+  newsSection: HomeNewsSectionContent;
   introduction: HomeIntroductionContent;
   founder: HomeFounderContent;
   contactCta: HomeContactCtaContent;

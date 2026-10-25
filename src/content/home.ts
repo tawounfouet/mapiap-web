@@ -1,11 +1,22 @@
 import type { HomeContent } from "@/types/content";
 
+/**
+ * Visual-alignment content for the homepage.
+ *
+ * The homepage now reflects the approved working visual direction. Client
+ * approval is still required for final public copy, founder information and
+ * brand master values. Keep the “À valider” markers until RC-003 is actually
+ * closed from confirmed client input.
+ */
 export const homeContent = {
   hero: {
-    eyebrow: "MAPIAP Audit & Conseils",
-    title: "Expertise. Innovation. Performance.",
+    eyebrow: "Audit & Conseils",
+    title: "Transformer vos ambitions en résultats durables",
+    highlight: "résultats durables",
     description:
-      "À valider - promesse et phrase de positionnement du cabinet pour la version éditoriale finale.",
+      "Un accompagnement stratégique pour des organisations plus performantes, plus innovantes et plus résilientes.",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85",
     primaryAction: {
       label: "Nous contacter",
       href: "/contact",
@@ -14,6 +25,135 @@ export const homeContent = {
       label: "Découvrir le cabinet",
       href: "/cabinet",
     },
+  },
+  trust: [
+    {
+      title: "Expertise reconnue",
+      description: "Des analyses rigoureuses",
+      icon: "bar-chart",
+    },
+    {
+      title: "Approche sur mesure",
+      description: "Des solutions adaptées",
+      icon: "lightbulb",
+    },
+    {
+      title: "Résultats durables",
+      description: "Une valeur concrète",
+      icon: "target",
+    },
+    {
+      title: "Partenaire de confiance",
+      description: "Un engagement à vos côtés",
+      icon: "shield-check",
+    },
+  ],
+  cabinet: {
+    eyebrow: "Le cabinet",
+    title: "Un partenaire engagé à vos côtés",
+    description:
+      "MAPIAP est un cabinet d’audit et de conseils qui accompagne les organisations dans leurs enjeux de performance, d’innovation et de transformation durable.",
+    image:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=85",
+    action: {
+      label: "Découvrir le cabinet",
+      href: "/cabinet",
+    },
+  },
+  differentiators: [
+    {
+      title: "Expertise",
+      description: "pluridisciplinaire",
+      icon: "diamond",
+    },
+    {
+      title: "Approche",
+      description: "sur mesure",
+      icon: "cog",
+    },
+    {
+      title: "Engagement",
+      description: "durable",
+      icon: "leaf",
+    },
+  ],
+  expertiseSection: {
+    eyebrow: "Nos expertises",
+    title: "Trois domaines d’expertise pour créer de la valeur durable",
+    items: [
+      {
+        title: "Audit & Évaluation",
+        description: "Des analyses rigoureuses pour des décisions éclairées.",
+        image:
+          "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85",
+        icon: "bar-chart",
+        href: "/expertises",
+      },
+      {
+        title: "Conseil stratégique",
+        description: "Des stratégies sur mesure pour une croissance durable.",
+        image:
+          "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=900&q=85",
+        icon: "lightbulb",
+        href: "/expertises",
+      },
+      {
+        title: "Transformation & Innovation",
+        description: "Des solutions innovantes pour relever vos défis.",
+        image:
+          "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=85",
+        icon: "cog",
+        href: "/expertises",
+      },
+    ],
+  },
+  approachSection: {
+    eyebrow: "Notre approche",
+    title: "Une méthode structurée, du diagnostic à l’impact",
+    steps: [
+      {
+        title: "Comprendre vos enjeux",
+        description: "Analyse du contexte et des objectifs",
+      },
+      {
+        title: "Construire des solutions",
+        description: "Co-conception de stratégies et de plans d’action",
+      },
+      {
+        title: "Accompagner la mise en œuvre",
+        description: "Suivi opérationnel et montée en compétence",
+      },
+      {
+        title: "Mesurer l’impact",
+        description: "Résultats concrets et amélioration continue",
+      },
+    ],
+  },
+  newsSection: {
+    eyebrow: "Actualités",
+    title: "Actualités",
+    allAction: {
+      label: "Voir toutes les actualités",
+      href: "/actualites",
+    },
+    featured: {
+      title: "Comment réussir votre transformation durable ?",
+      href: "/actualites",
+      image:
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80",
+      category: "Conseil",
+      date: "12 mars 2024",
+    },
+    secondary: [
+      {
+        title: "Innovation et performance : quels leviers pour 2024 ?",
+        href: "/actualites",
+      },
+      {
+        title: "Audit : un outil stratégique pour anticiper les risques",
+        href: "/actualites",
+      },
+    ],
   },
   introduction: {
     eyebrow: "Le cabinet",
@@ -42,10 +182,11 @@ export const homeContent = {
     },
   },
   contactCta: {
-    eyebrow: "Contact",
-    title: "Échanger avec MAPIAP",
-    description:
-      "À valider - formulation finale du message de conversion et de prise de contact.",
+    eyebrow: "Discutons de vos projets",
+    title:
+      "Un premier échange pour comprendre vos enjeux et identifier ensemble les meilleures opportunités.",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=75",
     action: {
       label: "Nous contacter",
       href: "/contact",
