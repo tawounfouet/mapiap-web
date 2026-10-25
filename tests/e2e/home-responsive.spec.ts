@@ -3,7 +3,9 @@ import { expect, test } from "@playwright/test";
 const mobileViewports = [320, 390, 480] as const;
 
 for (const width of mobileViewports) {
-  test("mobile homepage remains usable at " + width + "px", async ({ page }) => {
+  test("mobile homepage remains usable at " + width + "px", async ({
+    page,
+  }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/", { waitUntil: "networkidle" });
 
