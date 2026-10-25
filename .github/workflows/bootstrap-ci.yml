@@ -56,7 +56,7 @@ jobs:
         run: pnpm exec playwright install --with-deps
 
       - name: E2E tests
-        run: pnpm test:e2e -- --grep-invert "homepage visual baselines"
+        run: pnpm exec playwright test --grep-invert "homepage visual baselines"
 
       - name: Generate visual baselines
         run: pnpm exec playwright test tests/e2e/home-visual.spec.ts --project=chromium --update-snapshots
