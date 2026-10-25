@@ -1,7 +1,4 @@
-export function isNavigationItemActive(
-  pathname: string | null,
-  href: string,
-) {
+export function isNavigationItemActive(pathname: string | null, href: string) {
   if (!pathname) {
     return false;
   }
