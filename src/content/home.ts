@@ -1,3 +1,4 @@
+import { founderProfile } from "@/content/cabinet";
 import { expertises, getExpertiseHref } from "@/content/expertises";
 import type { HomeContent, HomeIconKey } from "@/types/content";
 
@@ -74,7 +75,7 @@ export const homeContent = {
     eyebrow: "Le cabinet",
     title: "Un partenaire engagé à vos côtés",
     description:
-      "MAPIAP est un cabinet d’audit et de conseils qui accompagne les organisations dans leurs enjeux de performance, d’innovation et de transformation durable.",
+      "MAPIAP Audit & Conseils accompagne les entreprises, des micro-entreprises aux groupes, avec la proximité d’un cabinet à taille humaine et la rigueur acquise dans les réseaux internationaux.",
     image: "/media/home/cabinet.jpg",
     action: {
       label: "Découvrir le cabinet",
@@ -149,7 +150,7 @@ export const homeContent = {
     eyebrow: "Le cabinet",
     title: "Présentation de MAPIAP",
     body: [
-      "À valider - présentation institutionnelle courte du cabinet, de son approche et de la valeur apportée à ses clients.",
+      "MAPIAP Audit & Conseils accompagne les entreprises, des micro-entreprises aux groupes, avec la proximité d’un cabinet à taille humaine et la rigueur acquise dans les réseaux internationaux.",
     ],
     action: {
       label: "Découvrir le cabinet",
@@ -159,13 +160,7 @@ export const homeContent = {
   founder: {
     eyebrow: "Le cabinet",
     title: "Yves TCHAMO",
-    person: {
-      firstName: "Yves",
-      lastName: "TCHAMO",
-      role: "À valider - titre professionnel",
-      shortBio:
-        "À valider - biographie courte et éléments d’expertise à présenter sur la homepage.",
-    },
+    person: founderProfile,
     action: {
       label: "Découvrir le cabinet",
       href: "/cabinet",
