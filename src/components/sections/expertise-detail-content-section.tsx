@@ -25,7 +25,7 @@ export function ExpertiseDetailContentSection({
             </Text>
 
             <Heading as="h2" id="expertise-detail-content-title" size="lg">
-              Une expertise à documenter
+              Notre accompagnement
             </Heading>
           </div>
 
