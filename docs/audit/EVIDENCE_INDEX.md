@@ -5,6 +5,7 @@
 ## Base de référence
 
 **Entrées vérifiables :**
+
 - **main** : `e6091f9c73efbd41c4201f2fab8912f4078ab829` ; [Branche main](https://github.com/tawounfouet/mapiap-web/tree/main)
 - **Dernière CI main** : `40211496676` : `failure`, 69 / 75 E2E réussis ; 6 échecs ; [Workflow](https://github.com/tawounfouet/mapiap-web/actions/runs/40211496676)
 - **PR #19** : Base `main`, head `6f43366eab11ababeb6c6d925141c8ba283ec938`, draft ; [PR #19](https://github.com/tawounfouet/mapiap-web/pull/19)
@@ -26,6 +27,7 @@ Le log du run `40211496676` mentionne par ailleurs `Internal: NoFallbackError` d
 ## Registre de preuves des remédiations
 
 **Entrées vérifiables :**
+
 - **REM-00** : À renseigner ; À renseigner ; À renseigner ; Sans objet pour les registres ; WebTech ; En cours
 - **REM-01** : À renseigner ; À renseigner ; À renseigner ; À qualifier ; WebTech ; Non qualifié
 - **REM-02 à REM-12** : Voir leurs Issues ; À renseigner ; À renseigner ; Selon le lot ; Selon le lot ; Non évalué
