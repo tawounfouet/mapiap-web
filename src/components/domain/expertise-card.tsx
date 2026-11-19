@@ -24,7 +24,7 @@ export function ExpertiseCard({
         size="sm"
         tone="muted"
       >
-        Contenu à valider
+        Nos domaines d’intervention
       </Text>
 
       <Heading as="h3" size="sm">
