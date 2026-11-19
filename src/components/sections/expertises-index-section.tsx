@@ -28,8 +28,8 @@ export function ExpertisesIndexSection({ items }: ExpertisesIndexSectionProps) {
           </Heading>
 
           <Text className="mt-5" tone="muted">
-            Quatre domaines d’intervention présentés par MAPIAP pour
-            accompagner les entreprises et les groupes.
+            Quatre domaines d’intervention présentés par MAPIAP pour accompagner
+            les entreprises et les groupes.
           </Text>
         </div>
 
