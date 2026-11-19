@@ -2,21 +2,20 @@
 
 **Baseline 19/11/2026**. Ce registre ne substitue pas `release/production-inputs.json`. Les documents fournis par Yves sont des sources de travail ; ils ne constituent pas automatiquement une approbation des textes ou titres publiés.
 
-| RC | Livrable / dépendance | Responsable de décision | Lot | Issue | État (baseline) | Preuve de clôture |
-|---|---|---|---|---|---|---|
-| RC-001 | Domaine officiel | WEBTECH / MAPIAP | REM-10 | [#31](https://github.com/tawounfouet/mapiap-web/issues/31) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-002 | Transport du formulaire | MAPIAP + WebTech | REM-07 | [#28](https://github.com/tawounfouet/mapiap-web/issues/28) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-003 | Textes définitifs Accueil | Yves | REM-03/04/05/06 | [#24](https://github.com/tawounfouet/mapiap-web/issues/24) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-004 | Textes définitifs Cabinet | Yves | REM-06 | [#27](https://github.com/tawounfouet/mapiap-web/issues/27) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-005 | Quatre expertises validées | Yves | REM-04 | [#25](https://github.com/tawounfouet/mapiap-web/issues/25) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-006 | Articles réels ou état vide approuvé | Yves | REM-05 | [#26](https://github.com/tawounfouet/mapiap-web/issues/26) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-007 | Coordonnées publiques et contact | Yves | REM-07/08 | [#28](https://github.com/tawounfouet/mapiap-web/issues/28) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-008 | Slugs d'expertise | WebTech + Yves | REM-04/10 | [#25](https://github.com/tawounfouet/mapiap-web/issues/25) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-009 | Slugs des articles | WebTech + Yves | REM-05/10 | [#26](https://github.com/tawounfouet/mapiap-web/issues/26) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-010 | Valeurs couleur officielles | Yves | REM-06 | [#27](https://github.com/tawounfouet/mapiap-web/issues/27) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-011 | Portrait approuvé et intégré | Yves + WebTech | REM-06 | [#27](https://github.com/tawounfouet/mapiap-web/issues/27) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-012 | Mentions légales et réglementaires | Yves + WebTech | REM-08 | [#29](https://github.com/tawounfouet/mapiap-web/issues/29) | NON VALIDÉ / À REQUALIFIER | À renseigner |
-| RC-013 | Politique de confidentialité | Yves + WebTech | REM-08 | [#29](https://github.com/tawounfouet/mapiap-web/issues/29) | NON VALIDÉ / À REQUALIFIER | À renseigner |
+**Entrées vérifiables :**
+- **RC-001** : Domaine officiel ; WEBTECH / MAPIAP ; REM-10 ; [#31](https://github.com/tawounfouet/mapiap-web/issues/31) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-002** : Transport du formulaire ; MAPIAP + WebTech ; REM-07 ; [#28](https://github.com/tawounfouet/mapiap-web/issues/28) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-003** : Textes définitifs Accueil ; Yves ; REM-03/04/05/06 ; [#24](https://github.com/tawounfouet/mapiap-web/issues/24) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-004** : Textes définitifs Cabinet ; Yves ; REM-06 ; [#27](https://github.com/tawounfouet/mapiap-web/issues/27) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-005** : Quatre expertises validées ; Yves ; REM-04 ; [#25](https://github.com/tawounfouet/mapiap-web/issues/25) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-006** : Articles réels ou état vide approuvé ; Yves ; REM-05 ; [#26](https://github.com/tawounfouet/mapiap-web/issues/26) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-007** : Coordonnées publiques et contact ; Yves ; REM-07/08 ; [#28](https://github.com/tawounfouet/mapiap-web/issues/28) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-008** : Slugs d'expertise ; WebTech + Yves ; REM-04/10 ; [#25](https://github.com/tawounfouet/mapiap-web/issues/25) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-009** : Slugs des articles ; WebTech + Yves ; REM-05/10 ; [#26](https://github.com/tawounfouet/mapiap-web/issues/26) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-010** : Valeurs couleur officielles ; Yves ; REM-06 ; [#27](https://github.com/tawounfouet/mapiap-web/issues/27) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-011** : Portrait approuvé et intégré ; Yves + WebTech ; REM-06 ; [#27](https://github.com/tawounfouet/mapiap-web/issues/27) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-012** : Mentions légales et réglementaires ; Yves + WebTech ; REM-08 ; [#29](https://github.com/tawounfouet/mapiap-web/issues/29) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
+- **RC-013** : Politique de confidentialité ; Yves + WebTech ; REM-08 ; [#29](https://github.com/tawounfouet/mapiap-web/issues/29) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
 
 ## Gates conditionnels
 
