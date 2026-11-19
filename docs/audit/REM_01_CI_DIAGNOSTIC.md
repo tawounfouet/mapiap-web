@@ -39,6 +39,9 @@ Le log de la CI du 25/10/2026 affiche trois occurrences de `[WebServer] Error: I
 ## Traçabilité
 
 - Issue : [REM-01 #22](https://github.com/tawounfouet/mapiap-web/issues/22)
-- PR de correction : à renseigner après création
-- CI de la PR : à renseigner après exécution
-- Décision : **PENDING VERIFICATION**
+- PR de correction : [#35](https://github.com/tawounfouet/mapiap-web/pull/35)
+- Première CI de la PR : [run 44597019040](https://github.com/tawounfouet/mapiap-web/actions/runs/44597019040), SHA `bdc92772dda4c92355fc51c6c3289f3e19803be1`, **success**, 75/75 tests E2E réussis
+- Logs du run : **3 occurrences** de `Internal: NoFallbackError` persistent, une par groupe de tests navigateur ; la cause exacte reste à confirmer via instrumentation.
+- Vérification : `tests/e2e/expertises.spec.ts` contient un test de slug inconnu qui exige HTTP 404. Le run ayant passé les 75 tests, ce scénario a réussi sur les trois navigateurs.
+- Évaluation provisoire : les échecs de régression H1 sont résolus et le comportement 404 reste opérationnel dans les tests. `NoFallbackError` est un problème de journalisation **observé mais non corrigé** ; une remontée monitoring excessive est possible. Il ne doit pas être dissimulé.
+- Décision technique : **PASS CI sur `bdc92772` ; REM-01 en attente de revue et merge ; anomalie de logs ouverte / surveillée**.
