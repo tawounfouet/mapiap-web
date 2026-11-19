@@ -49,6 +49,9 @@ jobs:
       - name: Unit tests
         run: pnpm test:run
 
+      - name: GitHub ruleset CLI contract tests
+        run: bash tests/scripts/test_configure_main_ruleset.sh
+
       - name: Production release audit
         run: pnpm release:audit
 
