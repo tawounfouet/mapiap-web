@@ -64,7 +64,7 @@ export function HomeExpertises({ content }: HomeExpertisesProps) {
           })}
         </div>
 
-        <div className="mt-5 hidden grid-cols-3 gap-4 lg:grid">
+        <div className="mt-5 hidden grid-cols-4 gap-4 lg:grid">
           {content.items.map((item) => {
             const Icon = homeIcons[item.icon];
 
@@ -78,7 +78,7 @@ export function HomeExpertises({ content }: HomeExpertisesProps) {
                     alt=""
                     className="object-cover transition-transform duration-400 group-hover:scale-[1.02] motion-reduce:transition-none"
                     fill
-                    sizes="33vw"
+                    sizes="25vw"
                     src={item.image}
                   />
                 </div>
