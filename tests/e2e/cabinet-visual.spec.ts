@@ -34,9 +34,8 @@ test.describe("cabinet visual baselines", () => {
           exact: false,
         }),
       ).toBeVisible();
-      await expect(
-        page.getByText("À valider", { exact: false }),
-      ).toHaveCount(0);
+      const staleCopy = page.getByText("À valider", { exact: false });
+      await expect(staleCopy).toHaveCount(0);
 
       await expect(page).toHaveScreenshot(baseline.name, {
         animations: "disabled",
