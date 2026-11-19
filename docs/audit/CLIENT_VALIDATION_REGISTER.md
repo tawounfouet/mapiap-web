@@ -3,6 +3,7 @@
 **Baseline 19/11/2026**. Ce registre ne substitue pas `release/production-inputs.json`. Les documents fournis par Yves sont des sources de travail ; ils ne constituent pas automatiquement une approbation des textes ou titres publiés.
 
 **Entrées vérifiables :**
+
 - **RC-001** : Domaine officiel ; WEBTECH / MAPIAP ; REM-10 ; [#31](https://github.com/tawounfouet/mapiap-web/issues/31) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
 - **RC-002** : Transport du formulaire ; MAPIAP + WebTech ; REM-07 ; [#28](https://github.com/tawounfouet/mapiap-web/issues/28) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
 - **RC-003** : Textes définitifs Accueil ; Yves ; REM-03/04/05/06 ; [#24](https://github.com/tawounfouet/mapiap-web/issues/24) ; NON VALIDÉ / À REQUALIFIER ; À renseigner
