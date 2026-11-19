@@ -53,6 +53,7 @@ export interface PersonSummary {
   lastName: string;
   role: string;
   shortBio?: string;
+  portraitSrc?: string;
 }
 
 export interface BrandPillar {
