@@ -28,20 +28,29 @@ export function ActualitesIndexSection({ items }: ActualitesIndexSectionProps) {
           </Heading>
 
           <Text className="mt-5" tone="muted">
-            La structure est opérationnelle. Les publications ci-dessous sont
-            des contenus de démonstration explicitement provisoires.
+            Les articles du cabinet apparaîtront ici une fois leur contenu
+            définitivement validé.
           </Text>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
-          {items.map((article) => (
-            <ArticleCard
-              article={article}
-              href={getArticleHref(article.slug)}
-              key={article.slug}
-            />
-          ))}
-        </div>
+        {items.length === 0 ? (
+          <div
+            className="border-border bg-surface rounded-xl border p-6 text-sm"
+            role="status"
+          >
+            Aucune publication pour le moment.
+          </div>
+        ) : (
+          <div className="grid gap-5 md:grid-cols-2">
+            {items.map((article) => (
+              <ArticleCard
+                article={article}
+                href={getArticleHref(article.slug)}
+                key={article.slug}
+              />
+            ))}
+          </div>
+        )}
       </Container>
     </Section>
   );
