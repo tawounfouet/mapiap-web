@@ -10,9 +10,9 @@ test("actualites index has an honest empty state", async ({ page }) => {
     }),
   ).toBeVisible();
 
-  await expect(
-    page.getByRole("status", { name: "" }).last(),
-  ).toContainText("Aucune publication pour le moment.");
+  await expect(page.getByRole("status").last()).toContainText(
+    "Aucune publication pour le moment.",
+  );
 
   await expect(
     page.getByRole("link", { name: "Lire la publication" }),
