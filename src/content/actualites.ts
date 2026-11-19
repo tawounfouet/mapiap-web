@@ -5,34 +5,10 @@ import type {
 } from "@/types/content";
 
 /**
- * Development-only editorial placeholders.
- *
- * No real MAPIAP publication content has been supplied yet. These entries
- * exist solely to qualify the article index/detail architecture and must be
- * replaced or removed before client-final delivery.
+ * No MAPIAP publication has been approved for public release yet.
+ * Keep the public local repository empty until validated content exists.
  */
-export const articles = [
-  {
-    slug: "article-01-a-valider",
-    title: "Article 01",
-    excerpt:
-      "À valider - titre, angle éditorial et résumé de la première publication.",
-    body: [
-      "À valider - contenu éditorial de la première publication MAPIAP.",
-      "À valider - développement, analyse ou actualité à publier.",
-    ],
-  },
-  {
-    slug: "article-02-a-valider",
-    title: "Article 02",
-    excerpt:
-      "À valider - titre, angle éditorial et résumé de la deuxième publication.",
-    body: [
-      "À valider - contenu éditorial de la deuxième publication MAPIAP.",
-      "À valider - développement, analyse ou actualité à publier.",
-    ],
-  },
-] as const satisfies readonly ArticleContent[];
+export const articles: readonly ArticleContent[] = [];
 
 /**
  * Local preview-only fixture.
@@ -56,7 +32,7 @@ export const actualitesIndexContent = {
   eyebrow: "Actualités",
   title: "Actualités & publications",
   description:
-    "L’espace éditorial est prêt à accueillir les publications du cabinet. Les contenus visibles à ce stade sont des placeholders de développement à remplacer par des articles validés.",
+    "Les publications de MAPIAP seront présentées ici dès qu’elles auront été validées.",
   contactCta: {
     eyebrow: "Contact",
     title: "Échanger avec MAPIAP",
