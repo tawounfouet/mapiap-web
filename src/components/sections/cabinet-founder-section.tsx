@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import type { CabinetFounderContent } from "@/types/content";
@@ -17,14 +19,30 @@ export function CabinetFounderSection({ content }: CabinetFounderSectionProps) {
       <Container>
         <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-8">
           <div
-            aria-label="Portrait professionnel à intégrer"
+            aria-label={
+              content.person.portraitSrc
+                ? undefined
+                : "Portrait professionnel en attente de validation"
+            }
             className="from-brand-navy to-brand-teal relative flex aspect-[16/9] items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br lg:col-span-4 lg:aspect-square"
-            role="img"
+            role={content.person.portraitSrc ? undefined : "img"}
           >
-            <div className="absolute inset-3 rounded-md border border-white/15" />
-            <span className="relative text-5xl font-extrabold tracking-tight text-white/95">
-              {initials}
-            </span>
+            {content.person.portraitSrc ? (
+              <Image
+                alt={`Portrait professionnel de ${content.person.firstName} ${content.person.lastName}`}
+                className="object-cover object-top"
+                fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
+                src={content.person.portraitSrc}
+              />
+            ) : (
+              <>
+                <div className="absolute inset-3 rounded-md border border-white/15" />
+                <span className="relative text-5xl font-extrabold tracking-tight text-white/95">
+                  {initials}
+                </span>
+              </>
+            )}
           </div>
 
           <div className="lg:col-span-8">
