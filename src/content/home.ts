@@ -137,32 +137,13 @@ export const homeContent = {
   },
   newsSection: {
     eyebrow: "Actualités",
-    title: "Actualités",
+    title: "Publications du cabinet",
     allAction: {
-      label: "Voir toutes les actualités",
+      label: "Consulter les actualités",
       href: "/actualites",
     },
-    featured: {
-      title: "Comment réussir votre transformation durable ?",
-      href: "/actualites",
-      image: "/media/home/hero.jpg",
-      category: "Conseil",
-      date: "12 mars 2024",
-    },
-    secondary: [
-      {
-        title: "Innovation et performance : quels leviers pour 2024 ?",
-        href: "/actualites",
-        image: "/media/home/expertise-strategy.jpg",
-        date: "5 mars 2024",
-      },
-      {
-        title: "Audit : un outil stratégique pour anticiper les risques",
-        href: "/actualites",
-        image: "/media/home/cabinet.jpg",
-        date: "28 février 2024",
-      },
-    ],
+    emptyMessage:
+      "Aucune publication pour le moment. Les prochaines actualités du cabinet seront proposées ici après validation.",
   },
   introduction: {
     eyebrow: "Le cabinet",
