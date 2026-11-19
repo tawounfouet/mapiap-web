@@ -1,18 +1,37 @@
 import { describe, expect, it } from "vitest";
 
-import { articles, getArticleHref, toArticleSummary } from "./actualites";
+import {
+  articles,
+  draftArticles,
+  getArticleHref,
+  toArticleSummary,
+} from "./actualites";
 
 describe("actualites content helpers", () => {
-  it("maps ArticleContent to its summary projection", () => {
-    expect(toArticleSummary(articles[0])).toEqual({
-      slug: "article-01-a-valider",
-      title: "Article 01",
-      excerpt:
-        "À valider - titre, angle éditorial et résumé de la première publication.",
+  it("does not publish any unapproved local content", () => {
+    expect(articles).toEqual([]);
+    expect(draftArticles).toHaveLength(1);
+    expect(articles).not.toContain(draftArticles[0]);
+  });
+
+  it("maps an explicitly supplied article to its summary", () => {
+    expect(
+      toArticleSummary({
+        slug: "publication-validee",
+        title: "Publication validée",
+        excerpt: "Résumé validé.",
+        body: ["Texte approuvé."],
+      }),
+    ).toEqual({
+      slug: "publication-validee",
+      title: "Publication validée",
+      excerpt: "Résumé validé.",
     });
   });
 
   it("builds the public article detail path", () => {
-    expect(getArticleHref("article-test")).toBe("/actualites/article-test");
+    expect(getArticleHref("publication-test")).toBe(
+      "/actualites/publication-test",
+    );
   });
 });
