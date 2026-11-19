@@ -15,7 +15,7 @@ test("homepage exposes the visual-alignment narrative and navigation", async ({
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Trois domaines d’expertise pour créer de la valeur durable",
+      name: "Quatre pôles d’expertise pour accompagner votre entreprise",
     }),
   ).toBeVisible();
 
