@@ -53,7 +53,8 @@ export const expertises = [
   {
     slug: "audit-evaluation-conseil-financier",
     title: "Audit, évaluation et conseil financier",
-    shortDescription: "Des missions ponctuelles pour éclairer vos grandes décisions.",
+    shortDescription:
+      "Des missions ponctuelles pour éclairer vos grandes décisions.",
     introduction:
       "Lorsque vous préparez une opération importante, nous réalisons des missions sur mesure : audit contractuel de vos comptes ou de votre organisation, due diligence avant l’acquisition ou la cession d’une société, évaluation d’une entreprise, d’un fonds de commerce ou de titres.",
     body: [
