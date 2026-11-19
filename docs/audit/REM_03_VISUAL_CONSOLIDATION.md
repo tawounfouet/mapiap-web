@@ -61,3 +61,25 @@ La PR #19 n'est plus fusionnable directement sur `main` après les fusions G0. L
 - [ ] Décider de l'ordre d'intégration avec REM-04, REM-05, REM-06 ; conserver les PR #19/#20 comme références historiques.
 
 **Ce document n'autorise pas une fusion immédiate ni la levée du NO-GO de production.**
+
+## 6. Qualification après REM-04, REM-05 et REM-06
+
+La CI GitHub Actions du commit `d6df8892420653bf162e22b79f5e0420afeee516` a exécuté la suite Playwright complète : **111 tests réussis et 9 échecs de snapshots**. Les 9 différences concernent les 7 tailles de la page Accueil et les 2 vues Cabinet. Les dimensions de page ont changé du fait des quatre pôles et de l'état éditorial vide. Les contrôles format, lint, types, unitaires et build avaient réussi.
+
+Exécution de référence : https://github.com/tawounfouet/mapiap-web/actions/runs/44613728123
+
+Ces différences ne doivent pas être ignorées par un assouplissement du seuil de comparaison. La mise à jour des références doit être réalisée dans un environnement Linux compatible, puis les images doivent être examinées.
+
+Procédure préparée sur la branche de la PR #39 :
+
+```bash
+git fetch origin
+git switch --track origin/feat/rem-03-visual-consolidation
+bash scripts/visual/refresh-linux-snapshots.sh --update
+git status --short
+```
+
+Si la branche existe déjà localement, utiliser `git switch feat/rem-03-visual-consolidation` puis `git pull --ff-only origin feat/rem-03-visual-consolidation`. La commande utilise Docker et ne fait **ni commit ni push**. Vérifier les neuf PNG avant de les ajouter au dépôt.
+
+Cette opération reste à exécuter après accord sur la direction visuelle, et le portrait réel du fondateur pourra nécessiter une nouvelle référence.
+
