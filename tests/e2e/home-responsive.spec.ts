@@ -9,7 +9,7 @@ test("mobile homepage remains usable without horizontal overflow", async ({
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Expertise. Innovation. Performance.",
+      name: "Transformer vos ambitions en résultats durables",
     }),
   ).toBeVisible();
 
