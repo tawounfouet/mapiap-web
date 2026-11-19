@@ -125,6 +125,11 @@ read_existing() {
     echo "Existing ruleset is not compliant. Manual reconciliation required (no overwrite)." >&2
     return 1
   fi
+  gh api "$BRANCH_API" > "$TMP/protected-branch.json"
+  if ! jq -e '.protected == true' "$TMP/protected-branch.json" >/dev/null; then
+    echo "The ruleset exists but GitHub does not report main as protected." >&2
+    return 1
+  fi
   echo "PASS: active ruleset $managed_id verified on $REPO/$BRANCH."
   echo "Ruleset: https://github.com/$REPO/settings/rules/$managed_id"
 }
