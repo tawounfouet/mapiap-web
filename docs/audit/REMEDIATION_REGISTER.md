@@ -7,6 +7,7 @@
 Les statuts suivent `OPEN -> IN_PROGRESS -> PR_READY -> VERIFIED -> CLOSED` et, si utile, `BLOCKED_CLIENT`, `BLOCKED_RUNTIME`, `DEFERRED_ACCEPTED`, `REOPENED`.
 
 **Entrées vérifiables :**
+
 - **AUD-001** : P0 ; REM-01 ; [#22](https://github.com/tawounfouet/mapiap-web/issues/22) ; WebTech ; OPEN ; À renseigner ; À renseigner ; À renseigner
 - **AUD-002** : P0 ; REM-12 ; [#33](https://github.com/tawounfouet/mapiap-web/issues/33) ; WebTech + Yves ; OPEN ; À renseigner ; À renseigner ; À renseigner
 - **AUD-003** : P1 ; REM-02 ; [#23](https://github.com/tawounfouet/mapiap-web/issues/23) ; Titulaire GitHub ; OPEN ; À renseigner ; À renseigner ; À renseigner
