@@ -25,6 +25,18 @@ test("cabinet page exposes the institutional narrative", async ({ page }) => {
   ).toBeVisible();
 
   await expect(
+    page.getByText("Fort de plus de dix exercices d’expérience", {
+      exact: false,
+    }),
+  ).toBeVisible();
+
+  await expect(
+    page.getByText("Expert-comptable et commissaire aux comptes", {
+      exact: true,
+    }),
+  ).toBeVisible();
+
+  await expect(
     page.getByRole("link", { name: "Nous contacter" }).last(),
   ).toHaveAttribute("href", "/contact");
 
