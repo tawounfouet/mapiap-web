@@ -42,6 +42,18 @@ test.describe("homepage visual baselines", () => {
         await document.fonts.ready;
       });
 
+      // A screenshot must represent REM-04/05, not a cached old .next build.
+      await expect(
+        page.getByRole("heading", {
+          name: "Quatre pôles d’expertise pour accompagner votre entreprise",
+        }),
+      ).toBeVisible();
+      await expect(
+        page.getByText("Aucune publication pour le moment.", {
+          exact: false,
+        }),
+      ).toBeVisible();
+
       await expect(page).toHaveScreenshot(baseline.name, {
         animations: "disabled",
         caret: "hide",
