@@ -1,4 +1,27 @@
-import type { HomeContent } from "@/types/content";
+import { expertises, getExpertiseHref } from "@/content/expertises";
+import type { HomeContent, HomeIconKey } from "@/types/content";
+
+const expertiseVisuals = {
+  "comptabilite-accompagnement-tpe-pme": {
+    image: "/media/home/expertise-strategy.jpg",
+    icon: "bar-chart",
+  },
+  "consolidation-comptes-groupe": {
+    image: "/media/home/expertise-transformation.jpg",
+    icon: "target",
+  },
+  "fiscalite-juridique-social": {
+    image: "/media/home/cabinet.jpg",
+    icon: "shield-check",
+  },
+  "audit-evaluation-conseil-financier": {
+    image: "/media/home/expertise-audit.jpg",
+    icon: "lightbulb",
+  },
+} satisfies Record<
+  (typeof expertises)[number]["slug"],
+  { image: string; icon: HomeIconKey }
+>;
 
 /**
  * Visual-alignment content for the homepage.
@@ -77,34 +100,18 @@ export const homeContent = {
   ],
   expertiseSection: {
     eyebrow: "Nos expertises",
-    title: "Trois domaines d’expertise pour créer de la valeur durable",
+    title: "Quatre pôles d’expertise pour accompagner votre entreprise",
     allAction: {
       label: "Voir toutes les expertises",
       href: "/expertises",
     },
-    items: [
-      {
-        title: "Audit & Évaluation",
-        description: "Des analyses rigoureuses pour des décisions éclairées.",
-        image: "/media/home/expertise-audit.jpg",
-        icon: "bar-chart",
-        href: "/expertises",
-      },
-      {
-        title: "Conseil stratégique",
-        description: "Des stratégies sur mesure pour une croissance durable.",
-        image: "/media/home/expertise-strategy.jpg",
-        icon: "lightbulb",
-        href: "/expertises",
-      },
-      {
-        title: "Transformation & Innovation",
-        description: "Des solutions innovantes pour relever vos défis.",
-        image: "/media/home/expertise-transformation.jpg",
-        icon: "cog",
-        href: "/expertises",
-      },
-    ],
+    items: expertises.map((expertise) => ({
+      title: expertise.title,
+      description: expertise.shortDescription,
+      image: expertiseVisuals[expertise.slug].image,
+      icon: expertiseVisuals[expertise.slug].icon,
+      href: getExpertiseHref(expertise.slug),
+    })),
   },
   approachSection: {
     eyebrow: "Notre approche",
