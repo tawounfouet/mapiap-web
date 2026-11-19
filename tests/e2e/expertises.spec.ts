@@ -1,6 +1,25 @@
 import { expect, test } from "@playwright/test";
 
-test("expertises index exposes the three planned domains and detail links", async ({
+const expectedExpertises = [
+  {
+    title: "Comptabilité et accompagnement des TPE/PME",
+    slug: "comptabilite-accompagnement-tpe-pme",
+  },
+  {
+    title: "Consolidation des comptes de groupe (normes françaises et IFRS)",
+    slug: "consolidation-comptes-groupe",
+  },
+  {
+    title: "Fiscalité, juridique et social",
+    slug: "fiscalite-juridique-social",
+  },
+  {
+    title: "Audit, évaluation et conseil financier",
+    slug: "audit-evaluation-conseil-financier",
+  },
+] as const;
+
+test("expertises index exposes the four client-supplied domains", async ({
   page,
 }) => {
   await page.goto("/expertises");
@@ -8,56 +27,60 @@ test("expertises index exposes the three planned domains and detail links", asyn
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Trois expertises à structurer",
+      name: "Quatre pôles d’expertise à vos côtés",
     }),
   ).toBeVisible();
 
-  for (const title of ["Expertise 01", "Expertise 02", "Expertise 03"]) {
+  for (const { title, slug } of expectedExpertises) {
     await expect(
-      page.getByRole("heading", {
-        level: 3,
-        name: title,
-      }),
+      page.getByRole("heading", { level: 3, name: title }),
     ).toBeVisible();
+    await expect(
+      page.locator('a[href="/expertises/' + slug + '"]'),
+    ).toHaveCount(1);
   }
 
-  await expect(
-    page.getByRole("link", { name: "En savoir plus" }).first(),
-  ).toHaveAttribute("href", "/expertises/expertise-01-a-valider");
-
-  const hasHorizontalOverflow = await page.evaluate(
+  const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth > window.innerWidth,
   );
-
-  expect(hasHorizontalOverflow).toBe(false);
+  expect(overflow).toBe(false);
 });
 
-test("expertise detail route renders known content", async ({ page }) => {
-  await page.goto("/expertises/expertise-01-a-valider");
-
+test("expertise detail displays the consolidation offering", async ({
+  page,
+}) => {
+  await page.goto("/expertises/consolidation-comptes-groupe");
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Expertise 01",
+      name: "Consolidation des comptes de groupe (normes françaises et IFRS)",
     }),
   ).toBeVisible();
 
   const breadcrumb = page.getByRole("navigation", {
     name: "Fil d’Ariane",
   });
-
-  await expect(breadcrumb).toBeVisible();
   await expect(
     breadcrumb.getByRole("link", { name: "Expertises" }),
   ).toHaveAttribute("href", "/expertises");
-
-  await expect(
-    page.getByRole("link", { name: "Nous contacter" }).last(),
-  ).toHaveAttribute("href", "/contact");
 });
 
-test("unknown expertise slug returns 404", async ({ page }) => {
-  const response = await page.goto("/expertises/expertise-inconnue");
+test("homepage expertise cards link to each business detail", async ({
+  page,
+}) => {
+  await page.goto("/");
+  for (const { slug } of expectedExpertises) {
+    await expect(
+      page.locator('a[href="/expertises/' + slug + '"]'),
+    ).toHaveCount(2);
+  }
+});
 
-  expect(response?.status()).toBe(404);
+test("unknown and old provisional expertise slugs return 404", async ({
+  page,
+}) => {
+  for (const slug of ["expertise-01-a-valider", "expertise-inconnue"]) {
+    const response = await page.goto("/expertises/" + slug);
+    expect(response?.status()).toBe(404);
+  }
 });

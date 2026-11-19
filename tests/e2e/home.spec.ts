@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("homepage exposes the rendered narrative and routes to Cabinet", async ({
+test("homepage exposes the visual-alignment narrative and navigation", async ({
   page,
 }) => {
   await page.goto("/");
@@ -15,14 +15,14 @@ test("homepage exposes the rendered narrative and routes to Cabinet", async ({
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Trois domaines d’expertise pour créer de la valeur durable",
+      name: "Quatre pôles d’expertise pour accompagner votre entreprise",
     }),
   ).toBeVisible();
 
   await expect(
     page.getByRole("heading", {
       level: 2,
-      name: "Un partenaire engagé à vos côtés",
+      name: "Une méthode structurée, du diagnostic à l’impact",
     }),
   ).toBeVisible();
 
@@ -30,10 +30,15 @@ test("homepage exposes the rendered narrative and routes to Cabinet", async ({
     page.getByRole("link", { name: "Nous contacter" }).first(),
   ).toHaveAttribute("href", "/contact");
 
-  await page
-    .getByRole("navigation", { name: "Navigation principale" })
-    .getByRole("link", { name: "Cabinet" })
-    .click();
+  const primaryNavigation = page.getByRole("navigation", {
+    name: "Navigation principale",
+  });
+
+  const homeLink = primaryNavigation.getByRole("link", { name: "Accueil" });
+  await expect(homeLink).toHaveAttribute("href", "/");
+  await expect(homeLink).toHaveAttribute("aria-current", "page");
+
+  await primaryNavigation.getByRole("link", { name: "Cabinet" }).click();
 
   await expect(
     page.getByRole("heading", {
@@ -43,9 +48,8 @@ test("homepage exposes the rendered narrative and routes to Cabinet", async ({
   ).toBeVisible();
 
   await expect(
-    page.getByRole("heading", {
-      level: 2,
-      name: "Yves TCHAMO",
-    }),
-  ).toBeVisible();
+    page
+      .getByRole("navigation", { name: "Navigation principale" })
+      .getByRole("link", { name: "Cabinet" }),
+  ).toHaveAttribute("aria-current", "page");
 });

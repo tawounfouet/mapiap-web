@@ -34,7 +34,7 @@ export function ExpertiseDetailHeroSection({
           size="sm"
           tone="muted"
         >
-          Contenu à valider
+          Notre expertise
         </Text>
 
         <Heading as="h1" id="expertise-detail-title" size="display">

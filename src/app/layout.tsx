@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { AnalyticsConsentBanner } from "@/components/analytics/analytics-consent";
@@ -9,6 +10,12 @@ import { getSiteUrl } from "@/lib/seo/site-url";
 
 import "./globals.css";
 
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
+});
+
 const siteUrl = getSiteUrl();
 const defaultDescription = "Site officiel de MAPIAP Audit & Conseils.";
 const analyticsEnabled = getAnalyticsMode() === "consent";
@@ -17,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    template: "%s | " + siteConfig.name,
   },
   description: defaultDescription,
   applicationName: siteConfig.name,
@@ -55,7 +62,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html className={plusJakarta.variable} lang="fr">
       <body>
         <AnalyticsRuntime enabled={analyticsEnabled} />
         {children}

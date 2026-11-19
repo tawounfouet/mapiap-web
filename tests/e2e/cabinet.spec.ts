@@ -25,6 +25,18 @@ test("cabinet page exposes the institutional narrative", async ({ page }) => {
   ).toBeVisible();
 
   await expect(
+    page.getByText("Fort de plus de dix exercices d’expérience", {
+      exact: false,
+    }),
+  ).toBeVisible();
+
+  await expect(
+    page.getByText("Expert-comptable et commissaire aux comptes", {
+      exact: true,
+    }),
+  ).toBeVisible();
+
+  await expect(
     page.getByRole("link", { name: "Nous contacter" }).last(),
   ).toHaveAttribute("href", "/contact");
 
@@ -34,3 +46,19 @@ test("cabinet page exposes the institutional narrative", async ({ page }) => {
 
   expect(hasHorizontalOverflow).toBe(false);
 });
+
+for (const width of [390, 768, 1440] as const) {
+  test(
+    "cabinet page remains within the viewport at " + width + "px",
+    async ({ page }) => {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto("/cabinet", { waitUntil: "networkidle" });
+
+      const hasHorizontalOverflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > window.innerWidth,
+      );
+
+      expect(hasHorizontalOverflow).toBe(false);
+    },
+  );
+}

@@ -1,11 +1,45 @@
-import type { HomeContent } from "@/types/content";
+import { founderProfile } from "@/content/cabinet";
+import { expertises, getExpertiseHref } from "@/content/expertises";
+import type { HomeContent, HomeIconKey } from "@/types/content";
 
+const expertiseVisuals = {
+  "comptabilite-accompagnement-tpe-pme": {
+    image: "/media/home/expertise-strategy.jpg",
+    icon: "bar-chart",
+  },
+  "consolidation-comptes-groupe": {
+    image: "/media/home/expertise-transformation.jpg",
+    icon: "target",
+  },
+  "fiscalite-juridique-social": {
+    image: "/media/home/cabinet.jpg",
+    icon: "shield-check",
+  },
+  "audit-evaluation-conseil-financier": {
+    image: "/media/home/expertise-audit.jpg",
+    icon: "lightbulb",
+  },
+} satisfies Record<
+  (typeof expertises)[number]["slug"],
+  { image: string; icon: HomeIconKey }
+>;
+
+/**
+ * Visual-alignment content for the homepage.
+ *
+ * The homepage now reflects the approved working visual direction. Client
+ * approval is still required for final public copy, founder information and
+ * brand master values. Keep the “À valider” markers until RC-003 is actually
+ * closed from confirmed client input.
+ */
 export const homeContent = {
   hero: {
-    eyebrow: "MAPIAP Audit & Conseils",
-    title: "Expertise. Innovation. Performance.",
+    eyebrow: "Audit & Conseils",
+    title: "Transformer vos ambitions en résultats durables",
+    highlight: "résultats durables",
     description:
-      "À valider - promesse et phrase de positionnement du cabinet pour la version éditoriale finale.",
+      "Un accompagnement stratégique pour des organisations plus performantes, plus innovantes et plus résilientes.",
+    image: "/media/home/hero.jpg",
     primaryAction: {
       label: "Nous contacter",
       href: "/contact",
@@ -15,11 +49,108 @@ export const homeContent = {
       href: "/cabinet",
     },
   },
+  trust: [
+    {
+      title: "Expertise reconnue",
+      description: "Des analyses rigoureuses",
+      icon: "bar-chart",
+    },
+    {
+      title: "Approche sur mesure",
+      description: "Des solutions adaptées",
+      icon: "lightbulb",
+    },
+    {
+      title: "Résultats durables",
+      description: "Une valeur concrète",
+      icon: "target",
+    },
+    {
+      title: "Partenaire de confiance",
+      description: "Un engagement à vos côtés",
+      icon: "shield-check",
+    },
+  ],
+  cabinet: {
+    eyebrow: "Le cabinet",
+    title: "Un partenaire engagé à vos côtés",
+    description:
+      "MAPIAP Audit & Conseils accompagne les entreprises, des micro-entreprises aux groupes, avec la proximité d’un cabinet à taille humaine et la rigueur acquise dans les réseaux internationaux.",
+    image: "/media/home/cabinet.jpg",
+    action: {
+      label: "Découvrir le cabinet",
+      href: "/cabinet",
+    },
+  },
+  differentiators: [
+    {
+      title: "Expertise",
+      description: "pluridisciplinaire",
+      icon: "diamond",
+    },
+    {
+      title: "Approche",
+      description: "sur mesure",
+      icon: "cog",
+    },
+    {
+      title: "Engagement",
+      description: "durable",
+      icon: "leaf",
+    },
+  ],
+  expertiseSection: {
+    eyebrow: "Nos expertises",
+    title: "Quatre pôles d’expertise pour accompagner votre entreprise",
+    allAction: {
+      label: "Voir toutes les expertises",
+      href: "/expertises",
+    },
+    items: expertises.map((expertise) => ({
+      title: expertise.title,
+      description: expertise.shortDescription,
+      image: expertiseVisuals[expertise.slug].image,
+      icon: expertiseVisuals[expertise.slug].icon,
+      href: getExpertiseHref(expertise.slug),
+    })),
+  },
+  approachSection: {
+    eyebrow: "Notre approche",
+    title: "Une méthode structurée, du diagnostic à l’impact",
+    steps: [
+      {
+        title: "Comprendre vos enjeux",
+        description: "Analyse du contexte et des objectifs",
+      },
+      {
+        title: "Construire des solutions",
+        description: "Co-conception de stratégies et de plans d’action",
+      },
+      {
+        title: "Accompagner la mise en œuvre",
+        description: "Suivi opérationnel et montée en compétence",
+      },
+      {
+        title: "Mesurer l’impact",
+        description: "Résultats concrets et amélioration continue",
+      },
+    ],
+  },
+  newsSection: {
+    eyebrow: "Actualités",
+    title: "Publications du cabinet",
+    allAction: {
+      label: "Consulter les actualités",
+      href: "/actualites",
+    },
+    emptyMessage:
+      "Aucune publication pour le moment. Les prochaines actualités du cabinet seront proposées ici après validation.",
+  },
   introduction: {
     eyebrow: "Le cabinet",
     title: "Présentation de MAPIAP",
     body: [
-      "À valider - présentation institutionnelle courte du cabinet, de son approche et de la valeur apportée à ses clients.",
+      "MAPIAP Audit & Conseils accompagne les entreprises, des micro-entreprises aux groupes, avec la proximité d’un cabinet à taille humaine et la rigueur acquise dans les réseaux internationaux.",
     ],
     action: {
       label: "Découvrir le cabinet",
@@ -29,23 +160,17 @@ export const homeContent = {
   founder: {
     eyebrow: "Le cabinet",
     title: "Yves TCHAMO",
-    person: {
-      firstName: "Yves",
-      lastName: "TCHAMO",
-      role: "À valider - titre professionnel",
-      shortBio:
-        "À valider - biographie courte et éléments d’expertise à présenter sur la homepage.",
-    },
+    person: founderProfile,
     action: {
       label: "Découvrir le cabinet",
       href: "/cabinet",
     },
   },
   contactCta: {
-    eyebrow: "Contact",
-    title: "Échanger avec MAPIAP",
-    description:
-      "À valider - formulation finale du message de conversion et de prise de contact.",
+    eyebrow: "Discutons de vos projets",
+    title:
+      "Un premier échange pour comprendre vos enjeux et identifier ensemble les meilleures opportunités.",
+    image: "/media/home/hero.jpg",
     action: {
       label: "Nous contacter",
       href: "/contact",

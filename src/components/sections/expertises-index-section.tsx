@@ -24,16 +24,16 @@ export function ExpertisesIndexSection({ items }: ExpertisesIndexSectionProps) {
           </Text>
 
           <Heading as="h2" id="expertises-index-title" size="lg">
-            Les trois domaines prévus
+            Les quatre pôles d’expertise
           </Heading>
 
           <Text className="mt-5" tone="muted">
-            Les pages détail sont désormais actives. Leurs contenus métier
-            restent provisoires jusqu’à validation des trois expertises.
+            Quatre domaines d’intervention présentés par MAPIAP pour accompagner
+            les entreprises et les groupes.
           </Text>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {items.map((expertise) => (
             <ExpertiseCard
               expertise={expertise}
