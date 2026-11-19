@@ -1,18 +1,18 @@
 # REM-03 - Consolidation des PR visuelles #19 et #20
 
-**Date de consolidation : 19/11/2026**  
-**Statut : DRAFT / CI À QUALIFIER / NO-GO publication**  
-**Issue : [REM-03 #24](https://github.com/tawounfouet/mapiap-web/issues/24)**
+**Date de consolidation :** 19/11/2026
+
+**Statut :** DRAFT / CI À QUALIFIER / NO-GO publication
+
+**Issue :** [REM-03 #24](https://github.com/tawounfouet/mapiap-web/issues/24)
 
 ## 1. Références Git exactes
 
-| Référence | Commit | Rôle |
-|---|---|---|
-| `main` après G0 | `8f982e5ad96902963be17381f31d24f83175bb9d` | Base protégée, CI et registres préservés |
-| PR [#19](https://github.com/tawounfouet/mapiap-web/pull/19) | `6f43366eab11ababeb6c6d925141c8ba283ec938` | Refonte visuelle Accueil, LOT-17 |
-| PR [#20](https://github.com/tawounfouet/mapiap-web/pull/20) | `3cf0655188c3df7b34695564558057cb9c76a1f9` | Refonte visuelle Cabinet, LOT-18, empilée sur #19 |
-| Ancien `main` | `e6091f9c73efbd41c4201f2fab8912f4078ab829` | Ancêtre commun des PR historiques |
-| Consolidation de travail | `ae3cc5b571877dc0d4eac87e6fbcbc063d49d4fb` | Portage des différences des PR, sans force-push |
+- **Base G0** : `main` au SHA `8f982e5ad96902963be17381f31d24f83175bb9d`, protégé et qualifié.
+- **PR #19** : `6f43366eab11ababeb6c6d925141c8ba283ec938`, refonte Accueil LOT-17.
+- **PR #20** : `3cf0655188c3df7b34695564558057cb9c76a1f9`, refonte Cabinet LOT-18 empilée sur #19.
+- **Ancien main** : `e6091f9c73efbd41c4201f2fab8912f4078ab829`, ancêtre commun.
+- **Consolidation initiale** : `ae3cc5b571877dc0d4eac87e6fbcbc063d49d4fb`, portage sans force-push.
 
 La PR #19 n'est plus fusionnable directement sur `main` après les fusions G0. La PR #20 reste tributaire de #19. **Ne pas fusionner les deux anciennes PR en force et ne pas les fermer avant qualification du remplaçant.**
 
