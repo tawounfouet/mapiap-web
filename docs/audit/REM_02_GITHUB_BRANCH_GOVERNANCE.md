@@ -33,6 +33,28 @@ Dans `.github/workflows/bootstrap-ci.yml`, références de tâches résolues et 
 6. Vérifier effectivement, par l'API ou l'interface d'administration, que les règles sont actives et qu'une PR avec checks manquants ne peut pas être fusionnée.
 7. Vérifier que les jobs de contributions non approuvées ne peuvent pas accéder à des secrets de production.
 
+## Script `gh` de gouvernance (à exécuter localement)
+
+Le script `scripts/github/configure_main_ruleset.sh` reprend les principes appliqués sur PyAccountingKit et PyAuthKit. Il cible uniquement `tawounfouet/mapiap-web` et crée une règle de protection à condition qu'aucun ruleset ou protection concurrente n'existe.
+
+```bash
+gh auth login
+gh auth status
+bash scripts/github/configure_main_ruleset.sh --plan
+bash scripts/github/configure_main_ruleset.sh --apply
+bash scripts/github/configure_main_ruleset.sh --verify
+```
+
+Le mode `--plan` est en lecture seule ; `--apply` crée la règle active et contrôle le résultat avec une nouvelle lecture GitHub. `--verify` ne modifie rien. Une réexécution sur la règle conforme ne fait aucune écriture ; une règle divergente provoque un arrêt sans remplacement.
+
+Le check obligatoire est **`qualify`**, observé comme réussi sur le SHA de `main` avec `integration_id: 15368` (GitHub Actions). La stratégie stricte est activée. La politique impose des PR, la résolution des conversations et le blocage des force-pushes et suppressions, sans approbation tierce obligatoire pour un mainteneur unique.
+
+Le test hors réseau est `bash tests/scripts/test_configure_main_ruleset.sh`. Il couvre la simulation, la création, la relecture, l'idempotence, la dérive, les règles concurrentes et le refus sans droits administrateur. Il ne remplace pas le test de la configuration distante.
+
+**La règle de protection reste NON APPLIQUÉE tant que le titulaire du dépôt n'a pas exécuté `--apply` et obtenu `--verify` en succès.** Le jeton utilisé localement doit disposer des droits `Administration: write` sur le dépôt. Aucun jeton n'est inclus dans le script.
+
+Référence d'utilisation : `scripts/github/README.md`. Sources techniques : API REST GitHub rulesets et documentation de `gh api`.
+
 ## Critères de clôture REM-02
 
 - [ ] Nouvelle CI verte avec les actions épinglées.
