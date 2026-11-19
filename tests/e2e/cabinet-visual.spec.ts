@@ -23,6 +23,19 @@ test.describe("cabinet visual baselines", () => {
         await document.fonts.ready;
       });
 
+      // Reject stale production builds before updating a visual baseline.
+      await expect(
+        page.getByRole("heading", {
+          name: "La proximité d’un cabinet, l’exigence des dossiers complexes",
+        }),
+      ).toBeVisible();
+      await expect(
+        page.getByText("Fort de plus de dix exercices d’expérience", {
+          exact: false,
+        }),
+      ).toBeVisible();
+      await expect(page.getByText("À valider", { exact: false })).toHaveCount(0);
+
       await expect(page).toHaveScreenshot(baseline.name, {
         animations: "disabled",
         caret: "hide",
