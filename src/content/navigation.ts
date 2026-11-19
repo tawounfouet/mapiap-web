@@ -2,11 +2,15 @@ import type { NavigationItem } from "@/types/navigation";
 
 export const mainNavigation = [
   {
+    label: "Accueil",
+    href: "/",
+  },
+  {
     label: "Cabinet",
     href: "/cabinet",
   },
   {
-    label: "Expertises",
+    label: "Nos expertises",
     href: "/expertises",
   },
   {

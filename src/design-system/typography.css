@@ -1,8 +1,16 @@
 :root {
   --mapiap-font-sans:
-    "Plus Jakarta Sans", "Avenir Next", Avenir, ui-sans-serif, system-ui,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+    var(--font-plus-jakarta), "Plus Jakarta Sans", "Avenir Next", Avenir,
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --mapiap-font-size-display: 3rem;
+  --mapiap-line-height-display: 3.5rem;
+  --mapiap-font-size-display-mobile: 2.125rem;
+  --mapiap-line-height-display-mobile: 2.5rem;
+  --mapiap-font-size-h2: 2rem;
+  --mapiap-line-height-h2: 2.5rem;
+  --mapiap-font-size-h2-mobile: 1.75rem;
+  --mapiap-line-height-h2-mobile: 2.125rem;
 }
 
 @theme inline {

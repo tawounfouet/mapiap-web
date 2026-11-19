@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { HomepageShowcase } from "@/components/sections/homepage-showcase";
+import { Homepage } from "@/components/sections/home/homepage";
 import { getCanonicalUrl } from "@/lib/seo/site-url";
 
 export const metadata: Metadata = {
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <HomepageShowcase />;
+  return <Homepage />;
 }

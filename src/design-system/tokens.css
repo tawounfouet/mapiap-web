@@ -1,8 +1,9 @@
 /*
  * MAPIAP design tokens.
  *
- * RC-010: these working values come from the provisional logo pack.
- * They must still be confirmed against the final brand master.
+ * RC-010: these working values come from the provisional logo pack and visual
+ * alignment references. They must still be confirmed against the final brand
+ * master before the brand release blocker can be closed.
  */
 
 :root {
@@ -23,6 +24,7 @@
   --mapiap-gray-600: #676b71;
   --mapiap-gray-400: #999ea2;
   --mapiap-gray-50: #f7f9fa;
+  --mapiap-editorial-advice: #a65328;
 
   /* Semantic colors */
   --mapiap-color-background: var(--mapiap-neutral-0);
@@ -32,21 +34,40 @@
   --mapiap-color-muted-foreground: var(--mapiap-gray-600);
   --mapiap-color-border: #dde5e8;
   --mapiap-color-focus-ring: var(--mapiap-teal-500);
+  --mapiap-color-primary: var(--mapiap-teal-500);
+  --mapiap-color-primary-hover: var(--mapiap-teal-700);
+
+  /* Hero overlays */
+  --mapiap-hero-overlay-start: rgba(1, 50, 75, 0.96);
+  --mapiap-hero-overlay-mid: rgba(1, 50, 75, 0.82);
+  --mapiap-hero-overlay-end: rgba(1, 50, 75, 0.18);
 
   /* Layout */
   --mapiap-container-page: 80rem;
   --mapiap-container-content: 64rem;
   --mapiap-container-reading: 48rem;
+  --mapiap-page-padding-mobile: 1.25rem;
+  --mapiap-page-padding-tablet: 1.5rem;
+  --mapiap-page-padding-desktop: 2rem;
 
   /* Section rhythm */
-  --mapiap-section-space-sm: 4rem;
-  --mapiap-section-space-md: 5rem;
-  --mapiap-section-space-lg: 6rem;
+  --mapiap-section-space-sm: 3.5rem;
+  --mapiap-section-space-md: 4rem;
+  --mapiap-section-space-lg: 4.5rem;
 
   /* Shape */
   --mapiap-radius-sm: 0.25rem;
   --mapiap-radius-md: 0.5rem;
   --mapiap-radius-lg: 0.75rem;
+  --mapiap-radius-xl: 1rem;
+
+  /* Shadows */
+  --mapiap-shadow-xs: 0 1px 2px rgba(1, 50, 75, 0.05);
+  --mapiap-shadow-sm: 0 2px 8px rgba(1, 50, 75, 0.08);
+  --mapiap-shadow-md: 0 8px 24px rgba(1, 50, 75, 0.1);
+
+  /* Interaction */
+  --mapiap-touch-target-min: 2.75rem;
 
   /* Motion */
   --mapiap-duration-fast: 150ms;
@@ -71,10 +92,12 @@
   --color-brand-cyan: var(--mapiap-cyan-400);
   --color-brand-gray: var(--mapiap-gray-600);
   --color-brand-gray-light: var(--mapiap-gray-400);
+  --color-editorial-advice: var(--mapiap-editorial-advice);
 
   --radius-sm: var(--mapiap-radius-sm);
   --radius-md: var(--mapiap-radius-md);
   --radius-lg: var(--mapiap-radius-lg);
+  --radius-xl: var(--mapiap-radius-xl);
 
   --ease-standard: var(--mapiap-ease-standard);
   --ease-emphasized: var(--mapiap-ease-emphasized);
