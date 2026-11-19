@@ -125,20 +125,11 @@ export interface HomeApproachSectionContent {
   steps: readonly HomeApproachStep[];
 }
 
-export interface HomeNewsItem {
-  title: string;
-  href: string;
-  image?: string;
-  category?: string;
-  date?: string;
-}
-
 export interface HomeNewsSectionContent {
   eyebrow: string;
   title: string;
   allAction: CallToAction;
-  featured: HomeNewsItem;
-  secondary: readonly HomeNewsItem[];
+  emptyMessage: string;
 }
 
 export interface HomeIntroductionContent {
